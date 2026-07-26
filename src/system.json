@@ -3,6 +3,10 @@
   "title": "Kenshiro GDR",
   "description": "Game system for NEXUS's Kenshiro GDR",
   "version": "0.1.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
   "authors": [
     {
       "name": "Dragonsrage"
