@@ -31,6 +31,6 @@
     }
   ],
   "url": "https://github.com/mdragonsrage/ken-foundry",
-  "manifest": "https://github.com/mdragonsrage/ken-foundry/src/system.json",
+  "manifest": "https://raw.githubusercontent.com/mdragonsrage/ken-foundry/refs/heads/master/src/system.json",
   "download": "https://github.com/mdragonsrage/ken-foundry/kenshiro.zip"
 }
