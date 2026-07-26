@@ -1,0 +1,131 @@
+.mio-sistema-sheet-wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Signika", sans-serif;
+  background: #fbf9f4;
+  height: 100%;
+}
+.mio-sistema-sheet-wrapper input[type="number"] {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  height: 32px;
+  border: 1px solid #a19e93;
+  border-radius: 4px;
+  background: #fff;
+}
+.mio-sistema-sheet-wrapper .sheet-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 2px solid #7a2021;
+  padding-bottom: 10px;
+}
+.mio-sistema-sheet-wrapper .sheet-header .profile-img {
+  border: 2px solid #4b4a44;
+  border-radius: 5px;
+  background: #e8e4db;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.mio-sistema-sheet-wrapper .sheet-header .profile-img:hover {
+  transform: scale(1.03);
+}
+.mio-sistema-sheet-wrapper .sheet-header .header-fields .charname input {
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #4b4a44;
+  padding: 5px;
+}
+.mio-sistema-sheet-wrapper .sheet-header .header-fields .charname input:focus {
+  border-bottom: 1px solid #7a2021;
+  outline: none;
+}
+.mio-sistema-sheet-wrapper .sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .health-block {
+  background: #fff0f0;
+  border: 1px solid #f0a3a3;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .health-block label {
+  font-weight: bold;
+  color: #a31c1c;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .health-block .flexrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .health-block .flexrow input[type="number"] {
+  width: 60px;
+  border-color: #f0a3a3;
+  color: #a31c1c;
+}
+.mio-sistema-sheet-wrapper .sheet-body .health-block .flexrow span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4b4a44;
+}
+.mio-sistema-sheet-wrapper .sheet-body .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .stats-grid .stat-box {
+  background: #f1ebd9;
+  border: 1px solid #c8bda6;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .stats-grid .stat-box label {
+  font-weight: bold;
+  color: #4b4a44;
+}
+.mio-sistema-sheet-wrapper .sheet-body .stats-grid .stat-box input[type="number"] {
+  width: 50px;
+  font-size: 18px;
+}
+.mio-sistema-sheet-wrapper .sheet-body .roll-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #7a2021;
+  border: 1px solid #541314;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #541314;
+  transition: all 0.1s ease;
+}
+.mio-sistema-sheet-wrapper .sheet-body .roll-btn:hover {
+  background: #912728;
+}
+.mio-sistema-sheet-wrapper .sheet-body .roll-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #541314;
+}
+.mio-sistema-sheet-wrapper .sheet-body .roll-btn i {
+  margin-right: 5px;
+}
+/*# sourceMappingURL=kenshiro.css.map */

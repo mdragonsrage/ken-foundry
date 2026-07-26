@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "checkJs": false,
+    "maxNodeModuleJsDepth": 2,
+    "paths": {
+      "*": ["node_modules/@league-of-foundry-developers/foundry-vtt-types/src/*"]
+    },
+    "types": ["@league-of-foundry-developers/foundry-vtt-types"]
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/@league-of-foundry-developers/foundry-vtt-types/src/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

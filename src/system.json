@@ -1,0 +1,36 @@
+{
+  "id": "kenshiro",
+  "title": "Kenshiro GDR",
+  "description": "Game system for NEXUS's Kenshiro GDR",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Dragonsrage"
+    }
+  ],
+  "esmodules": [
+    "kenshiro.js"
+  ],
+  "styles": [
+    "css/kenshiro.css"
+  ],
+  "documentTypes": {
+    "Actor": { "character": {} },
+    "Item": {}
+  },
+  "languages": [
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "url": "https://github.com/mdragonsrage/ken-foundry",
+  "manifest": "https://github.com/mdragonsrage/ken-foundry/system.json",
+  "download": "https://github.com/mdragonsrage/ken-foundry/kenshiro.zip"
+}

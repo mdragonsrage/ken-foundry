@@ -1,0 +1,149 @@
+// ==========================================================================
+// VARIABILI E CONFIGURAZIONE COLORI
+// ==========================================================================
+@color-bg-pergament: #fbf9f4;
+@color-bordeaux:     #7a2021;
+@color-bordeaux-dark:#541314;
+@color-bordeaux-hover:#912728;
+@color-text-dark:    #4b4a44;
+@color-health-bg:    #fff0f0;
+@color-health-border:#f0a3a3;
+@color-health-text:  #a31c1c;
+
+// ==========================================================================
+// STILI ANNIDATI (NESTING)
+// ==========================================================================
+.mio-sistema-sheet-wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Signika", sans-serif;
+  background: @color-bg-pergament;
+  height: 100%;
+
+  // Stili per tutti gli input numerici dentro la scheda
+  input[type="number"] {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    height: 32px;
+    border: 1px solid #a19e93;
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  // Intestazione (Header)
+  .sheet-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid @color-bordeaux;
+    padding-bottom: 10px;
+
+    .profile-img {
+      border: 2px solid @color-text-dark;
+      border-radius: 5px;
+      background: #e8e4db;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover { transform: scale(1.03); }
+    }
+
+    .header-fields .charname input {
+      width: 100%;
+      font-size: 24px;
+      font-weight: bold;
+      background: transparent;
+      border: none;
+      border-bottom: 1px dashed @color-text-dark;
+      padding: 5px;
+
+      &:focus {
+        border-bottom: 1px solid @color-bordeaux;
+        outline: none;
+      }
+    }
+  }
+
+  // Corpo della scheda
+  .sheet-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    // Blocco Salute
+    .health-block {
+      background: @color-health-bg;
+      border: 1px solid @color-health-border;
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+
+      label {
+        font-weight: bold;
+        color: @color-health-text;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+      .flexrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        input[type="number"] {
+          width: 60px;
+          border-color: @color-health-border;
+          color: @color-health-text;
+        }
+        span { font-size: 18px; font-weight: bold; color: @color-text-dark; }
+      }
+    }
+
+    // Griglia Statistiche
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+
+      .stat-box {
+        background: #f1ebd9;
+        border: 1px solid #c8bda6;
+        border-radius: 6px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        label { font-weight: bold; color: @color-text-dark; }
+        input[type="number"] { width: 50px; font-size: 18px; }
+      }
+    }
+
+    // Pulsante di lancio
+    .roll-btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: @color-bordeaux;
+      border: 1px solid @color-bordeaux-dark;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 3px 0 @color-bordeaux-dark;
+      transition: all 0.1s ease;
+
+      &:hover { background: @color-bordeaux-hover; }
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 @color-bordeaux-dark;
+      }
+      i { margin-right: 5px; }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "KENSHIRO": {
+    "SheetTitle": "Character Sheet",
+    "Salute": "Health",
+    "Forza": "Strength (STR)",
+    "Destrezza": "Dextery (DEX)",
+    "Mente": "Mind (MIN)"
+  }
+}

@@ -1,0 +1,51 @@
+<div class="kenshiro-sheet-wrapper">
+    <header class="sheet-header">
+        <div class="header-fields">
+            <h1 class="charName">
+                <input name="name" type="text" placeholder="Nome del personaggio"
+                       value="{{actor.name}}"
+                       height="100"
+                       width="100" />
+            </h1>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+
+        {{!-- Blocco Salute (Mappato sul Data Model) --}}
+        <div class="stat-block health-block">
+            <label>{{localize "KENSHIRO.Salute"}}</label>
+            <div class="flexrow">
+                {{!-- Il name punta a system.salute.value per aggiornare il database automaticamente --}}
+                <input type="number" name="system.salute.value" value="{{system.salute.value}}" min="0" />
+                <span> / </span>
+                <input type="number" name="system.salute.max" value="{{system.salute.max}}" min="0" />
+            </div>
+        </div>
+
+        {{!-- Blocco Statistiche di Gioco --}}
+        <div class="stats-grid">
+            <div class="stat-box">
+                <label>{{localize "KENSHIRO.Forza"}}</label>
+                <input type="number" name="system.statistiche.forza" value="{{system.statistiche.forza}}" />
+            </div>
+            <div class="stat-box">
+                <label>{{localize "KENSHIRO.Destrezza"}}</label>
+                <input type="number" name="system.statistiche.destrezza" value="{{system.statistiche.destrezza}}" />
+            </div>
+            <div class="stat-box">
+                <label>{{localize "KENSHIRO.Mente"}}</label>
+                <input type="number" name="system.statistiche.mente" value="{{system.statistiche.mente}}" />
+            </div>
+        </div>
+
+        {{!-- Pulsante per il Lancio del Dado (Sfrutta l'azione nativa v14) --}}
+        <div class="actions-block">
+            {{!-- L'attributo data-action intercetta il click richiamando la funzione legata nelle DEFAULT_OPTIONS dell'actor-sheet.js --}}
+            <button type="button" data-action="throwDice" class="roll-btn">
+                <i class="fas fa-dice-d20"></i> Lancia 2d6 di Prova
+            </button>
+        </div>
+
+    </section>
+</div>
