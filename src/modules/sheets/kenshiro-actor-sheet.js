@@ -32,6 +32,9 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
                 initial: "stats"
             }
         ],
+        actions: {
+            throwDice: KenshiroActorSheet._onThrowDice
+        }
     }
 
     /** @override */
@@ -40,11 +43,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             template: "systems/kenshiro/templates/sheets/kenshiro-actor-sheet.hbs"
         }
     }
-
-    /** @override */
-    static ACTIONS = {
-        throwDice: KenshiroActorSheet._onThrowDice,
-    };
 
     /** @override */
     _onRender(context, options) {
@@ -103,8 +101,15 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
 
         const actor = this.actor;
         const statKey = target.dataset.stat;
-        if(!statKey)
+        if(!statKey) {
+            const roll = await new Roll("2d6").evaluate();
+            await roll.toMessage({
+                speaker: ChatMessage.getSpeaker({actor: actor}),
+                flavor: `${actor.name} - <strong>Rolls 2d6</strong>`
+            });
             return;
+        }
+
 
         const mod = actor.system.derivated.statMod[statKey] || 0;
 
