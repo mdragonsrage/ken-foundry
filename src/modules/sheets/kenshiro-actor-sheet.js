@@ -9,7 +9,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     /** @override */
     static DEFAULT_OPTIONS = {
         id: "kenshiro-actor-sheet",
-        classes: ["kenshiro", "sheet", "actor"],
+        classes: ["kenshiro", "sheet", "actor", "kenshiro-sheet-wrapper"],
         tag: "form",
         window: {
             resizable: true,
@@ -21,48 +21,47 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         form: {
             submitOnChange: true,
-            closeOnSubmit: false
+            closeOnSubmit: false,
+            scrollable: true
         },
         dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
-        tabs: [
-            {
-                id: "primary",
-                navSelector: '.sheet-tabs',
-                contentSelector: ".sheet-body",
-                initial: "stats"
-            }
-        ],
-    }
-
-    /** @override */
-    static PARTS = {
-        sheet: {
-            template: "systems/kenshiro/templates/sheets/kenshiro-actor-sheet.hbs"
+        actions: {
+            throwDice: KenshiroActorSheet._onThrowDice
         }
     }
 
     /** @override */
-    static ACTIONS = {
-        throwDice: KenshiroActorSheet._onThrowDice,
-    };
+    static PARTS = {
+        header: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-header.hbs"
+        },
+        tabs: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-tab-navigation.hbs"
+        },
+        stats: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats.hbs",
+            scrollable: [''],
+        },
+        ma: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-martial-arts.hbs",
+            scrollable: [''],
+        },
+        footer: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-footer.hbs"
+        }
+    }
 
-
-    /** @override */
-    _onRender(context, options) {
-        super._onRender(context, options);
-
-        // tabs navigation
-        const html = this.element;
-        const tabLinks = html.querySelectorAll('nav[data-group="primary"] .item');
-
-        tabLinks.forEach(link => {
-            link.addEventListener("click", (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                this.tabGroups.primary = link.dataset.tab;
-                this.render();
-            });
-        });
+    /**
+     * @override
+     */
+    static TABS = {
+        primary: {
+            tabs: [
+                {id: "stats"},
+                {id: "ma"}
+            ],
+            initial: "stats"
+        }
     }
 
     /** @override */
@@ -70,13 +69,24 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         const context = await super._prepareContext(options);
 
         context.actor = this.actor;
-
         context.system = this.actor.system;
-
         context.actorName = this.actor.name;
-        context.activeTab = this.tabGroups.primary || "stats";
 
-        this._prepareTechniques(context);
+        this._prepareItems(context);
+
+        return context;
+    }
+
+    /**
+    /** @override */
+    async _preparePartContext(partId, context) {
+        switch (partId) {
+            case "stats":
+            case "ma":
+                context.tab = context.tabs[partId];
+                break;
+            default:
+        }
 
         return context;
     }
@@ -92,22 +102,32 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         return submitData;
     }
 
-
+    /**
+     * Rolls 2d6 based on selected key stat
+     * @param event
+     * @param target
+     * @return {Promise<void>}
+     * @private
+     */
     static async _onThrowDice(event, target) {
         event.preventDefault();
 
         const actor = this.actor;
         const statKey = target.dataset.stat;
-        if(!statKey)
+        if(!statKey) {
+            const roll = await new Roll("2d6").evaluate();
+            await roll.toMessage({
+                speaker: ChatMessage.getSpeaker({actor: actor}),
+                flavor: `${actor.name} - <strong>Rolls 2d6</strong>`
+            });
             return;
+        }
 
-        const mod = actor.system.derivated.modificatori[statKey] || 0;
-
+        const mod = actor.system.derivated.statMod[statKey] || 0;
         const formula = `2d6 + ${mod}`;
         const roll = await new Roll(formula).evaluate();
-
-        const statLabel = game.i18n.localize(`KENSHIRO.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
-        const rollLabel = game.i18n.localize(`KENSHIRO.LancioDi`);
+        const statLabel = game.i18n.localize(`KENSHIRO.Stats.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
+        const rollLabel = game.i18n.localize(`KENSHIRO.RollOn`);
         const modLabel = game.i18n.localize(`KENSHIRO.Mod`);
 
         await roll.toMessage({
@@ -117,24 +137,36 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
+     * Function use to set actor item (e.g. martial arts, equip...)
      * @private
+     * @param context
      */
-    _prepareTechniques(context) {
-        const techniques = [];
+    _prepareItems(context) {
+        const martialArts = [];
 
-        for (let t in this.actor.items) {
-            const i = {
-                id: t.id,
-                name: t.name,
-                description: t.description,
-                img: t.url,
-                system: t.system
-            }
-
-            if(t.type === "technique")
-                techniques.push(i);
+        for (let i in this.actor.items) {
+            if(i.type === "martialArt")
+                this._prepareMartialArts(martialArts);
         }
 
-        context.techniques = techniques;
+        context.martialArts = martialArts;
+    }
+
+    /**
+     * Converts item in Martial Arts and add to actor list
+     * @private
+     * @param martialArts
+     */
+    _prepareMartialArts(martialArts) {
+
+        const i = {
+            id: i.id,
+            name: i.name,
+            description: i.description,
+            img: i.url,
+            system: i.system
+        }
+
+        martialArts.push(i);
     }
 }
