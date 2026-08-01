@@ -76,7 +76,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         context.actorName = this.actor.name;
         context.activeTab = this.tabGroups.primary || "stats";
 
-        this._prepareMartialArts(context);
+        this._prepareItems(context);
 
         return context;
     }
@@ -93,6 +93,13 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
 
+    /**
+     * Rolls 2d6 based on selected key stat
+     * @param event
+     * @param target
+     * @return {Promise<void>}
+     * @private
+     */
     static async _onThrowDice(event, target) {
         event.preventDefault();
 
@@ -117,24 +124,36 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
+     * Function use to set actor item (e.g martial arts, equip...)
      * @private
+     * @param context
      */
-    _prepareMartialArts(context) {
+    _prepareItems(context) {
         const martialArts = [];
 
-        for (let t in this.actor.items) {
-            const i = {
-                id: t.id,
-                name: t.name,
-                description: t.description,
-                img: t.url,
-                system: t.system
-            }
-
-            if(t.type === "martialArt")
-                martialArts.push(i);
+        for (let i in this.actor.items) {
+            if(i.type === "martialArt")
+                this._prepareMartialArts(martialArts);
         }
 
         context.martialArts = martialArts;
+    }
+
+    /**
+     * Converts item in Martial Arts and add to actor list
+     * @private
+     * @param martialArts
+     */
+    _prepareMartialArts(martialArts) {
+
+        const i = {
+            id: i.id,
+            name: i.name,
+            description: i.description,
+            img: i.url,
+            system: i.system
+        }
+
+        martialArts.push(i);
     }
 }
