@@ -1,7 +1,7 @@
 // Richiede l'inclusione o l'estensione delle variabili precedenti
 .kenshiro-sheet-wrapper {
 
-  .tab.tecniche-segrete {
+  .tab.martial-arts {
     .section-header {
       margin-bottom: 5px;
       border-bottom: 1px solid @color-border-grunge;
@@ -15,14 +15,13 @@
       }
     }
 
-    // Lista e righe degli item (Tecniche)
-    .items-list {
+    .martial-arts-list {
       list-style: none;
       padding: 0;
       margin: 0;
       border: 1px solid @color-border-grunge;
 
-      .item {
+      .martial-art {
         padding: 6px 8px;
         border-bottom: 1px solid @color-border-grunge;
         align-items: center;
@@ -31,12 +30,12 @@
 
         &:last-child { border-bottom: none; }
 
-        .item-name {
+        .martial-art-name {
           flex: 2.5;
           align-items: center;
           gap: 8px;
 
-          .item-image {
+          .martial-art-image {
             width: 26px;
             height: 26px;
             background-size: cover;
@@ -52,7 +51,7 @@
           }
         }
 
-        .item-prop {
+        .martial-art-prop {
           flex: 1;
           text-align: center;
           font-size: 12px;
@@ -70,27 +69,25 @@
           }
         }
 
-        // Pulsanti azione a destra
-        .item-controls {
+        .martial-art-controls {
           flex: 0 0 85px;
           justify-content: flex-end;
           gap: 10px;
 
-          .item-control {
+          .martial-art-control {
             color: @color-text-dark;
             cursor: pointer;
             transition: all 0.15s ease;
 
             &:hover { transform: scale(1.15); }
-            &[data-action="rollTecnica"]:hover { color: @color-ki-cyan; }
-            &[data-action="editItem"]:hover { color: #ffcc00; }
-            &[data-action="deleteItem"]:hover { color: @color-hokuto-glow; }
+            &[data-action="rollMartialArt"]:hover { color: @color-ki-cyan; }
+            &[data-action="editMartialArt"]:hover { color: #ffcc00; }
+            &[data-action="deleteMartialArt"]:hover { color: @color-hokuto-glow; }
           }
         }
       }
 
-      // Intestazione della tabella delle tecniche
-      .item-header {
+      .martial-art-header {
         background-color: @color-bg-card;
         border-bottom: 2px solid @color-border-grunge;
         font-weight: bold;
@@ -98,18 +95,16 @@
         text-transform: uppercase;
         color: @color-text-dark;
 
-        .item-prop { color: @color-text-dark; }
+        .martial-art-prop { color: @color-text-dark; }
       }
 
-      // Animazione di selezione/hover sulla riga della tecnica
-      .item:not(.item-header):hover {
+      .martial-art:not(.martial-art-header):hover {
         background-color: rgba(139, 0, 0, 0.1);
         border-left: 2px solid @color-hokuto-red;
         padding-left: 6px;
       }
 
-      // Stato vuoto (nessun item)
-      .no-items {
+      .no-martial-art {
         padding: 20px;
         justify-content: center;
         background-color: rgba(0, 0, 0, 0.2);

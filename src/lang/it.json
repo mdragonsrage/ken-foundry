@@ -1,23 +1,34 @@
 {
   "KENSHIRO": {
     "SheetTitle": "Scheda del Personaggio",
-    "NamePlaceholder": "Nome",
-    "Salute": "Punti Ferita",
-    "Forza": "Forza (Ryoku)",
-    "Destrezza": "Destrezza (Shun)",
-    "Mente": "Mente (Shin)",
-    "DatiDerivati": "Parametri Derivati",
-    "SogliaDifesa": "Soglia di Difesa",
-    "PuntiKi": "Energia Spirituale (Ki)",
-    "LancioDi": "Prova su",
+    "RollOn": "Prova su",
     "Mod": "Modificatore",
-    "Stats": "Statistiche",
-    "Techniques": "Tecniche Segrete di Arti Marziali",
-    "TechName": "Nome",
-    "TechSchool": "Scuola",
-    "TechCost": "Costo Ki",
-    "TechDmg": "Danno",
-    "TechActions": "Tiro",
-    "NoTech": "Nessuna Tecnica Segreta appresa. Trova un maestro o medita per sbloccarle."
+    "Info": {
+      "NamePlaceholder": "Nome"
+    },
+    "Sections": {
+      "Stats": "Statistiche",
+      "MartialArts": "Tecniche Segrete di Arti Marziali"
+    },
+    "Stats": {
+      "Health": "Punti Ferita",
+      "Strength": "Forza (Ryoku)",
+      "Dexterity": "Destrezza (Shun)",
+      "Mind": "Mente (Shin)",
+      "DerivedData": "Parametri Derivati",
+      "DefenseValue": "Soglia di Difesa",
+      "PuntiKi": "Energia Spirituale (Ki)"
+    },
+    "MartialArts": {
+      "Name": "Nome",
+      "School": "Scuola",
+      "Cost": "Costo Ki",
+      "Dmg": "Danno",
+      "Actions": "Tiro",
+      "Empty": "Nessuna Tecnica Segreta appresa. Trova un maestro o medita per sbloccarle.",
+      "RollDamage": "Tira Danno",
+      "Edit": "Apri (Edita)",
+      "Delete": "Cancella"
+    }
   }
 }

@@ -2,10 +2,10 @@
   "id": "kenshiro",
   "title": "Kenshiro GDR",
   "description": "Game system for NEXUS's Kenshiro GDR",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "compatibility": {
     "minimum": "14",
-    "verified": "14"
+    "verified": "14.365"
   },
   "authors": [
     {
