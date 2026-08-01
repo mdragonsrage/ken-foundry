@@ -1,5 +1,54 @@
-@import "kenshiro-actor-sheet-base.less";
+@import "kenshiro-actor-sheet-stats.less";
 @import "kenshiro-actor-sheet-martial-arts.less";
+
+.danger {
+  background-color: @color-hokuto-glow;
+  color: @color-text-bright-white;
+}
+
+.ok {
+  background-color: @color-hokuto-green;
+  color: @color-text-bright-white;
+}
+
+.kenshiro-martial-arts-dialog-wrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #121212;
+  color: #dedede;
+
+  p.text {
+    margin: 0 0 5px 0;
+    font-style: italic;
+    color: #777;
+    font-size: 12px;
+  }
+
+  div.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-weight: bold;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #8b0000;
+      letter-spacing: 0.5px;
+    }
+
+    select {
+      background: #0b0b0b;
+      color: #dedede;
+      border: 1px solid #3a3a3a;
+      padding: 6px;
+      cursor: pointer;
+      font-family: 'Signika', sans-serif;
+    }
+  }
+}
 
 .kenshiro-sheet-wrapper {
   .kenshiro-sheet-base();

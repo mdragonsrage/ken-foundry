@@ -12,6 +12,7 @@ export class MartialArtData extends foundry.abstract.TypeDataModel {
             requirements: new fields.StringField({ required: true,
                 blank: true, initial: "---" }),
             level: new fields.NumberField({ required: false, integer: true,
+                nullable: true,
                 initial: null,
                 choices: [null, -4, -2, 0, 1, 2, 3] }),
             dmg: new fields.StringField({ required: true, blank: true, initial: "" }),

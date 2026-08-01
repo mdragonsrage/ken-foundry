@@ -31,8 +31,9 @@
       "Actions": "Azioni",
       "Empty": "Nessuna Tecnica Segreta appresa. Trova un maestro o medita per sbloccarle.",
       "RollDamage": "Tira Danno",
-      "Edit": "Apri (Edita)",
-      "Delete": "Elimina"
+      "Edit": "Modifica",
+      "Delete": "Elimina",
+      "EditText": "Seleziona il nuovo livello per"
     },
     "Actions": {
       "Delete": "Elimina",

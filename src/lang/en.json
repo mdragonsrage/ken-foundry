@@ -32,7 +32,8 @@
       "Empty": "You don't know any Martial Arts Technique. Meditate or find a Master to learn them.",
       "RollDamage": "Roll Damage",
       "Edit": "Open (Edit)",
-      "Delete": "Delete"
+      "Delete": "Delete",
+      "EditText": "Select level for"
     },
     "Actions": {
       "Delete": "Delete",

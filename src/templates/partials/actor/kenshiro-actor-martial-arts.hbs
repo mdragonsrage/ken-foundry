@@ -45,16 +45,27 @@
                             {{ma.system.id}} {{ma.name}}
                         </span>
                         <label>
-                            <input type="checkbox" checked="{{ma.system.used}} == true"/>
+                            <input type="checkbox"
+                                   data-action="toggleUsed"
+                                   data-item-id="{{ma.id}}"
+                                   {{#if ma.system.used}}checked{{/if}} />
                         </label>
                     </h4>
                 </div>
 
                 <div class="martial-art-prop text-capitalize center">
-                    <span>{{ma.system.level}}</span>
+                    <span>
+                        {{#if ma.system.level}}
+                            {{ma.system.level}}
+                        {{else}}
+                            X
+                        {{/if}}
+                    </span>
                 </div>
                 <div class="martial-art-prop-2 center">
-                    <span class="overflow" title="{{ma.system.requirements}}">{{ma.system.requirements}}</span>
+                    <span class="overflow" title="{{ma.system.requirements}}">
+                        {{ma.system.requirements}}
+                    </span>
                 </div>
                 <div class="martial-art-prop font-monospace center">
                     <span>{{ma.system.type}}</span>
@@ -73,15 +84,15 @@
                 </div>
 
                 <div class="martial-art-controls center">
-                    <a class="martial-art-control" data-action="rollMartialArt"
+                    <a class="martial-art-control" data-action="roll"
                        title='{{localize "KENSHIRO.MartialArts.RollDamage"}}'>
                         <i class="fas fa-dice-d20"></i>
                     </a>
-                    <a class="martial-art-control" data-action="editMartialArt"
+                    <a class="martial-art-control" data-action="edit"
                        title='{{localize "KENSHIRO.MartialArts.Edit"}}'>
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="martial-art-control" data-action="deleteMartialArt"
+                    <a class="martial-art-control" data-action="delete"
                        title='{{localize "KENSHIRO.MartialArts.Delete"}}'>
                         <i class="fas fa-trash"></i>
                     </a>

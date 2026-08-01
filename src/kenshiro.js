@@ -33,7 +33,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                 cost: "1",
                 requirements: "---",
                 level: -2,
-                dmg: "C(PV) C(PR)",
+                dmg: "C(PV) B(PR)",
                 special: "---",
                 notes: "---",
                 used: false
@@ -213,7 +213,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                 cost: "3",
                 requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1 - ${game.i18n.localize("MARTIALARTS.Requirements.Def")} 2`,
                 level: -2,
-                dmg: "C(PV)",
+                dmg: "---",
                 special: "---",
                 notes:  `${game.i18n.localize("MARTIALARTS.Notes.Weapon")}`,
                 used: false

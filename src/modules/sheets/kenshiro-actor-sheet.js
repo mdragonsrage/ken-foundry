@@ -26,9 +26,10 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
         actions: {
+            toggleUsed: KenshiroActorSheet._onToggleUsed,
             throwDice: KenshiroActorSheet._onThrowDice,
-            roll: KenshiroActorSheet._onRollMartialArts,
-            //edit: KenshiroActorSheet._onEdit,
+            roll: KenshiroActorSheet._onRoll,
+            edit: KenshiroActorSheet._onEdit,
             delete: KenshiroActorSheet._onDelete,
         }
     }
@@ -92,17 +93,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         }
 
         return context;
-    }
-
-    /** @override */
-    prepareSubmitData(event, form, formData) {
-        const submitData = foundry.utils.expandObject(formData.object);
-
-        if (!submitData.name || submitData.name.trim() === "") {
-            submitData.name = this.actor.name;
-        }
-
-        return submitData;
     }
 
     /**
@@ -182,13 +172,101 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * @param target
      * @return void
      */
-    static async _onRollMartialArts(event, target) {
+    static async _onRoll(event, target) {
         event.preventDefault();
-        const itemId = target.closest(".martial-art").dataset.id;
+        const itemId = target.closest(".martial-art").dataset.itemId;
         const martialArt = this.actor.items.get(itemId);
         debugger;
         if(!martialArt)
             return;
+    }
+
+    /**
+     * Roll based on martial arts requirements
+     * @private
+     * @param event
+     * @param target
+     * @return void
+     */
+    static async _onEdit(event, target) {
+        debugger;
+
+        event.preventDefault();
+
+        const itemId = target.closest(".martial-art").dataset.itemId;
+        const martialArt = this.actor.items.get(itemId);
+
+        if(!martialArt)
+            return;
+
+        const level = martialArt.system.level || null;
+        const levelField = martialArt.system.schema.fields.level;
+        const choicesEntries = levelField.choices;
+        const htmlContent = KenshiroActorSheet._getMartialArtsEditContent(choicesEntries, level, martialArt);
+
+        await new foundry.applications.api.DialogV2({
+            window: {
+                title: `${game.i18n.localize("KENSHIRO.MartialArts.Edit")}: ${martialArt.name}`,
+                id: `edit-martial-art-${martialArt.id}`,
+                resizable: false
+            },
+            content: htmlContent,
+            buttons: [
+                {
+                    action: "save",
+                    label: game.i18n.localize("KENSHIRO.Actions.Confirm"),
+                    class: "ok",
+                    callback: async (event, button, target) => {
+                        const dialogHtml = button.form;
+                        const rawLevel = dialogHtml.querySelector("#ma-edit-level").value;
+
+                        let newLevel = (rawLevel === "" || rawLevel === "null") ? null : parseInt(rawLevel, 10);
+                        await martialArt.update({"system.level": newLevel});
+                    }
+                },
+                {
+                    action: "cancel",
+                    label: game.i18n.localize("KENSHIRO.Actions.Cancel"),
+                    class: "cancel"
+                }
+            ],
+            renderProcessed: (html) => html.querySelector("#ma-edit-level")?.focus()
+        }).render({ force: true });
+    }
+
+
+    /**
+     *
+     * @param {number[]} choicesEntries
+     * @param {number|null} level
+     * @param {MartialArt} martialArt
+     * @return {string}
+     * @private
+     */
+    static _getMartialArtsEditContent(choicesEntries, level, martialArt) {
+        let selectOptions = "";
+
+        for (const value of choicesEntries) {
+            const isSelected = value === level ? "selected" : "";
+            selectOptions += `<option value="${value}" ${isSelected}>${value ?? 'X'}</option>`;
+        }
+
+        return `
+            <div class="kenshiro-martial-arts-dialog-wrapper">
+                <p class="text">
+                    ${game.i18n.localize("KENSHIRO.MartialArts.EditText")} <strong style="color: #fff;">${martialArt.name}</strong>
+                </p>
+
+                <div class="form-group">
+                    <label>
+                        ${game.i18n.localize("KENSHIRO.MartialArts.Level")}
+                    </label>
+                    <select id="ma-edit-level">
+                        ${selectOptions}
+                    </select>
+                </div>
+            </div>
+        `;
     }
 
     /**
@@ -200,20 +278,50 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      */
     static async _onDelete(event, target) {
         event.preventDefault();
-        const itemId = target.closest(".martial-art").dataset.id;
+        const itemId = target.closest(".martial-art").dataset.itemId;
         const item = this.actor.items.get(itemId);
         if(!item)
             return;
 
-        const title = game.i18n.localize("KENSHIRO.Actions.Delete");
-        const message = game.i18n.localize("KENSHIRO.Actions.DeleteText");
+        const del = game.i18n.localize("KENSHIRO.Actions.Delete");
         const cancel = game.i18n.localize("KENSHIRO.Actions.Cancel");
+        const message = game.i18n.localize("KENSHIRO.Actions.DeleteText");
         return foundry.applications.api.DialogV2.confirm({
-            title: title,
-            message: `${message} ${item.name} ?`,
-            yesText: title,
-            cancelText: cancel,
-            yes: () => item.delete()
+            buttons: [
+                {
+                    label: del,
+                    action: "yes",
+                    class: "danger",
+                },
+                {
+                    label: cancel,
+                    action: "no",
+                    default: true,
+                }
+            ],
+            content: `${message} ${item.system.id} ${item.name} ?`,
+            rejectClose: true,
+            modal: true,
+            submit: (val) => val === "yes" ? item.delete() : "",
         })
+    }
+
+    /**
+     * @private
+     * @param event
+     * @param target
+     * @return void
+     */
+    static async _onToggleUsed(event, target) {
+        event.stopPropagation();
+
+        const itemId = target.closest("input").dataset.itemId;
+        if (!itemId)
+            return;
+        const item = this.actor.items.get(itemId);
+        if(!item)
+            return;
+
+        await item.update({"system.used": target.checked});
     }
 }
