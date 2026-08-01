@@ -1,7 +1,14 @@
-// Richiede l'inclusione o l'estensione delle variabili precedenti
 .kenshiro-sheet-wrapper {
 
   .tab.martial-arts {
+    display: none;
+
+    &.active {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
     .section-header {
       margin-bottom: 5px;
       border-bottom: 1px solid @color-border-grunge;
@@ -20,75 +27,123 @@
       padding: 0;
       margin: 0;
       border: 1px solid @color-border-grunge;
+      display: flex;
+      flex-direction: column;
 
       .martial-art {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
         padding: 6px 8px;
         border-bottom: 1px solid @color-border-grunge;
         align-items: center;
         gap: 8px;
         background-color: rgba(20, 20, 20, 0.4);
+        box-sizing: border-box;
 
         &:last-child { border-bottom: none; }
 
         .martial-art-name {
           flex: 2.5;
+          display: flex;
           align-items: center;
           gap: 8px;
-
-          span {
-            display: inline-block;
-            width: 75%;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-          }
-
-          .martial-art-image {
-            width: 26px;
-            height: 26px;
-            background-size: cover;
-            background-position: center;
-            border: 1px solid @color-border-grunge;
-          }
+          min-width: 0;
 
           h4 {
             margin: 0;
             font-size: 13px;
             font-weight: 600;
             color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 5px;
+
+            span {
+              display: inline-block;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+              flex: 1;
+            }
+
+            label {
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+              margin: 0;
+
+              input[type="checkbox"] {
+                margin: 0;
+                cursor: pointer;
+              }
+            }
           }
         }
 
         .martial-art-prop {
           flex: 1;
-          text-align: center;
           font-size: 12px;
+          min-width: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+
+          span {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+
+          &.center {
+            justify-content: center;
+            text-align: center;
+          }
         }
 
         .martial-art-prop-2 {
           flex: 2;
           font-size: 12px;
+          min-width: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+
           span.overflow {
             display: inline-block;
-            width: 99%;
+            width: 100%;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+            text-align: center;
           }
-          label.placeholder {
-            width:1%;
+
+          &.center {
+            justify-content: center;
+            text-align: center;
           }
         }
 
         .martial-art-controls {
           flex: 0 0 85px;
+          display: flex;
           justify-content: flex-end;
           gap: 10px;
+          align-items: center;
+
+          &.center {
+            justify-content: center;
+          }
 
           .martial-art-control {
             color: @color-text-dark;
             cursor: pointer;
             transition: all 0.15s ease;
+            display: inline-block;
 
             &:hover { transform: scale(1.15); }
             &[data-action="rollMartialArt"]:hover { color: @color-ki-cyan; }
@@ -107,6 +162,9 @@
         color: @color-text-dark;
 
         .martial-art-prop { color: @color-text-dark; }
+        .martial-art-prop-2 { color: @color-text-dark; }
+        .martial-art-name { color: @color-text-dark; }
+        .martial-art-controls { color: @color-text-dark; }
       }
 
       .martial-art:not(.martial-art-header):hover {
@@ -115,13 +173,15 @@
         padding-left: 6px;
       }
 
-      .no-martial-art {
+      .no-martial-arts {
         padding: 20px;
         justify-content: center;
         background-color: rgba(0, 0, 0, 0.2);
         font-style: italic;
         color: @color-text-dark;
         font-size: 12px;
+        display: flex;
+        width: 100%;
       }
     }
   }
