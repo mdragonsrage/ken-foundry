@@ -29,19 +29,19 @@
 
     <section class="sheet-body">
         {{!-- Section Stats --}}
-        <div class="tab biography {{#if (eq activeTab 'stats')}}active{{/if}}"
+        <div class="tab info {{#if (eq activeTab 'stats')}}active{{/if}}"
              data-group="primary" data-tab="stats">
             <div class="stat-block health-block">
                 <label>{{localize "KENSHIRO.Stats.Health"}}</label>
                 <div class="flexrow">
                     <label>
-                        <input type="number" name="system.salute.value"
-                               value="{{system.salute.value}}" min="0" />
+                        <input type="number" name="system.health.value"
+                               value="{{system.health.value}}" min="0" />
                     </label>
                     <span> / </span>
                     <label>
-                        <input type="number" name="system.salute.max"
-                               value="{{system.salute.max}}" min="0" />
+                        <input type="number" name="system.health.max"
+                               value="{{system.health.max}}" min="0" />
                     </label>
                 </div>
             </div>
@@ -52,11 +52,12 @@
                     <label>{{localize "KENSHIRO.Stats.Strength"}}</label>
                     <div class="flexrow" style="gap: 5px;">
                         <label>
-                            <input type="number" name="system.statistiche.forza"
-                                   value="{{system.statistiche.forza}}" />
+                            <input type="number"
+                                   name="system.stats.strength"
+                                   value="{{system.stats.strength}}" />
                         </label>
                         <button type="button" data-action="throwDice"
-                                data-stat="forza" class="roll-btn-small">
+                                data-stat="strength" class="roll-btn-small">
                             <i class="fas fa-dice"></i>
                         </button>
                     </div>
@@ -65,11 +66,11 @@
                     <label>{{localize "KENSHIRO.Stats.Dexterity"}}</label>
                     <div class="flexrow" style="gap: 5px;">
                         <label>
-                            <input type="number" name="system.statistiche.destrezza"
-                                   value="{{system.statistiche.destrezza}}" />
+                            <input type="number" name="system.stats.dexterity"
+                                   value="{{system.stats.dexterity}}" />
                         </label>
                         <button type="button" data-action="throwDice"
-                                data-stat="destrezza" class="roll-btn-small">
+                                data-stat="dexterity" class="roll-btn-small">
                             <i class="fas fa-dice"></i>
                         </button>
                     </div>
@@ -78,11 +79,11 @@
                     <label>{{localize "KENSHIRO.Stats.Mind"}}</label>
                     <div class="flexrow" style="gap: 5px;">
                         <label>
-                            <input type="number" name="system.statistiche.mente"
-                                   value="{{system.statistiche.mente}}" />
+                            <input type="number" name="system.stats.mind"
+                                   value="{{system.stats.mind}}" />
                         </label>
                         <button type="button" data-action="throwDice"
-                                data-stat="mente" class="roll-btn-small">
+                                data-stat="mind" class="roll-btn-small">
                             <i class="fas fa-dice"></i>
                         </button>
                     </div>
@@ -96,7 +97,7 @@
                         <label>{{localize "KENSHIRO.Stats.DefenseValue"}}</label>
                         <label>
                             <input type="number" class="disabled-input"
-                                   value="{{system.derivated.difesa}}"
+                                   value="{{system.derivated.defense}}"
                                    disabled />
                         </label>
                     </div>
@@ -113,7 +114,7 @@
             </div>
         </div>
 
-        {{!-- Section Techniques --}}
+        {{!-- Section Martial Arts --}}
         <div data-group="primary" data-tab="martial-arts"
               class="tab tecniche-segrete {{#if (eq activeTab 'martial-arts')}}active{{/if}}">
             <header class="section-header flexrow">

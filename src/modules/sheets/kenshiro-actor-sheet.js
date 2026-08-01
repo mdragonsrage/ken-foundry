@@ -101,12 +101,12 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         if(!statKey)
             return;
 
-        const mod = actor.system.derivated.modificatori[statKey] || 0;
+        const mod = actor.system.derivated.statMod[statKey] || 0;
 
         const formula = `2d6 + ${mod}`;
         const roll = await new Roll(formula).evaluate();
 
-        const statLabel = game.i18n.localize(`KENSHIRO.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
+        const statLabel = game.i18n.localize(`KENSHIRO.Stats.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
         const rollLabel = game.i18n.localize(`KENSHIRO.RollOn`);
         const modLabel = game.i18n.localize(`KENSHIRO.Mod`);
 
