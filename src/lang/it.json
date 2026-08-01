@@ -1,9 +1,23 @@
 {
   "KENSHIRO": {
     "SheetTitle": "Scheda del Personaggio",
+    "NamePlaceholder": "Nome",
     "Salute": "Punti Ferita",
-    "Forza": "Forza (FOR)",
-    "Destrezza": "Destrezza (DES)",
-    "Mente": "Mente (MEN)"
+    "Forza": "Forza (Ryoku)",
+    "Destrezza": "Destrezza (Shun)",
+    "Mente": "Mente (Shin)",
+    "DatiDerivati": "Parametri Derivati",
+    "SogliaDifesa": "Soglia di Difesa",
+    "PuntiKi": "Energia Spirituale (Ki)",
+    "LancioDi": "Prova su",
+    "Mod": "Modificatore",
+    "Stats": "Statistiche",
+    "Techniques": "Tecniche Segrete di Arti Marziali",
+    "TechName": "Nome",
+    "TechSchool": "Scuola",
+    "TechCost": "Costo Ki",
+    "TechDmg": "Danno",
+    "TechActions": "Tiro",
+    "NoTech": "Nessuna Tecnica Segreta appresa. Trova un maestro o medita per sbloccarle."
   }
 }

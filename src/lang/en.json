@@ -1,9 +1,23 @@
 {
   "KENSHIRO": {
     "SheetTitle": "Character Sheet",
+    "NamePlaceholder": "Name",
     "Salute": "Health",
-    "Forza": "Strength (STR)",
-    "Destrezza": "Dextery (DEX)",
-    "Mente": "Mind (MIN)"
+    "Forza": "Strength (Ryoku)",
+    "Destrezza": "Dexterity (Shun)",
+    "Mente": "Mind (Shin)",
+    "DatiDerivati": "Derived Parameters",
+    "SogliaDifesa": "Defense",
+    "PuntiKi": "Spiritual Energy (Ki)",
+    "LancioDi": "Test on",
+    "Mod": "Modifier",
+    "Stats": "Stats",
+    "Techniques": "Martial Arts",
+    "TechName": "Name",
+    "TechSchool": "School",
+    "TechCost": "Cost",
+    "TechDmg": "Dmg",
+    "TechActions": "Roll",
+    "NoTech": "You don't know any Martial Arts Technique. Meditate or find a Master to learn them."
   }
 }

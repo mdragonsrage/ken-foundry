@@ -8,7 +8,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
 
             salute: new fields.SchemaField({
                 value: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
-                max: fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
+                max: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
             }),
 
             statistiche: new fields.SchemaField({
@@ -19,9 +19,22 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         };
     }
 
+    /** @override */
     prepareDerivedData() {
         super.prepareDerivedData();
-        // Esempio logico futuro: qui potrai calcolare dinamicamente i modificatori delle statistiche
-        // senza salvarli fisicamente nel database (es. questo.modificatoreForza = Math.floor((this.statistiche.forza - 10) / 2))
+
+        this.derivated = {};
+
+        this.derivated.modificatori = {
+            forza: Math.floor((this.statistiche.forza - 10) / 2),
+            destrezza: Math.floor((this.statistiche.destrezza - 10) / 2),
+            mente: Math.floor((this.statistiche.mente - 10) / 2)
+        };
+
+        this.derivated.difesa = 10 + this.derivated.modificatori.destrezza;
+
+        this.derivated.ki = {
+            max: this.statistiche.mente * 2
+        };
     }
 }

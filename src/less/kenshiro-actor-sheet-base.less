@@ -1,0 +1,95 @@
+// Richiede l'inclusione o l'estensione delle variabili precedenti
+.kenshiro-sheet-wrapper {
+
+  .tab.biography {
+    // Blocco della Salute
+    .stat-block.health-block {
+      background-color: rgba(139, 0, 0, 0.05);
+      border: 1px solid @color-hokuto-red;
+      padding: 10px;
+
+      label {
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: @color-hokuto-glow;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .flexrow {
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: bold;
+
+        input {
+          font-size: 20px;
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+
+    // Griglia Caratteristiche (Forza, Destrezza, Mente)
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat-box {
+      background-color: @color-bg-card;
+      border: 1px solid @color-border-grunge;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      label {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: @color-text-dark;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      // Pulsante per il tiro di caratteristica
+      .roll-btn-small {
+        background: #252525;
+        color: @color-text-bone;
+        border: 1px solid @color-border-grunge;
+        border-radius: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: @color-hokuto-red;
+          color: #fff;
+          box-shadow: 0 0 6px @color-hokuto-glow;
+        }
+      }
+    }
+
+    // Blocco Dati Derivati
+    .derived-grid {
+      margin-top: 5px;
+      border-top: 1px solid @color-border-grunge;
+      padding-top: 15px;
+
+      h3 {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin: 0 0 10px 0;
+        color: @color-text-bone;
+      }
+    }
+  }
+}

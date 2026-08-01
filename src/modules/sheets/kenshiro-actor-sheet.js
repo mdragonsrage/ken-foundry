@@ -2,9 +2,11 @@
  * Character sheet for Kenshiro GDR from Nexus
  * Extends foundry.application.api.ActorSheetV2
  */
+export class KenshiroActorSheet extends foundry.applications.api.HandlebarsApplicationMixin(
+    foundry.applications.sheets.ActorSheetV2
+) {
 
-export class KenshiroActorSheet extends foundry.applications.api.ApplicationV2 {
-
+    /** @override */
     static DEFAULT_OPTIONS = {
         id: "kenshiro-actor-sheet",
         classes: ["kenshiro", "sheet", "actor"],
@@ -13,39 +15,126 @@ export class KenshiroActorSheet extends foundry.applications.api.ApplicationV2 {
             resizable: true,
             title: "KENSHIRO.SheetTitle"
         },
-        actions: {
-            throwDice: KenshiroActorSheet._onThrowDice
+        position: {
+          width: 800,
+          height: 600,
         },
         form: {
             submitOnChange: true,
-            closeOnChange: false,
-        }
+            closeOnSubmit: false
+        },
+        dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
+        tabs: [
+            {
+                id: "primary",
+                navSelector: '.sheet-tabs',
+                contentSelector: ".sheet-body",
+                initial: "stats"
+            }
+        ],
     }
 
+    /** @override */
     static PARTS = {
-        scheda: {
-            template: ["systems/kenshiro/templates/sheets/kenshiro-actor-sheet.hbs"],
+        sheet: {
+            template: "systems/kenshiro/templates/sheets/kenshiro-actor-sheet.hbs"
         }
     }
 
+    /** @override */
+    static ACTIONS = {
+        throwDice: KenshiroActorSheet._onThrowDice,
+    };
+
+
+    /** @override */
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        // tabs navigation
+        const html = this.element;
+        const tabLinks = html.querySelectorAll('nav[data-group="primary"] .item');
+
+        tabLinks.forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                this.tabGroups.primary = link.dataset.tab;
+                this.render();
+            });
+        });
+    }
+
+    /** @override */
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
 
+        context.actor = this.actor;
+
         context.system = this.actor.system;
 
-        context.controller = CONFIG.KENSHIRO;
+        context.actorName = this.actor.name;
+        context.activeTab = this.tabGroups.primary || "stats";
+
+        this._prepareTechniques(context);
+
+        return context;
     }
 
-    static async onThrowDice(event, target) {
+    /** @override */
+    prepareSubmitData(event, form, formData) {
+        const submitData = foundry.utils.expandObject(formData.object);
+
+        if (!submitData.name || submitData.name.trim() === "") {
+            submitData.name = this.actor.name;
+        }
+
+        return submitData;
+    }
+
+
+    static async _onThrowDice(event, target) {
         event.preventDefault();
 
         const actor = this.actor;
-        const roll = await new Roll("2d6").evaluate();
+        const statKey = target.dataset.stat;
+        if(!statKey)
+            return;
+
+        const mod = actor.system.derivated.modificatori[statKey] || 0;
+
+        const formula = `2d6 + ${mod}`;
+        const roll = await new Roll(formula).evaluate();
+
+        const statLabel = game.i18n.localize(`KENSHIRO.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
+        const rollLabel = game.i18n.localize(`KENSHIRO.LancioDi`);
+        const modLabel = game.i18n.localize(`KENSHIRO.Mod`);
 
         await roll.toMessage({
-            speaker: "kenshiro-actor-sheet",
-            flavor: `Lancio di caratteristica per ${actor.name}`
-
+            speaker: ChatMessage.getSpeaker({actor: actor}),
+            flavor: `${actor.name} - <strong>${rollLabel} ${statLabel}</strong> (${modLabel}: ${mod >= 0? '+': ''}${mod})`
         });
+    }
+
+    /**
+     * @private
+     */
+    _prepareTechniques(context) {
+        const techniques = [];
+
+        for (let t in this.actor.items) {
+            const i = {
+                id: t.id,
+                name: t.name,
+                description: t.description,
+                img: t.url,
+                system: t.system
+            }
+
+            if(t.type === "technique")
+                techniques.push(i);
+        }
+
+        context.techniques = techniques;
     }
 }
