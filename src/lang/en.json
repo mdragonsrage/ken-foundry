@@ -42,6 +42,40 @@
     }
   },
   "MARTIALARTS": {
-    "MartialKick": "Martial Kick"
+    "Names": {
+      "Charge": "Charge",
+      "MartialKick": "Martial Kick",
+      "Immobilize": "Immobilize",
+      "MartialPunch": "Martial Punch",
+      "Push": "Push",
+      "Crushing": "Crushing",
+      "MartialHeadbutt": "Martial Headbutt",
+      "FlyingKick": "Flying Kick",
+      "Endure": "Endure",
+      "WeaponTech": "Sword Tech.",
+      "MissileTech": "Missiles Tech.",
+      "WeaponWall": "Wall of Swords",
+      "ReflexTech": "Crossed Mirror Tech."
+    },
+    "Requirements": {
+      "Charge": "Run up",
+      "Crushing": "Only Immobile Adversaries",
+      "Atk": "Attack",
+      "Def": "Defense",
+      "Aura": "Aura"
+    },
+    "Dmg": {
+      "Weapon": "Weapon +1 Cat"
+    },
+    "Special": {
+
+    },
+    "Notes": {
+      "Immobilize": "Blocks 2 limbs",
+      "Crushing": "Choose Location",
+      "FlyingKick": "Localize as Punch",
+      "Endure": "Test: Mind + Des + Human",
+      "Weapon": "Weapons Only"
+    }
   }
 }

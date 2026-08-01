@@ -23,7 +23,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
     /** @type {MartialArt[]} */
     const baseMartialArts = [
         {
-            name: game.i18n.localize("MARTIALARTS.MartialKick"),
+            name: game.i18n.localize("MARTIALARTS.Names.MartialKick"),
             type: "martialArt",
             system: {
                 id: "B2",
@@ -34,6 +34,186 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                 dmg: "C(PV) C(PR)",
                 special: "---",
                 notes: "---",
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.Charge"),
+            type: "martialArt",
+            system: {
+                id: "B3",
+                type: "SP",
+                cost: "2",
+                requirements: `${game.i18n.localize("MARTIALARTS.Requirements.Charge")} 4m`,
+                level: -2,
+                dmg: "C(PV) C(PR)",
+                special: "---",
+                notes: "---",
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.Immobilize"),
+            type: "martialArt",
+            system: {
+                id: "B5",
+                type: "P",
+                cost: "2F",
+                requirements: "---",
+                level: -2,
+                dmg: "B(PR)",
+                special: "---",
+                notes: `${game.i18n.localize("MARTIALARTS.Notes.Immobilize")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.MartialPunch"),
+            type: "martialArt",
+            system: {
+                id: "B6",
+                type: "P",
+                cost: "1",
+                requirements: "---",
+                level: -2,
+                dmg: "B(PV) D(PR)",
+                special: "---",
+                notes: "---",
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.Push"),
+            type: "martialArt",
+            system: {
+                id: "B7",
+                type: "P",
+                cost: "1F",
+                requirements: "---",
+                level: -2,
+                dmg: "B(PR)",
+                special: "---",
+                notes: "---",
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.Crushing"),
+            type: "martialArt",
+            system: {
+                id: "B8",
+                type: "P",
+                cost: "3F",
+                requirements: `${game.i18n.localize("MARTIALARTS.Requirements.Crushing")}`,
+                level: -2,
+                dmg: "B(PR)",
+                special: "---",
+                notes: `${game.i18n.localize("MARTIALARTS.Notes.Crushing")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.MartialHeadbutt"),
+            type: "martialArt",
+            system: {
+                id: "B9",
+                type: "T",
+                cost: "2",
+                requirements: "---",
+                level: -2,
+                dmg: "B(PV) D(PR)",
+                special: "---",
+                notes: "---",
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.FlyingKick"),
+            type: "martialArt",
+            system: {
+                id: "B1",
+                type: "SN",
+                cost: "2",
+                requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1`,
+                level: -2,
+                dmg: "D(PV) B(PR)",
+                special: "---",
+                notes:  `${game.i18n.localize("MARTIALARTS.Notes.FlyingKick")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.Endure"),
+            type: "martialArt",
+            system: {
+                id: "B4",
+                type: "SP",
+                cost: "6",
+                requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Def")} 1`,
+                level: -2,
+                dmg: "D(PV) B(PR)",
+                special: "---",
+                notes:  `${game.i18n.localize("MARTIALARTS.Notes.Endure")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.WeaponTech"),
+            type: "martialArt",
+            system: {
+                id: "B10",
+                type: "CO",
+                cost: "3",
+                requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1`,
+                level: -2,
+                dmg: `${game.i18n.localize("MARTIALARTS.Dmg.Weapon")}`,
+                special: "---",
+                notes:  `${game.i18n.localize("MARTIALARTS.Notes.Weapon")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.MissileTech"),
+            type: "martialArt",
+            system: {
+                id: "B11",
+                type: "CO",
+                cost: "1",
+                requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1`,
+                level: -2,
+                dmg: `${game.i18n.localize("MARTIALARTS.Dmg.Weapon")}`,
+                special: "---",
+                notes:  `${game.i18n.localize("MARTIALARTS.Notes.Weapon")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.WeaponWall"),
+            type: "martialArt",
+            system: {
+                id: "B12",
+                type: "SP",
+                cost: "3F",
+                requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Def")} 1`,
+                level: -2,
+                dmg: "C(PV)",
+                special: "---",
+                notes:  `${game.i18n.localize("MARTIALARTS.Notes.Weapon")}`,
+                used: false
+            }
+        },
+        {
+            name: game.i18n.localize("MARTIALARTS.Names.ReflexTech"),
+            type: "martialArt",
+            system: {
+                id: "B12",
+                type: "SP",
+                cost: "3",
+                requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1 - ${game.i18n.localize("MARTIALARTS.Requirements.Def")} 2`,
+                level: -2,
+                dmg: "C(PV)",
+                special: "---",
+                notes:  `${game.i18n.localize("MARTIALARTS.Notes.Weapon")}`,
                 used: false
             }
         }

@@ -25,7 +25,7 @@
       "Requirements": "Limitazioni",
       "Type": "T",
       "Cost": "C",
-      "Dmg": "Damage",
+      "Dmg": "Danno",
       "Special": "Speciale",
       "Notes": "Note",
       "Actions": "Azioni",
@@ -42,6 +42,40 @@
     }
   },
   "MARTIALARTS": {
-    "MartialKick": "Calcio Marziale"
+    "Names": {
+      "Charge": "Carica",
+      "MartialKick": "Calcio Marziale",
+      "Immobilize": "Immobilizzare",
+      "MartialPunch": "Pugno Marziale",
+      "Push": "Spinta",
+      "Crushing": "Stritolamento",
+      "MartialHeadbutt": "Testata Marziale",
+      "FlyingKick": "Calcio con Salto",
+      "Endure": "Res. Al Dolore",
+      "WeaponTech": "Tec. Spade",
+      "MissileTech": "Tec. Proiettili",
+      "WeaponWall": "Tec. Muro Spade",
+      "ReflexTech": "Tec. Rifl. Incrociata"
+    },
+    "Dmg": {
+      "Weapon": "Arma +1 Categoria"
+    },
+    "Requirements": {
+      "Charge": "Rincorsa",
+      "Crushing": "Solo Avversari Immobili",
+      "Atk": "Attacco",
+      "Def": "Difesa",
+      "Aura": "Aura"
+    },
+    "Special": {
+
+    },
+    "Notes": {
+      "Immobilize": "Immobilizza 2 arti",
+      "Crushing": "Scegliere Locazione",
+      "FlyingKick": "Localizzare come Pugno",
+      "Endure": "Test: Mente + Des + Umano",
+      "Weapon": "Solo con Armi"
+    }
   }
 }
