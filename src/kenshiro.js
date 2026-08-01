@@ -19,6 +19,8 @@ Hooks.once("init", async () => {
 })
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
+    if (actor.type !== "character")
+        return;
 
     /** @type {MartialArt[]} */
     const baseMartialArts = [
@@ -218,5 +220,6 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
             }
         }
     ];
+
     actor.updateSource({items: baseMartialArts});
 })
