@@ -106,7 +106,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
 
         for (let i of items) {
             if(i.type === "martialArt")
-                this._prepareMartialArts(i, martialArts);
+                martialArts.push(this._prepareMartialArts(i));
         }
 
         context.martialArts = martialArts;
@@ -116,18 +116,14 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * Converts item in Martial Arts and add to actor list
      * @private
      * @param {MartialArt} martialArt
-     * @param {MartialArt[]} martialArts
+     * @return {MartialArt}
      */
-    _prepareMartialArts(martialArt, martialArts) {
-
-        /** @type {MartialArt} */
-        const i= {
+    _prepareMartialArts(martialArt) {
+        return {
             id: martialArt.id,
             name: martialArt.name,
             system: martialArt.system
         }
-
-        martialArts.push(i);
     }
 
     /**
