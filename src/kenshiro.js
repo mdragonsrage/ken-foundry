@@ -4,10 +4,10 @@ import {KenshiroActorSheet} from "./modules/sheets/kenshiro-actor-sheet.js";
 Hooks.once("init", async () => {
     console.log("KENSHIRO | System start");
 
-    await  foundry.applications.handlebars.loadTemplates([
+/*    await  foundry.applications.handlebars.loadTemplates([
         "systems/kenshiro/templates/partials/kenshiro-actor-stats.hbs",
         "systems/kenshiro/templates/partials/kenshiro-actor-martial-arts.hbs"
-    ])
+    ])*/
 
     CONFIG.Actor.dataModels.character = CharacterData;
 

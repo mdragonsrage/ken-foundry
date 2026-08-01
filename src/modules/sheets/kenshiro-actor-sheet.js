@@ -9,7 +9,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     /** @override */
     static DEFAULT_OPTIONS = {
         id: "kenshiro-actor-sheet",
-        classes: ["kenshiro", "sheet", "actor"],
+        classes: ["kenshiro", "sheet", "actor", "kenshiro-sheet-wrapper"],
         tag: "form",
         window: {
             resizable: true,
@@ -21,17 +21,10 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         form: {
             submitOnChange: true,
-            closeOnSubmit: false
+            closeOnSubmit: false,
+            scrollable: true
         },
         dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
-        tabs: [
-            {
-                id: "primary",
-                navSelector: '.sheet-tabs',
-                contentSelector: ".sheet-body",
-                initial: "stats"
-            }
-        ],
         actions: {
             throwDice: KenshiroActorSheet._onThrowDice
         }
@@ -39,27 +32,36 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
 
     /** @override */
     static PARTS = {
-        sheet: {
-            template: "systems/kenshiro/templates/sheets/kenshiro-actor-sheet.hbs"
+        header: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-header.hbs"
+        },
+        tabs: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-tab-navigation.hbs"
+        },
+        stats: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats.hbs",
+            scrollable: [''],
+        },
+        ma: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-martial-arts.hbs",
+            scrollable: [''],
+        },
+        footer: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-footer.hbs"
         }
     }
 
-    /** @override */
-    _onRender(context, options) {
-        super._onRender(context, options);
-
-        // tabs navigation
-        const html = this.element;
-        const tabLinks = html.querySelectorAll('nav[data-group="primary"] .item');
-
-        tabLinks.forEach(link => {
-            link.addEventListener("click", (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                this.tabGroups.primary = link.dataset.tab;
-                this.render();
-            });
-        });
+    /**
+     * @override
+     */
+    static TABS = {
+        primary: {
+            tabs: [
+                {id: "stats"},
+                {id: "ma"}
+            ],
+            initial: "stats"
+        }
     }
 
     /** @override */
@@ -67,13 +69,24 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         const context = await super._prepareContext(options);
 
         context.actor = this.actor;
-
         context.system = this.actor.system;
-
         context.actorName = this.actor.name;
-        context.activeTab = this.tabGroups.primary || "stats";
 
         this._prepareItems(context);
+
+        return context;
+    }
+
+    /**
+    /** @override */
+    async _preparePartContext(partId, context) {
+        switch (partId) {
+            case "stats":
+            case "ma":
+                context.tab = context.tabs[partId];
+                break;
+            default:
+        }
 
         return context;
     }
@@ -110,12 +123,9 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             return;
         }
 
-
         const mod = actor.system.derivated.statMod[statKey] || 0;
-
         const formula = `2d6 + ${mod}`;
         const roll = await new Roll(formula).evaluate();
-
         const statLabel = game.i18n.localize(`KENSHIRO.Stats.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
         const rollLabel = game.i18n.localize(`KENSHIRO.RollOn`);
         const modLabel = game.i18n.localize(`KENSHIRO.Mod`);
