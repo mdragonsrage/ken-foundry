@@ -5,11 +5,6 @@ import {MartialArtData} from "./models/items/kenshiro-martial-art-model.js";
 Hooks.once("init", async () => {
     console.log("KENSHIRO | System start");
 
-/*    await  foundry.applications.handlebars.loadTemplates([
-        "systems/kenshiro/templates/partials/kenshiro-actor-stats.hbs",
-        "systems/kenshiro/templates/partials/kenshiro-actor-martial-arts.hbs"
-    ])*/
-
     CONFIG.Actor.dataModels.character = CharacterData;
     CONFIG.Item.dataModels.martialArt = MartialArtData;
     foundry.applications.apps.DocumentSheetConfig.unregisterSheet(Actor, "core", foundry.applications.sheets.ActorSheetV2);
@@ -24,12 +19,6 @@ Hooks.once("init", async () => {
 })
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
-    debugger;
-    /*if (game.user.id !== userId)
-        return;
-
-    if(actor.items.some(i => i.type === "martialArts"))
-        return;*/
 
     /** @type {MartialArt[]} */
     const baseMartialArts = [
@@ -49,6 +38,5 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
             }
         }
     ];
-    /*actor.createEmbeddedDocuments("Item", baseMartialArts);*/
     actor.updateSource({items: baseMartialArts});
 })
