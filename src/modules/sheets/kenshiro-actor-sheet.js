@@ -137,7 +137,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
-     * Function use to set actor item (e.g martial arts, equip...)
+     * Function use to set actor item (e.g. martial arts, equip...)
      * @private
      * @param context
      */
