@@ -21,14 +21,27 @@
     "Mod": "Modifier",
     "MartialArts": {
       "Name": "Name",
-      "School": "School",
-      "Cost": "Cost",
-      "Dmg": "Dmg",
-      "Actions": "Roll",
+      "Level": "Level",
+      "Requirements": "Requirements",
+      "Type": "T",
+      "Cost": "C",
+      "Dmg": "Damage",
+      "Special": "Special",
+      "Notes": "Notes",
+      "Actions": "Actions",
       "Empty": "You don't know any Martial Arts Technique. Meditate or find a Master to learn them.",
       "RollDamage": "Roll Damage",
       "Edit": "Open (Edit)",
       "Delete": "Delete"
+    },
+    "Actions": {
+      "Delete": "Delete",
+      "DeleteText": "Are you sure you want to delete",
+      "Confirm": "Confirm",
+      "Cancel": "Cancel"
     }
+  },
+  "MARTIALARTS": {
+    "MartialKick": "Martial Kick"
   }
 }

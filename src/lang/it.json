@@ -20,15 +20,28 @@
       "PuntiKi": "Energia Spirituale (Ki)"
     },
     "MartialArts": {
-      "Name": "Nome",
-      "School": "Scuola",
-      "Cost": "Costo Ki",
-      "Dmg": "Danno",
-      "Actions": "Tiro",
+      "Name": "Colpo",
+      "Level": "Livello",
+      "Requirements": "Limitazioni",
+      "Type": "T",
+      "Cost": "C",
+      "Dmg": "Damage",
+      "Special": "Speciale",
+      "Notes": "Note",
+      "Actions": "Azioni",
       "Empty": "Nessuna Tecnica Segreta appresa. Trova un maestro o medita per sbloccarle.",
       "RollDamage": "Tira Danno",
       "Edit": "Apri (Edita)",
-      "Delete": "Cancella"
+      "Delete": "Elimina"
+    },
+    "Actions": {
+      "Delete": "Elimina",
+      "DeleteText": "Sei sicuro di voler eliminare",
+      "Confirm": "Applica",
+      "Cancel": "Annulla"
     }
+  },
+  "MARTIALARTS": {
+    "MartialKick": "Calcio Marziale"
   }
 }

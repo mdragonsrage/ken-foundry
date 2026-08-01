@@ -20,7 +20,7 @@
   ],
   "documentTypes": {
     "Actor": { "character": {} },
-    "Item": {}
+    "Item": { "martialArt": {} }
   },
   "languages": [
     {

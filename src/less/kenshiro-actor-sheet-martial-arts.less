@@ -35,6 +35,14 @@
           align-items: center;
           gap: 8px;
 
+          span {
+            display: inline-block;
+            width: 75%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+
           .martial-art-image {
             width: 26px;
             height: 26px;
@@ -55,17 +63,20 @@
           flex: 1;
           text-align: center;
           font-size: 12px;
+        }
 
-          &.ki-badge {
-            color: @color-ki-cyan;
-            font-weight: bold;
-            text-shadow: 0 0 4px rgba(0, 229, 255, 0.3);
+        .martial-art-prop-2 {
+          flex: 2;
+          font-size: 12px;
+          span.overflow {
+            display: inline-block;
+            width: 99%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
           }
-
-          &.damage-formula {
-            font-family: 'Courier New', monospace;
-            color: #ffaa00;
-            font-weight: bold;
+          label.placeholder {
+            width:1%;
           }
         }
 

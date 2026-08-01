@@ -26,7 +26,10 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
         actions: {
-            throwDice: KenshiroActorSheet._onThrowDice
+            throwDice: KenshiroActorSheet._onThrowDice,
+            roll: KenshiroActorSheet._onRollMartialArts,
+            //edit: KenshiroActorSheet._onEdit,
+            delete: KenshiroActorSheet._onDelete,
         }
     }
 
@@ -103,6 +106,41 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
+     * Function use to set actor item (e.g. martial arts, equip...)
+     * @private
+     * @param context
+     */
+    _prepareItems(context) {
+        const martialArts = [];
+        const items = this.actor.items.contents;
+
+        for (let i of items) {
+            if(i.type === "martialArt")
+                this._prepareMartialArts(i, martialArts);
+        }
+
+        context.martialArts = martialArts;
+    }
+
+    /**
+     * Converts item in Martial Arts and add to actor list
+     * @private
+     * @param {MartialArt} martialArt
+     * @param {MartialArt[]} martialArts
+     */
+    _prepareMartialArts(martialArt, martialArts) {
+
+        /** @type {MartialArt} */
+        const i= {
+            id: martialArt.id,
+            name: martialArt.name,
+            system: martialArt.system
+        }
+
+        martialArts.push(i);
+    }
+
+    /**
      * Rolls 2d6 based on selected key stat
      * @param event
      * @param target
@@ -114,6 +152,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
 
         const actor = this.actor;
         const statKey = target.dataset.stat;
+
         if(!statKey) {
             const roll = await new Roll("2d6").evaluate();
             await roll.toMessage({
@@ -137,36 +176,44 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
-     * Function use to set actor item (e.g. martial arts, equip...)
+     * Roll based on martial arts requirements
      * @private
-     * @param context
+     * @param event
+     * @param target
+     * @return void
      */
-    _prepareItems(context) {
-        const martialArts = [];
-
-        for (let i in this.actor.items) {
-            if(i.type === "martialArt")
-                this._prepareMartialArts(martialArts);
-        }
-
-        context.martialArts = martialArts;
+    static async _onRollMartialArts(event, target) {
+        event.preventDefault();
+        const itemId = target.closest(".martial-art").dataset.id;
+        const martialArt = this.actor.items.get(itemId);
+        debugger;
+        if(!martialArt)
+            return;
     }
 
     /**
-     * Converts item in Martial Arts and add to actor list
+     * Delete selected martial art
      * @private
-     * @param martialArts
+     * @param event
+     * @param target
+     * @return void
      */
-    _prepareMartialArts(martialArts) {
+    static async _onDelete(event, target) {
+        event.preventDefault();
+        const itemId = target.closest(".martial-art").dataset.id;
+        const item = this.actor.items.get(itemId);
+        if(!item)
+            return;
 
-        const i = {
-            id: i.id,
-            name: i.name,
-            description: i.description,
-            img: i.url,
-            system: i.system
-        }
-
-        martialArts.push(i);
+        const title = game.i18n.localize("KENSHIRO.Actions.Delete");
+        const message = game.i18n.localize("KENSHIRO.Actions.DeleteText");
+        const cancel = game.i18n.localize("KENSHIRO.Actions.Cancel");
+        return foundry.applications.api.DialogV2.confirm({
+            title: title,
+            message: `${message} ${item.name} ?`,
+            yesText: title,
+            cancelText: cancel,
+            yes: () => item.delete()
+        })
     }
 }

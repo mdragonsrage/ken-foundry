@@ -11,16 +11,28 @@
             <div class="martial-art-name flexrow">
                 <span>{{localize "KENSHIRO.MartialArts.Name"}}</span>
             </div>
-            <div class="martial-art-prop">
-                <span>{{localize "KENSHIRO.MartialArts.School"}}</span>
+            <div class="martial-art-prop center">
+                <span>{{localize "KENSHIRO.MartialArts.Level"}}</span>
             </div>
-            <div class="martial-art-prop">
+            <div class="martial-art-prop-2 center">
+                <span>{{localize "KENSHIRO.MartialArts.Requirements"}}</span>
+            </div>
+            <div class="martial-art-prop center">
+                <span>{{localize "KENSHIRO.MartialArts.Type"}}</span>
+            </div>
+            <div class="martial-art-prop center">
                 <span>{{localize "KENSHIRO.MartialArts.Cost"}}</span>
             </div>
-            <div class="martial-art-prop">
+            <div class="martial-art-prop-2 center">
                 <span>{{localize "KENSHIRO.MartialArts.Dmg"}}</span>
             </div>
-            <div class="martial-art-controls">
+            <div class="martial-art-prop-2 center">
+                <span>{{localize "KENSHIRO.MartialArts.Special"}}</span>
+            </div>
+            <div class="martial-art-prop-2 center">
+                <span>{{localize "KENSHIRO.MartialArts.Notes"}}</span>
+            </div>
+            <div class="martial-art-controls center">
                 <span>{{localize "KENSHIRO.MartialArts.Actions"}}</span>
             </div>
         </li>
@@ -29,22 +41,43 @@
         {{#each martialArts as |ma|}}
             <li class="martial-art flexrow" data-item-id="{{ma.id}}">
                 <div class="martial-art-name flexrow">
-                    <div class="martial-art-image"
-                         style="background-image: url('{{tech.img}}')"></div>
-                    <h4>{{ma.name}}</h4>
+                    <h4>
+                        <span title="{{ma.system.id}} {{ma.name}}">
+                            {{ma.system.id}} {{ma.name}}
+                        </span>
+                        <label>
+                            <input type="checkbox" checked="{{ma.system.used}}"/>
+                        </label>
+                    </h4>
                 </div>
 
-                <div class="martial-art-prop text-capitalize">
-                    <span>{{ma.system.school}}</span>
+                <div class="martial-art-prop text-capitalize flexrow center">
+                    <span>{{ma.system.level}}</span>
                 </div>
-                <div class="martial-art-prop ki-badge">
-                    <span>{{ma.system.kiCost}} Ki</span>
+                <div class="martial-art-prop-2 flexrow center">
+                    <span class="overflow" title="{{ma.system.requirements}}">{{ma.system.requirements}}</span>
+                    <label class="placeholder"></label>
                 </div>
-                <div class="martial-art-prop font-monospace damage-formula">
-                    <span>{{ma.system.dmg}}</span>
+                <div class="martial-art-prop font-monospace flexrow center">
+                    <span>{{ma.system.type}}</span>
+                </div>
+                <div class="martial-art-prop font-monospace flexrow center">
+                    <span>{{ma.system.cost}}</span>
+                </div>
+                <div class="martial-art-prop-2 font-monospace flexrow center">
+                    <span class="overflow" title="{{ma.system.dmg}}">{{ma.system.dmg}}</span>
+                    <label class="placeholder"></label>
+                </div>
+                <div class="martial-art-prop-2 flexrow center">
+                    <span class="overflow" title="{{ma.system.special}}">{{ma.system.special}}</span>
+                    <label class="placeholder"></label>
+                </div>
+                <div class="martial-art-prop-2 font-monospace flexrow center">
+                    <span class="overflow" title="{{ma.system.notes}}">{{ma.system.notes}}</span>
+                    <label class="placeholder"></label>
                 </div>
 
-                <div class="martial-art-controls flexrow">
+                <div class="martial-art-controls flexrow center">
                     <a class="martial-art-control"
                        data-action="rollMartialArt"
                        title='{{localize "KENSHIRO.MartialArts.RollDamage"}}'>
