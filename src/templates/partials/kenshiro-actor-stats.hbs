@@ -1,0 +1,84 @@
+<div class="tab info {{#if (eq activeTab 'stats')}}active{{/if}}"
+     data-group="primary" data-tab="stats">
+    <div class="stat-block health-block">
+        <label>{{localize "KENSHIRO.Stats.Health"}}</label>
+        <div class="flexrow">
+            <label>
+                <input type="number" name="system.health.value"
+                       value="{{system.health.value}}" min="0" />
+            </label>
+            <span> / </span>
+            <label>
+                <input type="number" name="system.health.max"
+                       value="{{system.health.max}}" min="0" />
+            </label>
+        </div>
+    </div>
+
+    {{!-- Stats Block --}}
+    <div class="stats-grid">
+        <div class="stat-box">
+            <label>{{localize "KENSHIRO.Stats.Strength"}}</label>
+            <div class="flexrow" style="gap: 5px;">
+                <label>
+                    <input type="number"
+                           name="system.stats.strength"
+                           value="{{system.stats.strength}}" />
+                </label>
+                <button type="button" data-action="throwDice"
+                        data-stat="strength" class="roll-btn-small">
+                    <i class="fas fa-dice"></i>
+                </button>
+            </div>
+        </div>
+        <div class="stat-box">
+            <label>{{localize "KENSHIRO.Stats.Dexterity"}}</label>
+            <div class="flexrow" style="gap: 5px;">
+                <label>
+                    <input type="number" name="system.stats.dexterity"
+                           value="{{system.stats.dexterity}}" />
+                </label>
+                <button type="button" data-action="throwDice"
+                        data-stat="dexterity" class="roll-btn-small">
+                    <i class="fas fa-dice"></i>
+                </button>
+            </div>
+        </div>
+        <div class="stat-box">
+            <label>{{localize "KENSHIRO.Stats.Mind"}}</label>
+            <div class="flexrow" style="gap: 5px;">
+                <label>
+                    <input type="number" name="system.stats.mind"
+                           value="{{system.stats.mind}}" />
+                </label>
+                <button type="button" data-action="throwDice"
+                        data-stat="mind" class="roll-btn-small">
+                    <i class="fas fa-dice"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="derived-grid">
+        <h3>{{localize "KENSHIRO.Stats.DerivedData"}}</h3>
+        <div class="flexrow" style="gap: 10px;">
+            <div class="stat-box">
+                <label>{{localize "KENSHIRO.Stats.DefenseValue"}}</label>
+                <label>
+                    <input type="number" class="disabled-input"
+                           value="{{system.derivated.defense}}"
+                           disabled />
+                </label>
+            </div>
+
+            <div class="stat-box">
+                <label>{{localize "KENSHIRO.Stats.PuntiKi"}} (Max)</label>
+                <label>
+                    <input type="number" class="disabled-input"
+                           value="{{system.derivated.ki.max}}"
+                           disabled />
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

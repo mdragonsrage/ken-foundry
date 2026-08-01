@@ -46,7 +46,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         throwDice: KenshiroActorSheet._onThrowDice,
     };
 
-
     /** @override */
     _onRender(context, options) {
         super._onRender(context, options);
@@ -91,7 +90,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
 
         return submitData;
     }
-
 
     /**
      * Rolls 2d6 based on selected key stat

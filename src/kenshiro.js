@@ -2,7 +2,12 @@ import {CharacterData} from './models/actors/kenshiro-actor-model.js';
 import {KenshiroActorSheet} from "./modules/sheets/kenshiro-actor-sheet.js";
 
 Hooks.once("init", async () => {
-    console.log("KENSHIRO | Inizializzazione del sistema in corso");
+    console.log("KENSHIRO | System start");
+
+    await  foundry.applications.handlebars.loadTemplates([
+        "systems/kenshiro/templates/partials/kenshiro-actor-stats.hbs",
+        "systems/kenshiro/templates/partials/kenshiro-actor-martial-arts.hbs"
+    ])
 
     CONFIG.Actor.dataModels.character = CharacterData;
 
@@ -11,8 +16,8 @@ Hooks.once("init", async () => {
     foundry.applications.apps.DocumentSheetConfig.registerSheet(Actor, "core", KenshiroActorSheet, {
         types: ["character"],
         makeDefault: true,
-        label: "Scheda del personaggio"
+        label: game.i18n.localize("KENSHIRO.SheetTitle")
     });
 
-    console.log("Kenshiro | Inizializzazione completata")
+    console.log("Kenshiro | System initialized")
 })
