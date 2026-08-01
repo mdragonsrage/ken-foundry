@@ -1,7 +1,8 @@
 <div class="kenshiro-sheet-wrapper" data-part-id="sheet">
     <header class="sheet-header">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actorName}}"
-             height="64" width="64" />
+        <img class="profile-img" src="{{actor.img}}"
+             data-edit="img" title="{{actorName}}"
+             height="64" width="64" alt="{{actorName}}"/>
         <div class="header-fields">
             <h1 class="charName">
                 <label>
@@ -14,10 +15,12 @@
     </header>
 
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item {{#if (eq activeTab 'stats')}}active{{/if}}" data-tab="stats">
+        <a class="item {{#if (eq activeTab 'stats')}}active{{/if}}"
+           data-tab="stats">
             <i class="fas fa-book"></i> {{localize "KENSHIRO.Stats"}}
         </a>
-        <a class="item {{#if (eq activeTab 'techniques')}}active{{/if}}" data-tab="techniques">
+        <a class="item {{#if (eq activeTab 'techniques')}}active{{/if}}"
+           data-tab="techniques">
             <i class="fas fa-fist-raised"></i> {{localize "KENSHIRO.Techniques"}}
         </a>
     </nav>
@@ -29,11 +32,15 @@
             <div class="stat-block health-block">
                 <label>{{localize "KENSHIRO.Salute"}}</label>
                 <div class="flexrow">
-                    <input type="number" name="system.salute.value"
-                           value="{{system.salute.value}}" min="0" />
+                    <label>
+                        <input type="number" name="system.salute.value"
+                               value="{{system.salute.value}}" min="0" />
+                    </label>
                     <span> / </span>
-                    <input type="number" name="system.salute.max"
-                           value="{{system.salute.max}}" min="0" />
+                    <label>
+                        <input type="number" name="system.salute.max"
+                               value="{{system.salute.max}}" min="0" />
+                    </label>
                 </div>
             </div>
 
@@ -42,8 +49,10 @@
                 <div class="stat-box">
                     <label>{{localize "KENSHIRO.Forza"}}</label>
                     <div class="flexrow" style="gap: 5px;">
-                        <input type="number" name="system.statistiche.forza"
-                               value="{{system.statistiche.forza}}" />
+                        <label>
+                            <input type="number" name="system.statistiche.forza"
+                                   value="{{system.statistiche.forza}}" />
+                        </label>
                         <button type="button" data-action="throwDice"
                                 data-stat="forza" class="roll-btn-small">
                             <i class="fas fa-dice"></i>
@@ -53,8 +62,10 @@
                 <div class="stat-box">
                     <label>{{localize "KENSHIRO.Destrezza"}}</label>
                     <div class="flexrow" style="gap: 5px;">
-                        <input type="number" name="system.statistiche.destrezza"
-                               value="{{system.statistiche.destrezza}}" />
+                        <label>
+                            <input type="number" name="system.statistiche.destrezza"
+                                   value="{{system.statistiche.destrezza}}" />
+                        </label>
                         <button type="button" data-action="throwDice"
                                 data-stat="destrezza" class="roll-btn-small">
                             <i class="fas fa-dice"></i>
@@ -64,8 +75,10 @@
                 <div class="stat-box">
                     <label>{{localize "KENSHIRO.Mente"}}</label>
                     <div class="flexrow" style="gap: 5px;">
-                        <input type="number" name="system.statistiche.mente"
-                               value="{{system.statistiche.mente}}" />
+                        <label>
+                            <input type="number" name="system.statistiche.mente"
+                                   value="{{system.statistiche.mente}}" />
+                        </label>
                         <button type="button" data-action="throwDice"
                                 data-stat="mente" class="roll-btn-small">
                             <i class="fas fa-dice"></i>
@@ -79,15 +92,19 @@
                 <div class="flexrow" style="gap: 10px;">
                     <div class="stat-box">
                         <label>{{localize "KENSHIRO.SogliaDifesa"}}</label>
-                        <input type="number" value="{{system.derivated.difesa}}"
-                               disabled class="disabled-input" />
+                        <label>
+                            <input type="number" value="{{system.derivated.difesa}}"
+                                   disabled class="disabled-input" />
+                        </label>
                     </div>
 
                     {{!-- Mostra i Punti Ki Derivati --}}
                     <div class="stat-box">
                         <label>{{localize "KENSHIRO.PuntiKi"}} (Max)</label>
-                        <input type="number" value="{{system.derivated.ki.max}}"
-                               disabled class="disabled-input" />
+                        <label>
+                            <input type="number" value="{{system.derivated.ki.max}}"
+                                   disabled class="disabled-input" />
+                        </label>
                     </div>
                 </div>
             </div>
@@ -100,40 +117,40 @@
                 <h3 class="section-title">{{localize "KENSHIRO.Techniques"}}</h3>
             </header>
 
-            <ol class="items-list">
-                <li class="item flexrow item-header">
-                    <div class="item-name flexrow">{{localize "KENSHIRO.TechName"}}</div>
-                    <div class="item-prop">{{localize "KENSHIRO.TechSchool"}}</div>
-                    <div class="item-prop">{{localize "KENSHIRO.TechCost"}}</div>
-                    <div class="item-prop">{{localize "KENSHIRO.TechDmg"}}</div>
-                    <div class="item-controls">{{localize "KENSHIRO.TechActions"}}</div>
+            <ol class="techniques-list">
+                <li class="technique flexrow technique-header">
+                    <div class="technique-name flexrow">{{localize "KENSHIRO.TechName"}}</div>
+                    <div class="technique-prop">{{localize "KENSHIRO.TechSchool"}}</div>
+                    <div class="technique-prop">{{localize "KENSHIRO.TechCost"}}</div>
+                    <div class="technique-prop">{{localize "KENSHIRO.TechDmg"}}</div>
+                    <div class="technique-controls">{{localize "KENSHIRO.TechActions"}}</div>
                 </li>
 
                 <!-- List all techniques -->
                 {{#each techniques as |tech|}}
-                    <li class="item flexrow" data-item-id="{{tech.id}}">
-                        <div class="item-name flexrow">
-                            <div class="item-image"
+                    <li class="technique flexrow" data-item-id="{{tech.id}}">
+                        <div class="technique-name flexrow">
+                            <div class="technique-image"
                                  style="background-image: url('{{tech.img}}')"></div>
                             <h4>{{tech.name}}</h4>
                         </div>
 
-                        <div class="item-prop text-capitalize">{{tech.system.scuola}}</div>
-                        <div class="item-prop ki-badge">{{tech.system.costoKi}} Ki</div>
-                        <div class="item-prop font-monospace damage-formula">{{tech.system.danno}}</div>
+                        <div class="technique-prop text-capitalize">{{tech.system.scuola}}</div>
+                        <div class="technique-prop ki-badge">{{tech.system.costoKi}} Ki</div>
+                        <div class="technique-prop font-monospace damage-formula">{{tech.system.danno}}</div>
 
-                        <div class="item-controls flexrow">
-                            <a class="item-control"
+                        <div class="technique-controls flexrow">
+                            <a class="technique-control"
                                data-action="rollTecnica"
                                title="Lancia Danno (Roll)">
                                 <i class="fas fa-dice-d20"></i>
                             </a>
-                            <a class="item-control"
+                            <a class="technique-control"
                                data-action="editItem"
                                title="Apri (Edit)">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a class="item-control"
+                            <a class="technique-control"
                                data-action="deleteItem"
                                title="Elimina (Delete)">
                                 <i class="fas fa-trash"></i>
@@ -141,7 +158,7 @@
                         </div>
                     </li>
                 {{else}}
-                    <li class="item flexrow no-items">
+                    <li class="technique flexrow no-techniques">
                         <div class="text-muted">{{localize "KENSHIRO.NoTech"}}</div>
                     </li>
                 {{/each}}

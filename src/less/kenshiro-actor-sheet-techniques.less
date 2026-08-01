@@ -15,14 +15,13 @@
       }
     }
 
-    // Lista e righe degli item (Tecniche)
-    .items-list {
+    .techniques-list {
       list-style: none;
       padding: 0;
       margin: 0;
       border: 1px solid @color-border-grunge;
 
-      .item {
+      .technique {
         padding: 6px 8px;
         border-bottom: 1px solid @color-border-grunge;
         align-items: center;
@@ -31,12 +30,12 @@
 
         &:last-child { border-bottom: none; }
 
-        .item-name {
+        .technique-name {
           flex: 2.5;
           align-items: center;
           gap: 8px;
 
-          .item-image {
+          .technique-image {
             width: 26px;
             height: 26px;
             background-size: cover;
@@ -52,7 +51,7 @@
           }
         }
 
-        .item-prop {
+        .technique-prop {
           flex: 1;
           text-align: center;
           font-size: 12px;
@@ -70,13 +69,12 @@
           }
         }
 
-        // Pulsanti azione a destra
-        .item-controls {
+        .technique-controls {
           flex: 0 0 85px;
           justify-content: flex-end;
           gap: 10px;
 
-          .item-control {
+          .technique-control {
             color: @color-text-dark;
             cursor: pointer;
             transition: all 0.15s ease;
@@ -89,8 +87,7 @@
         }
       }
 
-      // Intestazione della tabella delle tecniche
-      .item-header {
+      .technique-header {
         background-color: @color-bg-card;
         border-bottom: 2px solid @color-border-grunge;
         font-weight: bold;
@@ -98,18 +95,16 @@
         text-transform: uppercase;
         color: @color-text-dark;
 
-        .item-prop { color: @color-text-dark; }
+        .technique-prop { color: @color-text-dark; }
       }
 
-      // Animazione di selezione/hover sulla riga della tecnica
-      .item:not(.item-header):hover {
+      .technique:not(.technique-header):hover {
         background-color: rgba(139, 0, 0, 0.1);
         border-left: 2px solid @color-hokuto-red;
         padding-left: 6px;
       }
 
-      // Stato vuoto (nessun item)
-      .no-items {
+      .no-technique {
         padding: 20px;
         justify-content: center;
         background-color: rgba(0, 0, 0, 0.2);
