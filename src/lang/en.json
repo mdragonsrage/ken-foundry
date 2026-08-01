@@ -1,23 +1,34 @@
 {
   "KENSHIRO": {
     "SheetTitle": "Character Sheet",
-    "NamePlaceholder": "Name",
-    "Salute": "Health",
-    "Forza": "Strength (Ryoku)",
-    "Destrezza": "Dexterity (Shun)",
-    "Mente": "Mind (Shin)",
-    "DatiDerivati": "Derived Parameters",
-    "SogliaDifesa": "Defense",
-    "PuntiKi": "Spiritual Energy (Ki)",
-    "LancioDi": "Test on",
+    "Info": {
+      "NamePlaceholder": "Name"
+    },
+    "Sections": {
+      "Stats": "Stats",
+      "MartialArts": "Martial Arts"
+    },
+    "Stats": {
+      "Health": "Health",
+      "Strength": "Strength (Ryoku)",
+      "Dexterity": "Dexterity (Shun)",
+      "Mind": "Mind (Shin)",
+      "DerivedData": "Derived Parameters",
+      "DefenseValue": "Defense",
+      "PuntiKi": "Spiritual Energy (Ki)"
+    },
+    "RollOn": "Test on",
     "Mod": "Modifier",
-    "Stats": "Stats",
-    "Techniques": "Martial Arts",
-    "TechName": "Name",
-    "TechSchool": "School",
-    "TechCost": "Cost",
-    "TechDmg": "Dmg",
-    "TechActions": "Roll",
-    "NoTech": "You don't know any Martial Arts Technique. Meditate or find a Master to learn them."
+    "MartialArts": {
+      "Name": "Name",
+      "School": "School",
+      "Cost": "Cost",
+      "Dmg": "Dmg",
+      "Actions": "Roll",
+      "Empty": "You don't know any Martial Arts Technique. Meditate or find a Master to learn them.",
+      "RollDamage": "Roll Damage",
+      "Edit": "Open (Edit)",
+      "Delete": "Delete"
+    }
   }
 }

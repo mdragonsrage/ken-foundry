@@ -7,7 +7,7 @@
             <h1 class="charName">
                 <label>
                     <input name="name" type="text"
-                           placeholder='{{localize "KENSHIRO.NamePlaceholder"}}'
+                           placeholder='{{localize "KENSHIRO.Info.NamePlaceholder"}}'
                            value="{{actorName}}" required autocomplete="off" />
                 </label>
             </h1>
@@ -17,11 +17,13 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item {{#if (eq activeTab 'stats')}}active{{/if}}"
            data-tab="stats">
-            <i class="fas fa-book"></i> {{localize "KENSHIRO.Stats"}}
+            <i class="fas fa-book"></i>
+            <span>{{localize "KENSHIRO.Sections.Stats"}}</span>
         </a>
-        <a class="item {{#if (eq activeTab 'techniques')}}active{{/if}}"
-           data-tab="techniques">
-            <i class="fas fa-fist-raised"></i> {{localize "KENSHIRO.Techniques"}}
+        <a class="item {{#if (eq activeTab 'martial-arts')}}active{{/if}}"
+           data-tab="martial-arts">
+            <i class="fas fa-fist-raised"></i>
+            <span>{{localize "KENSHIRO.Sections.MartialArts"}}</span>
         </a>
     </nav>
 
@@ -30,7 +32,7 @@
         <div class="tab biography {{#if (eq activeTab 'stats')}}active{{/if}}"
              data-group="primary" data-tab="stats">
             <div class="stat-block health-block">
-                <label>{{localize "KENSHIRO.Salute"}}</label>
+                <label>{{localize "KENSHIRO.Stats.Health"}}</label>
                 <div class="flexrow">
                     <label>
                         <input type="number" name="system.salute.value"
@@ -47,7 +49,7 @@
             {{!-- Stats Block --}}
             <div class="stats-grid">
                 <div class="stat-box">
-                    <label>{{localize "KENSHIRO.Forza"}}</label>
+                    <label>{{localize "KENSHIRO.Stats.Strength"}}</label>
                     <div class="flexrow" style="gap: 5px;">
                         <label>
                             <input type="number" name="system.statistiche.forza"
@@ -60,7 +62,7 @@
                     </div>
                 </div>
                 <div class="stat-box">
-                    <label>{{localize "KENSHIRO.Destrezza"}}</label>
+                    <label>{{localize "KENSHIRO.Stats.Dexterity"}}</label>
                     <div class="flexrow" style="gap: 5px;">
                         <label>
                             <input type="number" name="system.statistiche.destrezza"
@@ -73,7 +75,7 @@
                     </div>
                 </div>
                 <div class="stat-box">
-                    <label>{{localize "KENSHIRO.Mente"}}</label>
+                    <label>{{localize "KENSHIRO.Stats.Mind"}}</label>
                     <div class="flexrow" style="gap: 5px;">
                         <label>
                             <input type="number" name="system.statistiche.mente"
@@ -88,22 +90,23 @@
             </div>
 
             <div class="derived-grid">
-                <h3>{{localize "KENSHIRO.DatiDerivati"}}</h3>
+                <h3>{{localize "KENSHIRO.Stats.DerivedData"}}</h3>
                 <div class="flexrow" style="gap: 10px;">
                     <div class="stat-box">
-                        <label>{{localize "KENSHIRO.SogliaDifesa"}}</label>
+                        <label>{{localize "KENSHIRO.Stats.DefenseValue"}}</label>
                         <label>
-                            <input type="number" value="{{system.derivated.difesa}}"
-                                   disabled class="disabled-input" />
+                            <input type="number" class="disabled-input"
+                                   value="{{system.derivated.difesa}}"
+                                   disabled />
                         </label>
                     </div>
 
-                    {{!-- Mostra i Punti Ki Derivati --}}
                     <div class="stat-box">
-                        <label>{{localize "KENSHIRO.PuntiKi"}} (Max)</label>
+                        <label>{{localize "KENSHIRO.Stats.PuntiKi"}} (Max)</label>
                         <label>
-                            <input type="number" value="{{system.derivated.ki.max}}"
-                                   disabled class="disabled-input" />
+                            <input type="number" class="disabled-input"
+                                   value="{{system.derivated.ki.max}}"
+                                    disabled />
                         </label>
                     </div>
                 </div>
@@ -111,55 +114,75 @@
         </div>
 
         {{!-- Section Techniques --}}
-        <div data-group="primary" data-tab="techniques"
-              class="tab tecniche-segrete {{#if (eq activeTab 'techniques')}}active{{/if}}">
+        <div data-group="primary" data-tab="martial-arts"
+              class="tab tecniche-segrete {{#if (eq activeTab 'martial-arts')}}active{{/if}}">
             <header class="section-header flexrow">
-                <h3 class="section-title">{{localize "KENSHIRO.Techniques"}}</h3>
+                <h3 class="section-title">
+                    <span>{{localize "KENSHIRO.Sections.MartialArts"}}</span>
+                </h3>
             </header>
 
-            <ol class="techniques-list">
-                <li class="technique flexrow technique-header">
-                    <div class="technique-name flexrow">{{localize "KENSHIRO.TechName"}}</div>
-                    <div class="technique-prop">{{localize "KENSHIRO.TechSchool"}}</div>
-                    <div class="technique-prop">{{localize "KENSHIRO.TechCost"}}</div>
-                    <div class="technique-prop">{{localize "KENSHIRO.TechDmg"}}</div>
-                    <div class="technique-controls">{{localize "KENSHIRO.TechActions"}}</div>
+            <ol class="martial-arts-list">
+                <li class="martial-art flexrow martial-art-header">
+                    <div class="martial-art-name flexrow">
+                        <span>{{localize "KENSHIRO.MartialArts.Name"}}</span>
+                    </div>
+                    <div class="martial-art-prop">
+                        <span>{{localize "KENSHIRO.MartialArts.School"}}</span>
+                    </div>
+                    <div class="martial-art-prop">
+                        <span>{{localize "KENSHIRO.MartialArts.Cost"}}</span>
+                    </div>
+                    <div class="martial-art-prop">
+                        <span>{{localize "KENSHIRO.MartialArts.Dmg"}}</span>
+                    </div>
+                    <div class="martial-art-controls">
+                        <span>{{localize "KENSHIRO.MartialArts.Actions"}}</span>
+                    </div>
                 </li>
 
-                <!-- List all techniques -->
-                {{#each techniques as |tech|}}
-                    <li class="technique flexrow" data-item-id="{{tech.id}}">
-                        <div class="technique-name flexrow">
-                            <div class="technique-image"
+                <!-- List all martial-arts -->
+                {{#each martialArts as |ma|}}
+                    <li class="martial-art flexrow" data-item-id="{{ma.id}}">
+                        <div class="martial-art-name flexrow">
+                            <div class="martial-art-image"
                                  style="background-image: url('{{tech.img}}')"></div>
-                            <h4>{{tech.name}}</h4>
+                            <h4>{{ma.name}}</h4>
                         </div>
 
-                        <div class="technique-prop text-capitalize">{{tech.system.scuola}}</div>
-                        <div class="technique-prop ki-badge">{{tech.system.costoKi}} Ki</div>
-                        <div class="technique-prop font-monospace damage-formula">{{tech.system.danno}}</div>
+                        <div class="martial-art-prop text-capitalize">
+                            <span>{{ma.system.scuola}}</span>
+                        </div>
+                        <div class="martial-art-prop ki-badge">
+                            <span>{{ma.system.costoKi}} Ki</span>
+                        </div>
+                        <div class="martial-art-prop font-monospace damage-formula">
+                            <span>{{ma.system.danno}}</span>
+                        </div>
 
-                        <div class="technique-controls flexrow">
-                            <a class="technique-control"
-                               data-action="rollTecnica"
-                               title="Lancia Danno (Roll)">
+                        <div class="martial-art-controls flexrow">
+                            <a class="martial-art-control"
+                               data-action="rollMartialArt"
+                               title='{{localize "KENSHIRO.MartialArts.RollDamage"}}'>
                                 <i class="fas fa-dice-d20"></i>
                             </a>
-                            <a class="technique-control"
-                               data-action="editItem"
-                               title="Apri (Edit)">
+                            <a class="martial-art-control"
+                               data-action="editMartialArt"
+                               title='{{localize "KENSHIRO.MartialArts.Edit"}}'>
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a class="technique-control"
-                               data-action="deleteItem"
-                               title="Elimina (Delete)">
+                            <a class="martial-art-control"
+                               data-action="deleteMartialArt"
+                               title='{{localize "KENSHIRO.MartialArts.Delete"}}'>
                                 <i class="fas fa-trash"></i>
                             </a>
                         </div>
                     </li>
                 {{else}}
-                    <li class="technique flexrow no-techniques">
-                        <div class="text-muted">{{localize "KENSHIRO.NoTech"}}</div>
+                    <li class="martial-art flexrow no-martial-arts">
+                        <div class="text-muted">
+                            <span>{{localize "KENSHIRO.MartialArts.Empty"}}</span>
+                        </div>
                     </li>
                 {{/each}}
             </ol>

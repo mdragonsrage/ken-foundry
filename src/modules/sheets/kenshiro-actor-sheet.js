@@ -76,7 +76,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         context.actorName = this.actor.name;
         context.activeTab = this.tabGroups.primary || "stats";
 
-        this._prepareTechniques(context);
+        this._prepareMartialArts(context);
 
         return context;
     }
@@ -107,7 +107,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         const roll = await new Roll(formula).evaluate();
 
         const statLabel = game.i18n.localize(`KENSHIRO.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
-        const rollLabel = game.i18n.localize(`KENSHIRO.LancioDi`);
+        const rollLabel = game.i18n.localize(`KENSHIRO.RollOn`);
         const modLabel = game.i18n.localize(`KENSHIRO.Mod`);
 
         await roll.toMessage({
@@ -119,8 +119,8 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     /**
      * @private
      */
-    _prepareTechniques(context) {
-        const techniques = [];
+    _prepareMartialArts(context) {
+        const martialArts = [];
 
         for (let t in this.actor.items) {
             const i = {
@@ -131,10 +131,10 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
                 system: t.system
             }
 
-            if(t.type === "technique")
-                techniques.push(i);
+            if(t.type === "martialArt")
+                martialArts.push(i);
         }
 
-        context.techniques = techniques;
+        context.martialArts = martialArts;
     }
 }
