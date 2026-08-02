@@ -29,7 +29,7 @@ Hooks.once("init", async () => {
 })
 
 Hooks.on("preCreateActor", (actor, data, options, userId) => {
-    if (actor.type !== "character")
+    if (actor.type === "character")
     {
         /** @type {MartialArt[]} */
         const _baseMartialArts = [
@@ -40,7 +40,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B2",
                     type: "C",
                     cost: "1",
-                    requirements: "---",
+                    requirements: null,
                     level: -2,
                     dmg: "C(PV) B(PR)",
                     special: "---",
@@ -55,7 +55,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B3",
                     type: "SP",
                     cost: "2",
-                    requirements: `${game.i18n.localize("MARTIALARTS.Requirements.Charge")} 4m`,
+                    requirements: {
+                        misc: `${game.i18n.localize("MARTIALARTS.Requirements.Charge")} 4m`
+                    },
                     level: -2,
                     dmg: "C(PV) C(PR)",
                     special: "---",
@@ -70,7 +72,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B5",
                     type: "P",
                     cost: "2F",
-                    requirements: "---",
+                    requirements: null,
                     level: -2,
                     dmg: "B(PR)",
                     special: "---",
@@ -85,7 +87,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B6",
                     type: "P",
                     cost: "1",
-                    requirements: "---",
+                    requirements: null,
                     level: -2,
                     dmg: "B(PV) D(PR)",
                     special: "---",
@@ -100,7 +102,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B7",
                     type: "P",
                     cost: "1F",
-                    requirements: "---",
+                    requirements: null,
                     level: -2,
                     dmg: "B(PR)",
                     special: "---",
@@ -115,7 +117,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B8",
                     type: "P",
                     cost: "3F",
-                    requirements: `${game.i18n.localize("MARTIALARTS.Requirements.Crushing")}`,
+                    requirements: {
+                        misc: `${game.i18n.localize("MARTIALARTS.Requirements.Crushing")}`
+                    },
                     level: -2,
                     dmg: "B(PR)",
                     special: "---",
@@ -130,7 +134,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B9",
                     type: "T",
                     cost: "2",
-                    requirements: "---",
+                    requirements: null,
                     level: -2,
                     dmg: "B(PV) D(PR)",
                     special: "---",
@@ -145,7 +149,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B1",
                     type: "SN",
                     cost: "2",
-                    requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1`,
+                    requirements: {
+                        atk: 1
+                    },
                     level: -2,
                     dmg: "D(PV) B(PR)",
                     special: "---",
@@ -160,7 +166,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B4",
                     type: "SP",
                     cost: "6",
-                    requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Def")} 1`,
+                    requirements: {
+                        defense: 1
+                    },
                     level: -2,
                     dmg: "D(PV) B(PR)",
                     special: "---",
@@ -175,7 +183,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B10",
                     type: "CO",
                     cost: "3",
-                    requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1`,
+                    requirements: {
+                        atk: 1
+                    },
                     level: -2,
                     dmg: `${game.i18n.localize("MARTIALARTS.Dmg.Weapon")}`,
                     special: "---",
@@ -190,7 +200,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B11",
                     type: "CO",
                     cost: "1",
-                    requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1`,
+                    requirements: {
+                        atk: 1
+                    },
                     level: -2,
                     dmg: `${game.i18n.localize("MARTIALARTS.Dmg.Weapon")}`,
                     special: "---",
@@ -205,7 +217,9 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B12",
                     type: "SP",
                     cost: "3F",
-                    requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Def")} 1`,
+                    requirements: {
+                        defense: 1
+                    },
                     level: -2,
                     dmg: "C(PV)",
                     special: "---",
@@ -220,7 +234,10 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                     id: "B12",
                     type: "SP",
                     cost: "3",
-                    requirements:  `${game.i18n.localize("MARTIALARTS.Requirements.Atk")} 1 - ${game.i18n.localize("MARTIALARTS.Requirements.Def")} 2`,
+                    requirements: {
+                        atk: 1,
+                        defense: 2
+                    },
                     level: -2,
                     dmg: "---",
                     special: "---",
@@ -238,5 +255,5 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
  * @private
  */
 function registerHandlebars() {
-    Handlebars.registerHelper("isNull", (value) => value === null);
+    //Handlebars.registerHelper("isNull", (value) => value === null);
 }

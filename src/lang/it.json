@@ -68,6 +68,17 @@
       "Def": "Difesa",
       "Aura": "Aura"
     },
+    "Schools": {
+      "School": "Vie di",
+      "Philosophy": "Strade di",
+      "Hokuto": "Hokuto",
+      "Nanto": "Nanto",
+      "Gento": "Gento",
+      "Koryu": "Hokuto Koryu",
+      "Jen": "Hokuto Jen",
+      "Shura": "Shura",
+      "Taishen": "Taishen"
+    },
     "Special": {
 
     },
