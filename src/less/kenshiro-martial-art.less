@@ -1,19 +1,15 @@
 @import "kenshiro-martial-art-requirements.less";
 
 .kenshiro-item-wrapper.kenshiro-martial-art-sheet {
-  padding: 15px;
+  padding: @spacing-2xl;
 
   .sheet-header {
-    border-bottom: 2px dashed @color-hokuto-red;
-    padding-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    .sheet-header-base();
 
     .profile-img {
-      border: 1px solid #333;
+      border: @border-light;
       cursor: pointer;
-      background: #000;
+      background: @color-bg-black;
     }
 
     .header-fields {
@@ -25,52 +21,47 @@
     }
 
     .charName input {
-      font-size: 26px;
+      font-size: @font-size-4xl;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
       background: transparent;
       border: none;
-      color: #fff;
-      text-shadow: 2px 2px 4px #000;
+      color: @color-text-bright-white;
+      text-shadow: 2px 2px 4px @color-bg-black;
       padding: 0;
 
       &:focus {
         box-shadow: none;
-        border-bottom: 1px solid @color-hokuto-red;
+        border-bottom: @border-solid-red;
       }
     }
   }
 
   .sheet-body {
-    padding: 10px;
+    padding: @spacing-lg;
+    
     &.active {
+      .flex-column(@spacing-xl);
       display: flex;
-      flex-direction: column;
-      gap: 12px;
     }
 
-
     .form-group {
-      display: flex;
+      .flex-centered-row();
       justify-content: space-between;
-      align-items: center;
       width: 100%;
 
       label {
-        font-weight: bold;
-        text-transform: uppercase;
-        color: @color-text-dark;
-        font-size: 11px;
+        .form-label();
         flex: 1;
       }
 
       input[type="text"],
       select {
-        background: #0b0b0b;
+        background: @color-bg-darker;
         color: @color-text-bone;
-        border: 1px solid @color-border-grunge;
-        padding: 4px;
+        border: @border-solid-grunge;
+        padding: @spacing-xs;
         width: 60%;
         box-sizing: border-box;
         height: 28px;
@@ -90,11 +81,11 @@
     display: none;
     flex-direction: column;
     height: 100%;
-    min-height: 0; // Crucial flex layout fix to allow shrinking and scrolling
+    min-height: 0;
 
     &.active {
       display: flex;
-      overflow-y: auto; // Generates scrollbar on vertical overflow
+      overflow-y: auto;
     }
   }
 }

@@ -1,10 +1,170 @@
+// ============================================================================
+// COLOR PALETTE
+// ============================================================================
+
+// Primary Colors
 @color-bg-dark: #121212;
+@color-bg-darker: #0b0b0b;
 @color-bg-card: #1a1a1a;
+@color-bg-black: #000;
 @color-border-grunge: #3a3a3a;
+
+// Hokuto Theme
 @color-hokuto-red: #8b0000;
 @color-hokuto-glow: #ff2222;
 @color-hokuto-green: #1B4D3E;
+
+// Ki Colors
 @color-ki-cyan: #00e5ff;
+
+// Text Colors
 @color-text-bone: #dedede;
 @color-text-bright-white: #ffffff;
 @color-text-dark: #777777;
+@color-text-gold: #ffcc00;
+@color-text-orange: #ffaa00;
+
+// Utility
+@color-border-light: #333;
+@color-bg-hover-red: rgba(139, 0, 0, 0.1);
+@color-bg-semi-dark: rgba(20, 20, 20, 0.4);
+@color-glow-red-shadow: rgba(255, 34, 34, 0.4);
+@color-bg-overlay-dark: rgba(0, 0, 0, 0.2);
+
+// ============================================================================
+// SPACING SCALE
+// ============================================================================
+@spacing-xs: 4px;
+@spacing-sm: 6px;
+@spacing-md: 8px;
+@spacing-lg: 10px;
+@spacing-xl: 12px;
+@spacing-2xl: 15px;
+
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
+@font-size-xs: 11px;
+@font-size-sm: 12px;
+@font-size-md: 13px;
+@font-size-lg: 14px;
+@font-size-xl: 16px;
+@font-size-2xl: 18px;
+@font-size-3xl: 20px;
+@font-size-4xl: 26px;
+
+@font-family-base: "Signika", "Helvetica Neue", sans-serif;
+
+// ============================================================================
+// BORDERS & LINES
+// ============================================================================
+@border-dashed-red: 2px dashed @color-hokuto-red;
+@border-solid-grunge: 1px solid @color-border-grunge;
+@border-solid-red: 1px solid @color-hokuto-red;
+@border-top-red: 3px solid @color-hokuto-red;
+@border-bottom-dashed-red: 2px dashed @color-hokuto-red;
+@border-light: 1px solid @color-border-light;
+
+// ============================================================================
+// TRANSITIONS & ANIMATIONS
+// ============================================================================
+@transition-default: all 0.2s ease;
+@transition-fast: all 0.15s ease;
+
+// ============================================================================
+// TEXT OVERFLOW (Reusable pattern)
+// ============================================================================
+.text-overflow() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// ============================================================================
+// FLEX LAYOUTS (Reusable mixins)
+// ============================================================================
+.flex-column(@gap: @spacing-lg) {
+  display: flex;
+  flex-direction: column;
+  gap: @gap;
+}
+
+.flex-row(@gap: @spacing-lg) {
+  display: flex;
+  flex-direction: row;
+  gap: @gap;
+}
+
+.flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-centered-row(@gap: @spacing-lg) {
+  .flex-row(@gap);
+  align-items: center;
+}
+
+// ============================================================================
+// FORM ELEMENTS
+// ============================================================================
+.form-input-base() {
+  background-color: @color-bg-darker;
+  color: @color-text-bone;
+  border: @border-solid-grunge;
+  padding: @spacing-sm @spacing-md;
+  transition: @transition-default;
+
+  &:focus {
+    border-color: @color-hokuto-red;
+    box-shadow: 0 0 5px @color-hokuto-glow;
+  }
+}
+
+.form-label() {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: @color-text-dark;
+  font-size: @font-size-xs;
+}
+
+// ============================================================================
+// STATUS & BADGES
+// ============================================================================
+.status-badge(@bg-color) {
+  background-color: @bg-color;
+  color: @color-text-bright-white;
+}
+
+// ============================================================================
+// LIST ITEMS & ROWS
+// ============================================================================
+.list-item-base() {
+  .flex-centered-row(@spacing-md);
+  width: 100%;
+  padding: @spacing-sm @spacing-md;
+  box-sizing: border-box;
+  border-bottom: @border-solid-grunge;
+  background-color: @color-bg-semi-dark;
+}
+
+.list-item-hover() {
+  background-color: @color-bg-hover-red;
+  border-left: 2px solid @color-hokuto-red;
+  padding-left: @spacing-sm;
+}
+
+// ============================================================================
+// HEADERS
+// ============================================================================
+.sheet-header-base() {
+  border-bottom: @border-bottom-dashed-red;
+  padding-bottom: @spacing-md;
+  .flex-centered-row(@spacing-2xl);
+}
+
+.section-header-base() {
+  margin-bottom: 5px;
+  border-bottom: @border-solid-grunge;
+}

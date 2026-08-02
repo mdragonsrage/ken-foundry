@@ -2,28 +2,27 @@
   .tab.info {
     .stat-block.health-block {
       background-color: rgba(139, 0, 0, 0.05);
-      border: 1px solid @color-hokuto-red;
-      padding: 10px;
+      border: @border-solid-red;
+      padding: @spacing-lg;
 
       label {
-        font-size: 12px;
+        font-size: @font-size-sm;
         text-transform: uppercase;
         font-weight: bold;
         color: @color-hokuto-glow;
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: @spacing-xs;
       }
 
       .flexrow {
-        align-items: center;
-        gap: 10px;
-        font-size: 18px;
+        .flex-centered-row(@spacing-lg);
+        font-size: @font-size-2xl;
         font-weight: bold;
 
         input {
-          font-size: 20px;
+          font-size: @font-size-3xl;
           text-align: center;
-          color: #fff;
+          color: @color-text-bright-white;
         }
       }
     }
@@ -31,42 +30,37 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: @spacing-lg;
     }
 
     .stat-box {
       background-color: @color-bg-card;
-      border: 1px solid @color-border-grunge;
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      border: @border-solid-grunge;
+      padding: @spacing-md;
+      .flex-column(@spacing-xs);
 
       label {
-        font-size: 11px;
-        text-transform: uppercase;
-        color: @color-text-dark;
-        font-weight: bold;
+        .form-label();
       }
 
       input {
         width: 100%;
         text-align: center;
-        font-size: 16px;
+        font-size: @font-size-xl;
         font-weight: bold;
       }
 
       .roll-btn-small {
         background: #252525;
         color: @color-text-bone;
-        border: 1px solid @color-border-grunge;
+        border: @border-solid-grunge;
         border-radius: 0;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: @transition-default;
 
         &:hover {
           background: @color-hokuto-red;
-          color: #fff;
+          color: @color-text-bright-white;
           box-shadow: 0 0 6px @color-hokuto-glow;
         }
       }
@@ -74,14 +68,14 @@
 
     .derived-grid {
       margin-top: 5px;
-      border-top: 1px solid @color-border-grunge;
-      padding-top: 15px;
+      border-top: @border-solid-grunge;
+      padding-top: @spacing-2xl;
 
       h3 {
-        font-size: 14px;
+        font-size: @font-size-lg;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        margin: 0 0 10px 0;
+        margin: 0 0 @spacing-lg 0;
         color: @color-text-bone;
       }
     }

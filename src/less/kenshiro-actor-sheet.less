@@ -2,48 +2,40 @@
 @import "kenshiro-actor-sheet-martial-arts.less";
 
 .danger {
-  background-color: @color-hokuto-glow;
-  color: @color-text-bright-white;
+  .status-badge(@color-hokuto-glow);
 }
 
 .ok {
-  background-color: @color-hokuto-green;
-  color: @color-text-bright-white;
+  .status-badge(@color-hokuto-green);
 }
 
 .kenshiro-martial-arts-dialog-wrapper {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: #121212;
-  color: #dedede;
+  padding: @spacing-2xl;
+  .flex-column(@spacing-xl);
+  background: @color-bg-dark;
+  color: @color-text-bone;
 
   p.text {
     margin: 0 0 5px 0;
     font-style: italic;
-    color: #777;
-    font-size: 12px;
+    color: @color-text-dark;
+    font-size: @font-size-sm;
   }
 
   div.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    .flex-column(@spacing-sm);
 
     label {
-      font-weight: bold;
-      font-size: 11px;
-      text-transform: uppercase;
-      color: #8b0000;
+      .form-label();
+      color: @color-hokuto-red;
       letter-spacing: 0.5px;
     }
 
     select {
-      background: #0b0b0b;
-      color: #dedede;
-      border: 1px solid #3a3a3a;
-      padding: 6px;
+      background: @color-bg-darker;
+      color: @color-text-bone;
+      border: @border-solid-grunge;
+      padding: @spacing-sm;
       cursor: pointer;
       font-family: 'Signika', sans-serif;
     }
@@ -60,45 +52,29 @@
   }
   background-color: @color-bg-dark;
   color: @color-text-bone;
-  font-family: "Signika", "Helvetica Neue", sans-serif;
-  padding: 10px;
+  font-family: @font-family-base;
+  padding: @spacing-lg;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  .flex-column(@spacing-lg);
 
   input[type="text"], input[type="number"] {
-    background-color: #0b0b0b;
-    color: @color-text-bone;
-    border: 1px solid @color-border-grunge;
-    border-radius: 0;
-    padding: 4px 6px;
-    transition: all 0.2s ease;
-
-    &:focus {
-      border-color: @color-hokuto-red;
-      box-shadow: 0 0 5px @color-hokuto-glow;
-    }
+    .form-input-base();
   }
 
   .disabled-input {
     background: #151515 !important;
-    color: #ffaa00 !important;
+    color: @color-text-orange !important;
     border-style: dashed !important;
     font-weight: bold;
   }
 
   .sheet-header {
-    border-bottom: 2px dashed @color-hokuto-red;
-    padding-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    .sheet-header-base();
 
     .profile-img {
-      border: 1px solid #333;
+      border: @border-light;
       cursor: pointer;
-      background: #000;
+      background: @color-bg-black;
     }
 
     .header-fields {
@@ -110,42 +86,41 @@
     }
 
     .charName input {
-      font-size: 26px;
+      font-size: @font-size-4xl;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
       background: transparent;
       border: none;
-      color: #fff;
-      text-shadow: 2px 2px 4px #000;
+      color: @color-text-bright-white;
+      text-shadow: 2px 2px 4px @color-bg-black;
       padding: 0;
 
       &:focus {
         box-shadow: none;
-        border-bottom: 1px solid @color-hokuto-red;
+        border-bottom: @border-solid-red;
       }
     }
   }
 
   .sheet-tabs.tabs {
-    display: flex;
+    .flex-row(@spacing-sm);
     border-bottom: 2px solid @color-border-grunge;
-    gap: 2px;
     margin-bottom: 5px;
 
     .martial-art {
-      padding: 8px 14px;
+      padding: @spacing-md @spacing-2xl;
       color: @color-text-dark;
       font-weight: bold;
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: @font-size-sm;
       letter-spacing: 0.5px;
       border: 1px solid transparent;
       border-bottom: none;
-      transition: all 0.15s ease;
+      transition: @transition-fast;
       cursor: pointer;
 
-      i { margin-right: 5px; }
+      i { margin-right: @spacing-lg; }
 
       &:hover {
         color: @color-text-bone;
@@ -153,11 +128,11 @@
       }
 
       &.active {
-        color: #fff;
+        color: @color-text-bright-white;
         background-color: @color-bg-card;
         border-color: @color-border-grunge;
-        border-top: 3px solid @color-hokuto-red;
-        text-shadow: 0 0 5px rgba(255, 34, 34, 0.4);
+        border-top: @border-top-red;
+        text-shadow: 0 0 5px @color-glow-red-shadow;
       }
     }
   }
@@ -167,12 +142,11 @@
     overflow-y: auto;
 
     .tab {
-      display: none !important; // Nasconde tutti i tab presenti nel DOM
+      display: none !important;
 
       &.active {
-        display: flex !important; // Mostra in flex solo il tab a cui Foundry assegna la classe .active
-        flex-direction: column;
-        gap: 15px;
+        .flex-column(@spacing-2xl);
+        display: flex !important;
       }
     }
   }
