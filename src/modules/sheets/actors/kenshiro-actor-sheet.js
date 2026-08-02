@@ -185,8 +185,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * @return void
      */
     static async _onEdit(event, target) {
-        debugger;
-
         event.preventDefault();
 
         const itemId = target.closest(".martial-art").dataset.itemId;
@@ -195,7 +193,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         if(!martialArt)
             return;
 
-        const level = martialArt.system.level || null;
+        const level = martialArt.system.level;
         const levelField = martialArt.system.schema.fields.level;
         const choicesEntries = levelField.choices;
         const htmlContent = KenshiroActorSheet._getMartialArtsEditContent(choicesEntries, level, martialArt);
@@ -322,27 +320,33 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
+     *
+     * @return {DragDrop[]}
      * @override
      */
-    _attachPartListeners(partId, html, options) {
-        if (partId === "ma") {
-            for (const dragDrop of this.dragDrop) {
-                dragDrop.callback = {
-                    drop: this._onItemDrop.bind(this),
-                    dragstart: this._onItemDragStart.bind(this)
+
+    _createDragDropHandlers() {
+        return this.options.dragDrop.map(options => {
+            return new foundry.applications.ux.DragDrop({
+                dragSelector: options.dragSelector,
+                dropSelector: options.dropSelector,
+                callbacks: {
+                    dragstart: this._onItemDragStart.bind(this),
+                    drop: this._onItemDrop.bind(this)
                 }
-                dragDrop.bind(html);
-            }
-        }
+            });
+        });
     }
 
     /**
-     * @private
+     * @override
      */
-    async _onItemDrop(event) {
+    async _onDrop(event) {
         event.preventDefault();
 
-        const data = TextEditor.getDragEventData(event);
+        const rawData = event.dataTransfer.getData("text/plain");
+        if (!rawData) return;
+        const data = JSON.parse(rawData);
         if (!data || data.type !== "Item") return;
 
         const item = await Item.fromDropData(data);
@@ -364,9 +368,9 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
-     * @private
+     * @override
      */
-    _onItemDragStart(event) {
+    _onDragStart(event) {
         const li = event.currentTarget;
         if (li.classList.contains("martial-art-header")) return;
 

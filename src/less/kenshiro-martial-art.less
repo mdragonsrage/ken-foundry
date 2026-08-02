@@ -1,0 +1,81 @@
+.kenshiro-item-wrapper.kenshiro-martial-art-sheet {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .sheet-header.flexrow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid @color-hokuto-red;
+    padding-bottom: 10px;
+
+    .profile-img {
+      border: 1px solid @color-border-grunge;
+      cursor: pointer;
+      background: #000;
+      object-fit: cover;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: @color-hokuto-glow;
+      }
+    }
+
+    .header-fields {
+      flex: 1;
+
+      .item-name {
+        margin: 0;
+
+        .item-subtitle {
+          font-size: 14px;
+          color: @color-text-dark;
+          display: block;
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+
+  .sheet-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .form-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      label {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: @color-text-dark;
+        font-size: 11px;
+        flex: 1;
+      }
+
+      input[type="text"],
+      select {
+        background: #0b0b0b;
+        color: @color-text-bone;
+        border: 1px solid @color-border-grunge;
+        padding: 4px;
+        width: 60%;
+        box-sizing: border-box;
+        height: 28px;
+
+        &.font-monospace {
+          font-family: 'Courier New', monospace;
+        }
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+}
