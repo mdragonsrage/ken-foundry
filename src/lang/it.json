@@ -43,6 +43,7 @@
     }
   },
   "MARTIALARTS": {
+    "Info": "Informazioni",
     "Names": {
       "Charge": "Carica",
       "MartialKick": "Calcio Marziale",
@@ -62,6 +63,7 @@
       "Weapon": "Arma +1 Categoria"
     },
     "Requirements": {
+      "Misc": "Altro",
       "Charge": "Rincorsa",
       "Crushing": "Solo Avversari Immobili",
       "Atk": "Attacco",

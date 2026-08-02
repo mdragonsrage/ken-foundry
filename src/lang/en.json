@@ -43,6 +43,7 @@
     }
   },
   "MARTIALARTS": {
+    "Info": "Info",
     "Names": {
       "Charge": "Charge",
       "MartialKick": "Martial Kick",
@@ -59,6 +60,7 @@
       "ReflexTech": "Crossed Mirror Tech."
     },
     "Requirements": {
+      "Misc": "Misc",
       "Charge": "Run up",
       "Crushing": "Only Immobile Adversaries",
       "Atk": "Attack",

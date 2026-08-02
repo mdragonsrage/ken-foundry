@@ -1,0 +1,130 @@
+<section class="sheet-body tab martial-arts {{tab.cssClass}}"
+         data-group="primary" data-tab="req">
+
+    <div class="schools-grid">
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Requirements.Atk"}}</label>
+            <input type="number" name="system.requirements.atk" value="{{system.requirements.atk}}" min="0" max="3" />
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Requirements.Def"}}</label>
+            <input type="number" name="system.requirements.defense" value="{{system.requirements.defense}}" min="0" max="3" />
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Requirements.Aura "}}</label>
+            <input type="number" name="system.requirements.aura" value="{{system.requirements.aura}}" min="0" max="3" />
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Hokuto"}}</label>
+            <select name="system.requirements.schools.hokuto">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.hokuto)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Nanto"}}</label>
+            <select name="system.requirements.schools.nanto">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.nanto)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Gento"}}</label>
+            <select name="system.requirements.schools.gento">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.gento)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Koryu"}}</label>
+            <select name="system.requirements.schools.koryu">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.koryu)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Jen"}}</label>
+            <select name="system.requirements.schools.jen">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.jen)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Shura"}}</label>
+            <select name="system.requirements.schools.shura">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.shura)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Taishen"}}</label>
+            <select name="system.requirements.schools.taishen">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.taishen)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="school-field-group">
+            <label class="school-name">{{localize "MARTIALARTS.Requirements.Misc"}}</label>
+            <input type="text" name="system.requirements.misc" value="{{system.requirements.misc}}" />
+        </div>
+    </div>
+</section>

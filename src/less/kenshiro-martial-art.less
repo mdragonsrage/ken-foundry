@@ -1,48 +1,55 @@
+@import "kenshiro-martial-art-requirements.less";
+
 .kenshiro-item-wrapper.kenshiro-martial-art-sheet {
   padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
 
-  .sheet-header.flexrow {
+  .sheet-header {
+    border-bottom: 2px dashed @color-hokuto-red;
+    padding-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 15px;
-    border-bottom: 2px solid @color-hokuto-red;
-    padding-bottom: 10px;
 
     .profile-img {
-      border: 1px solid @color-border-grunge;
+      border: 1px solid #333;
       cursor: pointer;
       background: #000;
-      object-fit: cover;
-      transition: border-color 0.2s ease;
-
-      &:hover {
-        border-color: @color-hokuto-glow;
-      }
     }
 
     .header-fields {
       flex: 1;
+    }
 
-      .item-name {
-        margin: 0;
+    h1.charName {
+      margin: 0;
+    }
 
-        .item-subtitle {
-          font-size: 14px;
-          color: @color-text-dark;
-          display: block;
-          margin-bottom: 4px;
-        }
+    .charName input {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: transparent;
+      border: none;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+      padding: 0;
+
+      &:focus {
+        box-shadow: none;
+        border-bottom: 1px solid @color-hokuto-red;
       }
     }
   }
 
   .sheet-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 10px;
+    &.active {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
 
     .form-group {
       display: flex;
@@ -76,6 +83,18 @@
       select {
         cursor: pointer;
       }
+    }
+  }
+
+  .tab {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0; // Crucial flex layout fix to allow shrinking and scrolling
+
+    &.active {
+      display: flex;
+      overflow-y: auto; // Generates scrollbar on vertical overflow
     }
   }
 }

@@ -81,7 +81,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         return context;
     }
 
-    /**
     /** @override */
     async _preparePartContext(partId, context) {
         switch (partId) {
@@ -324,7 +323,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * @return {DragDrop[]}
      * @override
      */
-
     _createDragDropHandlers() {
         return this.options.dragDrop.map(options => {
             return new foundry.applications.ux.DragDrop({

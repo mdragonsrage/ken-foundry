@@ -68,7 +68,7 @@ export class MartialArtData extends foundry.abstract.TypeDataModel {
 
         if(reqs.schools !== null) {
             for (let school in reqs.schools) {
-                if (reqs.schools[school] > 0) {
+                if (reqs.schools[school] !== null) {
                     const prefixLocalized = game.i18n.localize("MARTIALARTS.Schools.School");
                     const schoolNameLocalized = game.i18n.localize(`MARTIALARTS.Schools.${school.charAt(0).toUpperCase() + school.slice(1)}`);
                     const text = `${prefixLocalized} ${schoolNameLocalized} ${reqs.schools[school]}`

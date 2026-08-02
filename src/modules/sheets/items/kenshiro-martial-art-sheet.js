@@ -4,7 +4,7 @@ export class KenshiroMartialArtSheet extends foundry.applications.api.Handlebars
     /** @override */
     static DEFAULT_OPTIONS = {
         id: "kenshiro-martial-art-sheet",
-        classes: ["kenshiro", "sheet", "item"],
+        classes: ["kenshiro", "sheet", "kenshiro-item-wrapper", "kenshiro-martial-art-sheet"],
         tag: "form",
         window: {
             resizable: true,
@@ -16,22 +16,42 @@ export class KenshiroMartialArtSheet extends foundry.applications.api.Handlebars
         },
         form: {
             submitOnChange: true,
-            closeOnSubmit: false
+            closeOnSubmit: false,
+            scrollable: true
         }
     }
 
     /** @override */
     static PARTS = {
-        form: {
-            template: "systems/kenshiro/templates/sheets/kenshiro-martial-art-sheet.hbs"
+        header: {
+            template: "systems/kenshiro/templates/partials/martial-arts/kenshiro-martial-art-header.hbs"
+        },
+        tabs: {
+            template: "systems/kenshiro/templates/partials/martial-arts/kenshiro-martial-art-tab-navigation.hbs"
+        },
+        info: {
+            template: "systems/kenshiro/templates/partials/martial-arts/kenshiro-martial-art-info.hbs",
+            scrollable: ['']
+        },
+        req: {
+            template: "systems/kenshiro/templates/partials/martial-arts/kenshiro-martial-art-requirements.hbs",
+            scrollable: ['']
         }
     }
 
-    /**
-     * @override
-     */
+    /** @override */
+    static TABS = {
+        primary: {
+            tabs: [
+                {id: "info"},
+                {id: "req"}
+            ],
+            initial: "info"
+        }
+    }
+
+    /** @override */
     async _prepareContext(options) {
-        debugger;
         const context = await super._prepareContext(options);
 
         const item = this.document;
@@ -44,4 +64,18 @@ export class KenshiroMartialArtSheet extends foundry.applications.api.Handlebars
 
         return context;
     }
+
+    /** @override */
+    async _preparePartContext(partId, context) {
+        switch (partId) {
+            case "info":
+            case "req":
+                context.tab = context.tabs[partId];
+                break;
+            default:
+        }
+
+        return context;
+    }
+
 }

@@ -1,0 +1,50 @@
+.form-group-section.school-requirements-section {
+  border: 1px solid @color-border-grunge;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+
+  .section-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: @color-hokuto-red;
+    font-size: 11px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .schools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .school-field-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .school-name {
+      font-size: 12px;
+      color: @color-text-bone;
+    }
+
+    input[type="number"] {
+      width: 50px;
+      text-align: center;
+      background: #0b0b0b;
+      color: @color-text-bone;
+      border: 1px solid @color-border-grunge;
+      height: 24px;
+      padding: 2px;
+      box-sizing: border-box;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      -moz-appearance: textfield;
+    }
+  }
+}
