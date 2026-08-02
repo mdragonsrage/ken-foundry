@@ -320,4 +320,62 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
 
         await item.update({"system.used": target.checked});
     }
+
+    /**
+     * @override
+     */
+    _attachPartListeners(partId, html, options) {
+        if (partId === "ma") {
+            for (const dragDrop of this.dragDrop) {
+                dragDrop.callback = {
+                    drop: this._onItemDrop.bind(this),
+                    dragstart: this._onItemDragStart.bind(this)
+                }
+                dragDrop.bind(html);
+            }
+        }
+    }
+
+    /**
+     * @private
+     */
+    async _onItemDrop(event) {
+        event.preventDefault();
+
+        const data = TextEditor.getDragEventData(event);
+        if (!data || data.type !== "Item") return;
+
+        const item = await Item.fromDropData(data);
+        if (!item) return false;
+
+        if (item.type !== "martialArt")
+            return false;
+
+        if (this.document.items.some(i => i.name.toLowerCase() === item.name.toLowerCase()))
+            return false;
+
+        try {
+            const itemData = item.toObject();
+            await this.document.createEmbeddedDocuments("Item", [itemData]);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    /**
+     * @private
+     */
+    _onItemDragStart(event) {
+        const li = event.currentTarget;
+        if (li.classList.contains("martial-art-header")) return;
+
+        const item = this.document.items.get(li.dataset.itemId);
+        if (!item) return;
+
+        const dragData = item.toDragData();
+        if (!dragData) return;
+
+        event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+    }
 }
