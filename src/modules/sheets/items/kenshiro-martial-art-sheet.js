@@ -77,5 +77,4 @@ export class KenshiroMartialArtSheet extends foundry.applications.api.Handlebars
 
         return context;
     }
-
 }

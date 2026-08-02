@@ -19,9 +19,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Hokuto"}}</label>
-            <select name="system.requirements.schools.hokuto">
+            <select name="system.requirements.schools.hokuto" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.hokuto)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.hokuto)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
@@ -34,9 +34,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Nanto"}}</label>
-            <select name="system.requirements.schools.nanto">
+            <select name="system.requirements.schools.nanto" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.nanto)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.nanto)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
@@ -49,9 +49,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Gento"}}</label>
-            <select name="system.requirements.schools.gento">
+            <select name="system.requirements.schools.gento" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.gento)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.gento)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
@@ -64,9 +64,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Koryu"}}</label>
-            <select name="system.requirements.schools.koryu">
+            <select name="system.requirements.schools.koryu" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.koryu)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.koryu)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
@@ -79,9 +79,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Jen"}}</label>
-            <select name="system.requirements.schools.jen">
+            <select name="system.requirements.schools.jen" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.jen)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.jen)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
@@ -94,9 +94,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Shura"}}</label>
-            <select name="system.requirements.schools.shura">
+            <select name="system.requirements.schools.shura" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.shura)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.shura)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
@@ -109,9 +109,9 @@
 
         <div class="school-field-group">
             <label class="school-name">{{localize "MARTIALARTS.Schools.School"}} {{localize "MARTIALARTS.Schools.Taishen"}}</label>
-            <select name="system.requirements.schools.taishen">
+            <select name="system.requirements.schools.taishen" data-dtype="Number">
                 {{#each levelChoices}}
-                    <option value="{{this}}" {{#if (eq this ../system.requirements.schools.taishen)}}selected{{/if}}>
+                    <option value="{{#if (eq this null)}}{{else}}{{this}}{{/if}}" {{#if (eq this ../system.requirements.schools.taishen)}}selected{{/if}}>
                         {{#if (eq this null)}}
                             X
                         {{else}}
