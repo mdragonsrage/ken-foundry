@@ -344,21 +344,21 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     async _onDrop(event) {
         event.preventDefault();
 
-        const rawData = event.dataTransfer.getData("text/plain");
-        if (!rawData) return;
-        const data = JSON.parse(rawData);
-        if (!data || data.type !== "Item") return;
-
-        const item = await Item.fromDropData(data);
-        if (!item) return false;
-
-        if (item.type !== "martialArt")
-            return false;
-
-        if (this.document.items.some(i => i.name.toLowerCase() === item.name.toLowerCase()))
-            return false;
-
         try {
+            const rawData = event.dataTransfer.getData("text/plain");
+            if (!rawData) return;
+            const data = JSON.parse(rawData);
+            if (!data || data.type !== "Item") return;
+
+            const item = await Item.fromDropData(data);
+            if (!item) return false;
+
+            if (item.type !== "martialArt")
+                return false;
+
+            if (this.document.items.some(i => i.name.toLowerCase() === item.name.toLowerCase()))
+                return false;
+
             const itemData = item.toObject();
             await this.document.createEmbeddedDocuments("Item", [itemData]);
             return true;
