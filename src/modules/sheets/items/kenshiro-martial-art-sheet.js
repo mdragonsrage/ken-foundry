@@ -53,7 +53,7 @@ export class KenshiroMartialArtSheet extends foundry.applications.api.Handlebars
     /** @override */
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
-
+    debugger;
         const item = this.document;
         context.item = item;
         context.system = item.system;

@@ -64,6 +64,24 @@
           box-shadow: 0 0 6px @color-hokuto-glow;
         }
       }
+
+      .flexrow {
+        .flex-centered-row(@spacing-sm);
+
+        label {
+          flex: 1;
+          margin: 0;
+          display: inline;
+
+          input {
+            margin: 0;
+          }
+        }
+
+        .roll-btn-small {
+          flex-shrink: 0;
+        }
+      }
     }
 
     .derived-grid {
@@ -77,6 +95,19 @@
         letter-spacing: 0.5px;
         margin: 0 0 @spacing-lg 0;
         color: @color-text-bone;
+      }
+
+      .flexrow {
+        .flex-centered-row(@spacing-lg);
+
+        .stat-box {
+          flex: 1;
+
+          label {
+            display: block;
+            margin-bottom: @spacing-xs;
+          }
+        }
       }
     }
   }
