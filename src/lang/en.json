@@ -10,12 +10,43 @@
     },
     "Stats": {
       "Health": "Health",
-      "Strength": "Strength (Ryoku)",
-      "Dexterity": "Dexterity (Shun)",
-      "Mind": "Mind (Shin)",
       "DerivedData": "Derived Parameters",
       "DefenseValue": "Defense",
-      "PuntiKi": "Spiritual Energy (Ki)"
+      "TitleComponent": "Components",
+      "TitleAbility": "Ability",
+      "TitleReigns": "Reigns",
+      "TitleEnergies": "Energies",
+      "TitleTechniques": "Techniques",
+      "Components": {
+        "Body": "Body",
+        "Instinct": "Instinct",
+        "Hearth": "Hearth",
+        "Mind": "Mind"
+      },
+      "Abilities": {
+        "Perception": "Perception",
+        "Action": "Action",
+        "Desire": "Desire",
+        "Resistance": "Resistance"
+      },
+      "Reigns": {
+        "Mineral": "Mineral",
+        "Vegetable": "Vegetable",
+        "Animal": "Animal",
+        "Human": "Human",
+        "Mechanical": "Mechanical",
+        "Void": "Void"
+      },
+      "Energies": {
+        "Power": "Power",
+        "Speed": "Speed",
+        "Precision": "Precision"
+      },
+      "Techniques": {
+        "Atk": "Attack",
+        "Def": "Defense",
+        "Aura": "Aura"
+      }
     },
     "RollOn": "Test on",
     "Mod": "Modifier",

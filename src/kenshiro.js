@@ -256,4 +256,7 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
  */
 function registerHandlebars() {
     //Handlebars.registerHelper("isNull", (value) => value === null);
+    Handlebars.registerHelper("capitalize", function (value = "") {
+        return value.charAt(0).toUpperCase() + value.slice(1);
+    });
 }

@@ -76,6 +76,29 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         context.system = this.actor.system;
         context.actorName = this.actor.name;
 
+        context.statIcons = {
+            body: "fas fa-fist-raised",
+            instinct: "fas fa-eye",
+            hearth: "fas fa-heart",
+            mind: "fas fa-brain",
+            perception: "fas fa-search",
+            action: "fas fa-running",
+            desire: "fas fa-fire",
+            resistance: "fas fa-shield-alt",
+            mineral: "fas fa-gem",
+            vegetable: "fas fa-leaf",
+            animal: "fas fa-paw",
+            human: "fas fa-user",
+            mechanical: "fas fa-cog",
+            void: "fas fa-circle-notch",
+            power: "fas fa-bolt",
+            speed: "fas fa-wind",
+            precision: "fas fa-crosshairs",
+            atk: "fas fa-sword", // Nota: in FontAwesome 5/6 usa "fas fa-gavel" o "fas fa-fist-raised" se non hai FA Pro
+            def: "fas fa-shield-halved",
+            aura: "fas fa-yin-yang"
+        };
+
         this._prepareItems(context);
 
         return context;

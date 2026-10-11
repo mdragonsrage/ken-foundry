@@ -12,12 +12,43 @@
     },
     "Stats": {
       "Health": "Punti Ferita",
-      "Strength": "Forza (Ryoku)",
-      "Dexterity": "Destrezza (Shun)",
-      "Mind": "Mente (Shin)",
       "DerivedData": "Parametri Derivati",
       "DefenseValue": "Soglia di Difesa",
-      "PuntiKi": "Energia Spirituale (Ki)"
+      "TitleComponent": "Componenti",
+      "TitleAbility": "Abilita",
+      "TitleReigns": "Regni",
+      "TitleEnergies": "Energie",
+      "TitleTechniques": "Tecniche",
+      "Components": {
+        "Body": "Corpo",
+        "Instinct": "Istinto",
+        "Hearth": "Cuore",
+        "Mind": "Mente"
+      },
+      "Abilities": {
+        "Perception": "Percezione",
+        "Action": "Azione",
+        "Desire": "Desiderio",
+        "Resistance": "Resistenza"
+      },
+      "Reigns": {
+        "Mineral": "Minerale",
+        "Vegetable": "Vegetale",
+        "Animal": "Animale",
+        "Human": "Umano",
+        "Mechanical": "Meccanico",
+        "Void": "Nulla"
+      },
+      "Energies": {
+        "Power": "Power",
+        "Speed": "Speed",
+        "Precision": "Precision"
+      },
+      "Techniques": {
+        "Atk": "Attack",
+        "Def": "Defense",
+        "Aura": "Aura"
+      }
     },
     "MartialArts": {
       "Name": "Colpo",

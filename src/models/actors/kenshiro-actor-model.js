@@ -11,10 +11,43 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                 max: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
             }),
 
-            stats: new fields.SchemaField({
-                strength: new fields.NumberField({required: true, integer: true, initial: 1, min: 0, max: 20}),
-                dexterity: new fields.NumberField({required: true, integer: true, initial: 2, min: 0, max: 20}),
-                mind: new fields.NumberField({required: true, integer: true, initial: 3, min: 0, max: 20}),
+            components: new fields.SchemaField({
+                body: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+                instinct: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+                hearth: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+                mind: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+            }),
+
+            abilities: new fields.SchemaField({
+                perception: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+                action: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+                desire: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+                resistance: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+            }),
+
+            reigns: new fields.SchemaField({
+                mineral: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                vegetable: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                animal: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                human: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                mechanical: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                void: new fields.NumberField({required: true, integer: true, initial: -1, min: -1, max: -1}),
+            }),
+
+            energies: new fields.SchemaField({
+                power: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                speed: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                precision: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+            }),
+
+            techniques: new fields.SchemaField({
+                atk: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                def: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                aura: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+            }),
+
+            derivated: new fields.SchemaField({
+                defenseValue: new fields.NumberField({ initial: 0 })
             })
         };
     }
@@ -25,16 +58,6 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
 
         this.derivated = {};
 
-        this.derivated.statMod = {
-            strength: Math.floor((this.stats.strength - 10) / 2),
-            dexterity: Math.floor((this.stats.dexterity - 10) / 2),
-            mind: Math.floor((this.stats.mind - 10) / 2)
-        };
-
-        this.derivated.defense = 10 + this.derivated.statMod.dexterity;
-
-        this.derivated.ki = {
-            max: this.stats.mind * 2
-        };
+        this.reigns.void = -1;
     }
 }
