@@ -147,6 +147,13 @@
     }
   },
   "Various": {
-    "And": "And"
+    "And": "And",
+    "Health": {
+      "Status 0": "Healthy",
+      "Status 1": "Hurt",
+      "Status 2": "Blocked",
+      "Status 3": "Lost"
+    },
+    "Click": "Click here"
   }
 }

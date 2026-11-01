@@ -127,11 +127,13 @@
                 </label>
                 <div class="circles-container head-circles">
                     {{#each system.hitLocations.head.hitPoints}}
-                        <label>
-                            <input type="checkbox"
-                                   name="system.hitLocations.head.hitPoints.{{@index}}"
-                                   {{#if this}}checked{{/if}} />
-                        </label>
+                        <span class="circles-item"
+                              data-action="cycleHealth"
+                              data-location="head"
+                              data-index="{{@index}}"
+                              data-state="{{this}}"
+                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
+                        ></span>
                     {{/each}}
                 </div>
             </div>

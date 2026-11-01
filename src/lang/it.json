@@ -147,6 +147,13 @@
     }
   },
   "Various": {
-    "And": "E"
+    "And": "E",
+    "Health": {
+      "Status 0": "Sano",
+      "Status 1": "Ferito",
+      "Status 2": "Bloccato",
+      "Status 3": "Perso"
+    },
+    "Click": "Clicca"
   }
 }

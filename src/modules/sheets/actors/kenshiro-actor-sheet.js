@@ -26,6 +26,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
         actions: {
+            cycleHealth: KenshiroActorSheet._onCycleHealthState,
             toggleUsed: KenshiroActorSheet._onToggleUsed,
             throwDice: KenshiroActorSheet._onThrowDice,
             roll: KenshiroActorSheet._onRoll,
@@ -117,6 +118,16 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         return context;
     }
 
+    /** @override */
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        const html = this.element;
+        html.querySelectorAll('.circles-item').forEach(circle => {
+            circle.addEventListener('click', KenshiroActorSheet._onCycleHealthState.bind(this));
+        });
+    }
+
     /**
      * Function use to set actor item (e.g. martial arts, equip...)
      * @private
@@ -132,6 +143,39 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         }
 
         context.martialArts = martialArts;
+    }
+
+    /**
+     * Change health circles status
+     * Only GM can deactivate/activate other health points via UI
+     * @private
+     * @param event mouse click
+     */
+    static async _onCycleHealthState(event) {
+        event.preventDefault();
+        const target = event.currentTarget;
+        const location = target.dataset.location;
+        const index = parseInt(target.dataset.index);
+        const currentState = parseInt(target.dataset.state);
+
+        if(currentState > 1 && !game.user.isGM) {
+            return;
+        }
+
+        let nextState = (currentState + 1) % 4;
+
+        if (currentState === 1 && !game.user.isGM) {
+            nextState = 0;
+        }
+
+        const currentArray = [... this.actor.system.hitLocations[location].hitPoints];
+        currentArray[index] = nextState;
+
+        const updatedData = {
+            [`system.hitLocations.${location}.hitPoints`]: currentArray
+        };
+
+        await this.actor.update(updatedData);
     }
 
     /**
@@ -194,7 +238,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         event.preventDefault();
         const itemId = target.closest(".martial-art").dataset.itemId;
         const martialArt = this.actor.items.get(itemId);
-        debugger;
         if(!martialArt)
             return;
     }

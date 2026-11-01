@@ -126,6 +126,51 @@
       border-radius: 4px;
       border: 1px solid #333;
 
+      .circles-item {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: block;
+        transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+
+        &[data-state="0"] {
+          background-color: #ffffff;
+          border-color: #000000;
+          box-shadow: none;
+        }
+
+        &[data-state="1"] {
+          background-color: @color-hokuto-red;
+          border-color: #ffffff;
+          box-shadow: 0 0 6px @color-hokuto-red;
+        }
+
+        &[data-state="2"] {
+          background-color: #444444;
+          border-color: #222222;
+          box-shadow: none;
+          opacity: 0.6;
+        }
+
+        &[data-state="3"] {
+          background-color: @color-ki-cyan;
+          border-color: #222222;
+          box-shadow: 0 0 6px @color-ki-cyan;
+          opacity: 0.6;
+        }
+
+        &:hover {
+          transform: scale(1.15);
+
+          &[data-state="2"] {
+            opacity: 1;
+          }
+        }
+      }
+
       input[type="checkbox"] {
         appearance: none !important;
         -webkit-appearance: none !important;
