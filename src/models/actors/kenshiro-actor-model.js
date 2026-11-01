@@ -6,11 +6,6 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         return {
             bio: new fields.HTMLField({required: true, blank: true, initial: "" }),
 
-            health: new fields.SchemaField({
-                value: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
-                max: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
-            }),
-
             components: new fields.SchemaField({
                 body: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
                 instinct: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
