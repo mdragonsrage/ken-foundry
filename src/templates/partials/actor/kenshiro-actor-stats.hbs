@@ -1,16 +1,16 @@
 <section class="sheet-body tab info {{tab.cssClass}}"
-     data-group="primary" data-tab="stats">
+         data-group="primary" data-tab="stats">
     <div class="stat-block health-block">
         <label>{{localize "KENSHIRO.Stats.Health"}}</label>
         <div class="flexrow">
             <label>
                 <input type="number" name="system.health.value"
-                       value="{{system.health.value}}" min="0" />
+                       value="{{system.health.value}}" min="0"/>
             </label>
             <span> / </span>
             <label>
                 <input type="number" name="system.health.max"
-                       value="{{system.health.max}}" min="0" />
+                       value="{{system.health.max}}" min="0"/>
             </label>
         </div>
     </div>
@@ -27,7 +27,8 @@
                                 <span class="stat-text text-capitalize">
                                     {{localize (concat "KENSHIRO.Stats.Components." (capitalize key))}}
                                 </span>
-                                <input type="number" name="system.components.{{key}}" value="{{val}}" data-dtype="Number" />
+                                <input type="number" name="system.components.{{key}}" value="{{val}}"
+                                       data-dtype="Number"/>
                             </label>
                         </div>
                     {{/each}}
@@ -44,7 +45,8 @@
                                 <span class="stat-text text-capitalize">
                                     {{localize (concat "KENSHIRO.Stats.Abilities." (capitalize key))}}
                                 </span>
-                                <input type="number" name="system.abilities.{{key}}" value="{{val}}" data-dtype="Number" />
+                                <input type="number" name="system.abilities.{{key}}" value="{{val}}"
+                                       data-dtype="Number"/>
                             </label>
                         </div>
                     {{/each}}
@@ -65,9 +67,10 @@
                                 </span>
                                 {{#if (eq key "void")}}
                                     <input type="number" name="system.reigns.{{key}}" value="{{val}}"
-                                           disabled class="disabled-fixed" />
+                                           disabled class="disabled-fixed"/>
                                 {{else}}
-                                    <input type="number" name="system.reigns.{{key}}" value="{{val}}" data-dtype="Number" />
+                                    <input type="number" name="system.reigns.{{key}}" value="{{val}}"
+                                           data-dtype="Number"/>
                                 {{/if}}
                             </label>
                         </div>
@@ -87,7 +90,8 @@
                                 <span class="stat-text text-capitalize">
                                     {{localize (concat "KENSHIRO.Stats.Energies." (capitalize key))}}
                                 </span>
-                                <input type="number" name="system.energies.{{key}}" value="{{val}}" data-dtype="Number" />
+                                <input type="number" name="system.energies.{{key}}" value="{{val}}"
+                                       data-dtype="Number"/>
                             </label>
                         </div>
                     {{/each}}
@@ -104,12 +108,183 @@
                                 <span class="stat-text text-capitalize">
                                     {{localize (concat "KENSHIRO.Stats.Techniques." (capitalize key))}}
                                 </span>
-                                <input type="number" name="system.techniques.{{key}}" value="{{val}}" data-dtype="Number" />
+                                <input type="number" name="system.techniques.{{key}}" value="{{val}}"
+                                       data-dtype="Number"/>
                             </label>
                         </div>
                     {{/each}}
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="kenshiro-body-map-section">
+        <h3>{{localize "KENSHIRO.Stats.Health"}} {{localize "Various.And"}} {{localize "KENSHIRO.Stats.Armor"}}</h3>
+
+        <div class="body-map-wrapper">
+            <div class="body-silhouette"></div>
+
+            <div class="location-group head">
+                <label class="armor-box-label">
+                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.Head"}}</span>
+                    <span class="armor-inputs-flex">
+                                <input type="number"
+                                       name="system.hitLocations.head.armor"
+                                       value="{{system.hitLocations.head.armor}}"
+                                       class="input-arm-phys" title="{{localize "KENSHIRO.Stats.Armor"}}"
+                                       data-dtype="Number"/>
+                                <input type="number"
+                                       name="system.hitLocations.head.maArmor"
+                                       value="{{system.hitLocations.head.maArmor}}"
+                                       class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
+                                       data-dtype="Number"/>
+                            </span>
+                </label>
+                <div class="circles-container head-circles">
+                    {{#each system.hitLocations.head.hitPoints}}
+                        <label>
+                            <input type="checkbox"
+                                   name="system.hitLocations.head.hitPoints.{{@index}}"
+                                   {{#if this}}checked{{/if}} />
+                        </label>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="location-group body">
+                <label class="armor-box-label">
+                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.Body"}}</span>
+                    <span class="armor-inputs-flex">
+                        <input type="number"
+                               name="system.hitLocations.body.armor"
+                               value="{{system.hitLocations.body.armor}}"
+                               class="input-arm-phys" title="{{localize "KENSHIRO.Stats.Armor"}}"
+                               data-dtype="Number"/>
+                            <input type="number"
+                                   name="system.hitLocations.body.maArmor"
+                                   value="{{system.hitLocations.body.maArmor}}"
+                                   class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
+                                   data-dtype="Number"/>
+                        </span>
+                </label>
+                <div class="circles-container body-circles">
+                    {{#each system.hitLocations.body.hitPoints}}
+                        <label>
+                            <input type="checkbox"
+                                   name="system.hitLocations.body.hitPoints.{{@index}}"
+                                   {{#if this}}checked{{/if}} />
+                        </label>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="location-group arm-left">
+                <label class="armor-box-label">
+                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LArm"}}</span>
+                    <span class="armor-inputs-flex">
+                            <input type="number"
+                                   name="system.hitLocations.lArm.armor"
+                                   value="{{system.hitLocations.lArm.armor}}"
+                                   class="input-arm-phys" title="{{localize "KENSHIRO.Stats.Armor"}}"
+                                   data-dtype="Number"/>
+                            <input type="number"
+                                   name="system.hitLocations.lArm.maArmor"
+                                   value="{{system.hitLocations.lArm.maArmor}}"
+                                   class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
+                                   data-dtype="Number"/>
+                        </span>
+                </label>
+                <div class="circles-container arm-l-circles">
+                    {{#each system.hitLocations.lArm.hitPoints}}
+                        <label>
+                            <input type="checkbox"
+                                   name="system.hitLocations.lArm.hitPoints.{{@index}}"
+                                   {{#if this}}checked{{/if}} />
+                        </label>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="location-group arm-right">
+                <label class="armor-box-label">
+                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.RArm"}}</span>
+                    <span class="armor-inputs-flex">
+                            <input type="number"
+                                   name="system.hitLocations.rArm.armor"
+                                   value="{{system.hitLocations.rArm.armor}}"
+                                   class="input-arm-phys" title="{{localize "KENSHIRO.Stats.Armor"}}"
+                                   data-dtype="Number"/>
+                            <input type="number"
+                                   name="system.hitLocations.rArm.maArmor"
+                                   value="{{system.hitLocations.rArm.maArmor}}"
+                                   class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
+                                   data-dtype="Number"/>
+                        </span>
+                </label>
+                <div class="circles-container arm-r-circles">
+                    {{#each system.hitLocations.rArm.hitPoints}}
+                        <label>
+                            <input type="checkbox"
+                                   name="system.hitLocations.lArm.hitPoints.{{@index}}"
+                                   {{#if this}}checked{{/if}} />
+                        </label>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="location-group leg-left">
+                <div class="armor-box-label">
+                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LLeg"}}</span>
+                    <span class="armor-inputs-flex">
+                            <input type="number"
+                                   name="system.hitLocations.lLeg.armor"
+                                   value="{{system.hitLocations.lLeg.armor}}"
+                                   class="input-arm-phys" title="{{localize "KENSHIRO.Stats.Armor"}}"
+                                   data-dtype="Number"/>
+                            <input type="number"
+                                   name="system.hitLocations.lLeg.maArmor"
+                                   value="{{system.hitLocations.lLeg.maArmor}}"
+                                   class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
+                                   data-dtype="Number"/>
+                        </span>
+                </div>
+                <div class="circles-container leg-l-circles">
+                    {{#each system.hitLocations.lLeg.hitPoints}}
+                        <label>
+                            <input type="checkbox"
+                                   name="system.hitLocations.lLeg.hitPoints.{{@index}}"
+                                   {{#if this}}checked{{/if}} />
+                        </label>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="location-group leg-right">
+                <label class="armor-box-label">
+                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.RLeg"}}</span>
+                    <span class="armor-inputs-flex">
+                            <input type="number"
+                                   name="system.hitLocations.rLeg.armor"
+                                   value="{{system.hitLocations.rLeg.armor}}"
+                                   class="input-arm-phys" title="{{localize "KENSHIRO.Stats.Armor"}}"
+                                   data-dtype="Number"/>
+                            <input type="number"
+                                   name="system.hitLocations.rLeg.maArmor"
+                                   value="{{system.hitLocations.rLeg.maArmor}}"
+                                   class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
+                                   data-dtype="Number"/>
+                        </span>
+                </label>
+                <div class="circles-container leg-r-circles">
+                    {{#each system.hitLocations.rLeg.hitPoints}}
+                        <label>
+                            <input type="checkbox"
+                                   name="system.hitLocations.rLeg.hitPoints.{{@index}}"
+                                   {{#if this}}checked{{/if}} />
+                        </label>
+                    {{/each}}
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -121,7 +296,7 @@
                 <label>
                     <input type="number" class="disabled-input"
                            value="{{system.derivated.defense}}"
-                           disabled />
+                           disabled/>
                 </label>
             </div>
         </div>

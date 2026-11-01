@@ -11,7 +11,25 @@
       "MartialArts": "Tecniche Segrete di Arti Marziali"
     },
     "Stats": {
+      "Locations": {
+        "Shortened": {
+          "Head": "TE",
+          "Body": "TO",
+          "LArm": "BS",
+          "RArm": "BD",
+          "LLeg": "GS",
+          "RLeg": "GD"
+        },
+        "Head": "Testa",
+        "Body": "Corpo",
+        "LArm": "Braccio Sinistro",
+        "RArm": "Braccio Destro",
+        "LLeg": "Gamba Sinistra",
+        "RLeg": "Gamba Destra"
+      },
       "Health": "Punti Ferita",
+      "Armor": "Armatura",
+      "MArmor": "Armatura Marziale",
       "DerivedData": "Parametri Derivati",
       "DefenseValue": "Soglia di Difesa",
       "TitleComponent": "Componenti",
@@ -40,13 +58,13 @@
         "Void": "Nulla"
       },
       "Energies": {
-        "Power": "Power",
-        "Speed": "Speed",
-        "Precision": "Precision"
+        "Power": "Potenza",
+        "Speed": "Velocità",
+        "Precision": "Precisione"
       },
       "Techniques": {
-        "Atk": "Attack",
-        "Def": "Defense",
+        "Atk": "Attacco",
+        "Def": "Difesa",
         "Aura": "Aura"
       }
     },
@@ -127,5 +145,8 @@
     "MartialArts": {
       "Title": "Colpi Segreti"
     }
+  },
+  "Various": {
+    "And": "E"
   }
 }

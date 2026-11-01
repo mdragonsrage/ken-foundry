@@ -9,7 +9,25 @@
       "MartialArts": "Martial Arts"
     },
     "Stats": {
+      "Locations": {
+        "Shortened": {
+          "Head": "HE",
+          "Body": "BO",
+          "LArm": "LA",
+          "RArm": "RA",
+          "LLeg": "LL",
+          "RLeg": "RL"
+        },
+        "Head": "Head",
+        "Body": "Body",
+        "LArm": "Left Arm",
+        "RArm": "Right Arm",
+        "LLeg": "Left Leg",
+        "RLeg": "Right Leg"
+      },
       "Health": "Health",
+      "Armor": "Armor",
+      "MArmor": "Martial Armor",
       "DerivedData": "Derived Parameters",
       "DefenseValue": "Defense",
       "TitleComponent": "Components",
@@ -127,5 +145,8 @@
     "MartialArts": {
       "Title": "Secret Technique"
     }
+  },
+  "Various": {
+    "And": "And"
   }
 }

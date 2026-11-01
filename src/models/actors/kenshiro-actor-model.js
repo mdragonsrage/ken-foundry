@@ -46,6 +46,45 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                 aura: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
             }),
 
+            hitLocations: new fields.SchemaField({
+                head: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(new fields.BooleanField({ initial: false }),
+                        {initial: [true, true, true, true, false, false, false]}),
+                }),
+                body: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(new fields.BooleanField({ initial: false }),
+                        {initial: [false, false, false, false, false, false, false, false, false]}),
+                }),
+                lArm: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(new fields.BooleanField({ initial: false }),
+                        {initial: [false, false, false, false, false, false, false, false]}),
+                }),
+                rArm: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(new fields.BooleanField({ initial: false }),
+                    {initial: [false, false, false, false, false, false, false, false]}),
+                }),
+                lLeg: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(new fields.BooleanField({ initial: false }),
+                        {initial: [false, false, false, false, false, false, false, false]}),
+                }),
+                rLeg: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(new fields.BooleanField({ initial: false }),
+                        {initial: [false, false, false, false, false, false, false, false]}),
+                }),
+            }),
+
             derivated: new fields.SchemaField({
                 defenseValue: new fields.NumberField({ initial: 0 })
             })
