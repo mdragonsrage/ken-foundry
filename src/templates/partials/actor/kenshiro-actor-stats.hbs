@@ -209,7 +209,7 @@
                     {{#each system.hitLocations.rArm.hitPoints}}
                         <label>
                             <input type="checkbox"
-                                   name="system.hitLocations.lArm.hitPoints.{{@index}}"
+                                   name="system.hitLocations.rArm.hitPoints.{{@index}}"
                                    {{#if this}}checked{{/if}} />
                         </label>
                     {{/each}}
@@ -217,7 +217,7 @@
             </div>
 
             <div class="location-group leg-left">
-                <div class="armor-box-label">
+                <label class="armor-box-label">
                     <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LLeg"}}</span>
                     <span class="armor-inputs-flex">
                             <input type="number"
@@ -231,7 +231,7 @@
                                    class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                    data-dtype="Number"/>
                         </span>
-                </div>
+                </label>
                 <div class="circles-container leg-l-circles">
                     {{#each system.hitLocations.lLeg.hitPoints}}
                         <label>
