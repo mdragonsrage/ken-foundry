@@ -43,7 +43,6 @@
         user-select: none;
         transition: all 0.15s ease;
 
-        // 1. STATO RIEMPITO (Progressivo - Rosso Hokuto)
         &[data-filled="true"] {
           background: @color-hokuto-red;
           color: #ffffff;
@@ -51,14 +50,12 @@
           box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
         }
 
-        // 2. STATO BLOCCATO DAL MASTER (Grigio Scuro, sbiadito)
         &[data-locked="true"] {
           background: #222222;
           border-color: #111111;
           color: #444444;
           cursor: not-allowed;
 
-          // Se il GM ci passa sopra, gli mostra che può cliccare per sbloccare
           html.is-gm & {
             cursor: pointer;
             &:hover {
