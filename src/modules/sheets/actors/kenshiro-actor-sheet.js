@@ -227,8 +227,10 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         const clickedValue = parseInt(actionTarget.dataset.value);
         if (!property || isNaN(clickedValue)) return;
 
-        if (event.shiftKey && event.altKey) {
-            await KenshiroActorSheet.setTrackValue(clickedValue, property, root, actor);
+        const trackData = actor.system[root][property];
+
+        if (!event.shiftKey && !event.altKey) {
+            await KenshiroActorSheet.setTrackValue(clickedValue, property, root, actor, trackData);
             return;
         }
 
@@ -237,28 +239,37 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         }
 
         if (event.altKey) {
-            await KenshiroActorSheet.unblockTrackValue(clickedValue, actor, property, root);
+            await KenshiroActorSheet.unblockTrackValue(clickedValue, actor, property, root, trackData);
             return;
         }
 
-        await KenshiroActorSheet.blockTrackValue(clickedValue, actor, property, root);
+        await KenshiroActorSheet.blockTrackValue(clickedValue, actor, property, root, trackData);
     }
 
-    static async unblockTrackValue(clickedValue, actor, property, root) {
+    static async unblockTrackValue(clickedValue, actor, property, root, trackData) {
+        if(clickedValue > trackData.maxUnblocked) {
+            return;
+        }
         await actor.update({
                 [`system.${root}.${property}.maxUnblocked`]: clickedValue,
                 [`system.${root}.${property}.value`]: clickedValue
         });
     }
 
-    static async blockTrackValue(clickedValue, actor, property, root) {
+    static async blockTrackValue(clickedValue, actor, property, root, trackData) {
+        if(clickedValue < trackData.maxUnblocked) {
+            return;
+        }
         await actor.update({
             [`system.${root}.${property}.maxUnblocked`]: clickedValue + 1,
             [`system.${root}.${property}.value`]: clickedValue + 1
         });
     }
 
-    static async setTrackValue(clickedValue, property, root, actor) {
+    static async setTrackValue(clickedValue, property, root, actor, trackData) {
+        if(clickedValue < trackData.maxUnblocked) {
+            return;
+        }
         await actor.update({
             [`system.${root}.${property}.value`]: clickedValue
         });
