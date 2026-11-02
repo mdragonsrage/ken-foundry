@@ -1,0 +1,85 @@
+.kenshiro-tracking-bars {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(10, 10, 10, 0.8);
+  padding: 12px;
+  border: 1px solid @color-border-grunge;
+  width: 100%;
+  box-sizing: border-box;
+
+  .tracking-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    .bar-label {
+      font-weight: bold;
+      font-size: 11px;
+      color: @color-text-bone;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-width: 130px;
+    }
+
+    .bar-boxes {
+      display: flex;
+      gap: 3px;
+
+      .track-box {
+        width: 26px;
+        height: 24px;
+        background: #151515;
+        border: 1px solid #3c3c3c;
+        color: #666;
+        font-size: 11px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.15s ease;
+
+        // 1. STATO RIEMPITO (Progressivo - Rosso Hokuto)
+        &[data-filled="true"] {
+          background: @color-hokuto-red;
+          color: #ffffff;
+          border-color: lighten(@color-hokuto-red, 15%);
+          box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+        }
+
+        // 2. STATO BLOCCATO DAL MASTER (Grigio Scuro, sbiadito)
+        &[data-locked="true"] {
+          background: #222222;
+          border-color: #111111;
+          color: #444444;
+          cursor: not-allowed;
+
+          // Se il GM ci passa sopra, gli mostra che può cliccare per sbloccare
+          html.is-gm & {
+            cursor: pointer;
+            &:hover {
+              border-color: @color-text-gold;
+              color: @color-text-gold;
+            }
+          }
+        }
+
+        &.text-box {
+          width: auto;
+          padding: 0 8px;
+          font-size: 9px;
+          letter-spacing: 0.5px;
+        }
+
+        &:hover &[data-locked="false"] {
+          border-color: #ffffff;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

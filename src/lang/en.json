@@ -28,6 +28,11 @@
       "Health": "Health",
       "Armor": "Armor",
       "MArmor": "Martial Armor",
+      "Resources": {
+        "DamagePoints": "Damage Points",
+        "EquilibriumPoints": "Equilibrium Points",
+        "ResistancePoints": "Resistance Points"
+      },
       "DerivedData": "Derived Parameters",
       "DefenseValue": "Defense",
       "TitleComponent": "Components",
@@ -154,6 +159,9 @@
       "Status 2": "Blocked",
       "Status 3": "Lost"
     },
+    "Coma": "Coma",
+    "Ko": "K.O.",
+    "Crazy": "Crazy",
     "Click": "Click here"
   }
 }

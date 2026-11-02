@@ -292,6 +292,56 @@
         </div>
 
     </div>
+
+    <div class="kenshiro-tracking-bars">
+
+        <div class="tracking-row">
+            <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.DamagePoints")}}</span>
+            <div class="bar-boxes">
+                {{#each damagePointsBoxes}}
+                    <span class="track-box {{#if this.isTextBox}}text-box{{/if}}"
+                          data-action="setTrack"
+                          data-root="resources"
+                          data-prop="damage"
+                          data-value="{{this.value}}"
+                          data-filled="{{this.isFilled}}"
+                          data-locked="{{this.isLocked}}">{{this.label}}</span>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="tracking-row">
+            <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.ResistancePoints")}}</span>
+            <div class="bar-boxes">
+                {{#each resistancePointsBoxes}}
+                    <span class="track-box {{#if this.isTextBox}}text-box{{/if}}"
+                          data-action="setTrack"
+                          data-root="resources"
+                          data-prop="resistance"
+                          data-value="{{this.value}}"
+                          data-filled="{{this.isFilled}}"
+                          data-locked="{{this.isLocked}}">{{this.label}}</span>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="tracking-row">
+            <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.EquilibriumPoints")}}</span>
+            <div class="bar-boxes">
+                {{#each equilibriumPointsBoxes}}
+                    <span class="track-box {{#if this.isTextBox}}text-box{{/if}}"
+                          data-action="setTrack"
+                          data-root="resources"
+                          data-prop="equilibrium"
+                          data-value="{{this.value}}"
+                          data-filled="{{this.isFilled}}"
+                          data-locked="{{this.isLocked}}">{{this.label}}</span>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+
     <div class="derived-grid">
         <h3>{{localize "KENSHIRO.Stats.DerivedData"}}</h3>
         <div class="flexrow">

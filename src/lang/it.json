@@ -30,6 +30,11 @@
       "Health": "Punti Ferita",
       "Armor": "Armatura",
       "MArmor": "Armatura Marziale",
+      "Resources": {
+        "DamagePoints": "Punti Danno",
+        "EquilibriumPoints": "Punti Equilibrio",
+        "ResistancePoints": "Punti Resistenza"
+      },
       "DerivedData": "Parametri Derivati",
       "DefenseValue": "Soglia di Difesa",
       "TitleComponent": "Componenti",
@@ -154,6 +159,9 @@
       "Status 2": "Bloccato",
       "Status 3": "Perso"
     },
+    "Coma": "Coma",
+    "Ko": "K.O.",
+    "Crazy": "Pazzo",
     "Click": "Clicca"
   }
 }

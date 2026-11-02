@@ -27,6 +27,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         dragDrop: [{ dragSelector: ".item", dropSelector: "form" }],
         actions: {
             cycleHealth: KenshiroActorSheet._onCycleHealthState,
+            setTrack: KenshiroActorSheet._onSetTrack,
             toggleUsed: KenshiroActorSheet._onToggleUsed,
             throwDice: KenshiroActorSheet._onThrowDice,
             roll: KenshiroActorSheet._onRoll,
@@ -100,6 +101,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             aura: "fas fa-yin-yang"
         };
 
+        await this._prepareTrack(context);
         this._prepareItems(context);
 
         return context;
@@ -136,6 +138,42 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     }
 
     /**
+     * Function use to set track bar for resources (i.e. damage, resistance, equilibrium)
+     * @private
+     * @param context
+     */
+    async _prepareTrack(context) {
+        const system = this.actor.system;
+
+        const damageLabels = { 0: "0", 1: "-1", 2: "-2", 3: "-3", 4: "-4", 5: game.i18n.localize("Various.Coma").toUpperCase() };
+        context.damagePointsBoxes = Array.from({ length: 6 }, (_, i) => ({
+            value: i,
+            label: damageLabels[i],
+            isTextBox: i === 5,
+            isFilled: i <= (system.resources.damage?.value ?? 0),
+            isLocked: i < (system.resources.damage?.maxUnblocked ?? 0)
+        }));
+
+        context.resistancePointsBoxes = Array.from({ length: 11 }, (_, i) => ({
+            value: i,
+            label: i === 10 ? "-1 " + game.i18n.localize("Various.Ko").toUpperCase() : `${10 - i}`,
+            isTextBox: i === 10,
+            isFilled: i <= (system.resources.resistance?.value ?? 0),
+            isLocked: i < (system.resources.resistance?.maxUnblocked ?? 0)
+        }));
+
+        context.equilibriumPointsBoxes = Array.from({ length: 11 }, (_, i) => ({
+            value: i,
+            label: i === 10 ? game.i18n.localize("Various.Crazy").toUpperCase() : `${10 - i}`,
+            isTextBox: i === 10,
+            isFilled: i <= (system.resources.equilibrium?.value ?? 0),
+            isLocked: i < (system.resources.equilibrium?.maxUnblocked ?? 0)
+        }));
+
+        return context;
+    }
+
+    /**
      * Change health circles status
      * Only GM can deactivate/activate other health points via UI
      * @private
@@ -144,7 +182,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      */
     static async _onCycleHealthState(event, target) {
         event.preventDefault();
-        const actionTarget = target || event.currentTarget || event.target.closest('[data-action="cycleTsubo"]');
+        const actionTarget = target || event.currentTarget || event.target.closest('[data-action="cycleHealth"]');
         const location = actionTarget.dataset.location;
         const index = parseInt(actionTarget.dataset.index);
         const currentState = parseInt(actionTarget.dataset.state);
@@ -167,6 +205,63 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         };
 
         await this.actor.update(updatedData);
+    }
+
+    /**
+     * Change resource level
+     * Only GM can block/unblock further resource points via UI
+     * @private
+     * @param event mouse click
+     * @param target event target
+     */
+    static async _onSetTrack(event, target) {
+        event.preventDefault();
+
+        const actionTarget = target || event.currentTarget || event.target.closest('[data-action="setTrack"]');
+        if (!actionTarget) return;
+
+        let actor = this.actor;
+        const isGM = game.user.isGM;
+        const property = actionTarget.dataset.prop;
+        const root = actionTarget.dataset.root;
+        const clickedValue = parseInt(actionTarget.dataset.value);
+        if (!property || isNaN(clickedValue)) return;
+
+        if (event.shiftKey && event.altKey) {
+            await KenshiroActorSheet.setTrackValue(clickedValue, property, root, actor);
+            return;
+        }
+
+        if(!isGM) {
+            return;
+        }
+
+        if (event.altKey) {
+            await KenshiroActorSheet.unblockTrackValue(clickedValue, actor, property, root);
+            return;
+        }
+
+        await KenshiroActorSheet.blockTrackValue(clickedValue, actor, property, root);
+    }
+
+    static async unblockTrackValue(clickedValue, actor, property, root) {
+        await actor.update({
+                [`system.${root}.${property}.maxUnblocked`]: clickedValue,
+                [`system.${root}.${property}.value`]: clickedValue
+        });
+    }
+
+    static async blockTrackValue(clickedValue, actor, property, root) {
+        await actor.update({
+            [`system.${root}.${property}.maxUnblocked`]: clickedValue + 1,
+            [`system.${root}.${property}.value`]: clickedValue + 1
+        });
+    }
+
+    static async setTrackValue(clickedValue, property, root, actor) {
+        await actor.update({
+            [`system.${root}.${property}.value`]: clickedValue
+        });
     }
 
     /**
