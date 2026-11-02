@@ -41,7 +41,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                 aura: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
             }),
 
-            hitLocations: new fields.SchemaField({
+            hitLocations: new fields.SchemaField({ // 0 = healthy, 1 = wounded, 2 = blocked, 3 = lost
                 head: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
@@ -52,32 +52,37 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                 body: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
-                    hitPoints: new fields.ArrayField(new fields.BooleanField(),
-                        {initial: [false, false, false, false, false, false, false, false, false]}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 0, 0, 0, 0, 2, 2]}),
                 }),
                 lArm: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
-                    hitPoints: new fields.ArrayField(new fields.BooleanField(),
-                        {initial: [false, false, false, false, false, false, false, false]}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 0, 0, 0, 2, 2]}),
                 }),
                 rArm: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
-                    hitPoints: new fields.ArrayField(new fields.BooleanField(),
-                    {initial: [false, false, false, false, false, false, false, false]}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 0, 0, 0, 2, 2]}),
                 }),
                 lLeg: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
-                    hitPoints: new fields.ArrayField(new fields.BooleanField(),
-                        {initial: [false, false, false, false, false, false, false, false]}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 0, 0, 0, 2, 2]}),
                 }),
                 rLeg: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
-                    hitPoints: new fields.ArrayField(new fields.BooleanField(),
-                        {initial: [false, false, false, false, false, false, false, false]}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 0, 0, 0, 2, 2]}),
                 }),
             }),
 

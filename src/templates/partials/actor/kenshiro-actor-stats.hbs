@@ -155,11 +155,13 @@
                 </label>
                 <div class="circles-container body-circles">
                     {{#each system.hitLocations.body.hitPoints}}
-                        <label>
-                            <input type="checkbox"
-                                   name="system.hitLocations.body.hitPoints.{{@index}}"
-                                   {{#if this}}checked{{/if}} />
-                        </label>
+                        <span class="circles-item"
+                              data-action="cycleHealth"
+                              data-location="body"
+                              data-index="{{@index}}"
+                              data-state="{{this}}"
+                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
+                        ></span>
                     {{/each}}
                 </div>
             </div>
@@ -182,11 +184,13 @@
                 </label>
                 <div class="circles-container arm-l-circles">
                     {{#each system.hitLocations.lArm.hitPoints}}
-                        <label>
-                            <input type="checkbox"
-                                   name="system.hitLocations.lArm.hitPoints.{{@index}}"
-                                   {{#if this}}checked{{/if}} />
-                        </label>
+                        <span class="circles-item"
+                              data-action="cycleHealth"
+                              data-location="lArm"
+                              data-index="{{@index}}"
+                              data-state="{{this}}"
+                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
+                        ></span>
                     {{/each}}
                 </div>
             </div>
@@ -209,11 +213,13 @@
                 </label>
                 <div class="circles-container arm-r-circles">
                     {{#each system.hitLocations.rArm.hitPoints}}
-                        <label>
-                            <input type="checkbox"
-                                   name="system.hitLocations.rArm.hitPoints.{{@index}}"
-                                   {{#if this}}checked{{/if}} />
-                        </label>
+                        <span class="circles-item"
+                              data-action="cycleHealth"
+                              data-location="rArm"
+                              data-index="{{@index}}"
+                              data-state="{{this}}"
+                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
+                        ></span>
                     {{/each}}
                 </div>
             </div>
@@ -236,11 +242,13 @@
                 </label>
                 <div class="circles-container leg-l-circles">
                     {{#each system.hitLocations.lLeg.hitPoints}}
-                        <label>
-                            <input type="checkbox"
-                                   name="system.hitLocations.lLeg.hitPoints.{{@index}}"
-                                   {{#if this}}checked{{/if}} />
-                        </label>
+                        <span class="circles-item"
+                              data-action="cycleHealth"
+                              data-location="lLeg"
+                              data-index="{{@index}}"
+                              data-state="{{this}}"
+                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
+                        ></span>
                     {{/each}}
                 </div>
             </div>
@@ -263,15 +271,16 @@
                 </label>
                 <div class="circles-container leg-r-circles">
                     {{#each system.hitLocations.rLeg.hitPoints}}
-                        <label>
-                            <input type="checkbox"
-                                   name="system.hitLocations.rLeg.hitPoints.{{@index}}"
-                                   {{#if this}}checked{{/if}} />
-                        </label>
+                        <span class="circles-item"
+                              data-action="cycleHealth"
+                              data-location="rLeg"
+                              data-index="{{@index}}"
+                              data-state="{{this}}"
+                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
+                        ></span>
                     {{/each}}
                 </div>
             </div>
-
         </div>
     </div>
 

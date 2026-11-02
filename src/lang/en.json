@@ -150,7 +150,7 @@
     "And": "And",
     "Health": {
       "Status 0": "Healthy",
-      "Status 1": "Hurt",
+      "Status 1": "Wounded",
       "Status 2": "Blocked",
       "Status 3": "Lost"
     },
