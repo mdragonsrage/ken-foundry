@@ -118,16 +118,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         return context;
     }
 
-    /** @override */
-    _onRender(context, options) {
-        super._onRender(context, options);
-
-        const html = this.element;
-        html.querySelectorAll('.circles-item').forEach(circle => {
-            circle.addEventListener('click', KenshiroActorSheet._onCycleHealthState.bind(this));
-        });
-    }
-
     /**
      * Function use to set actor item (e.g. martial arts, equip...)
      * @private
@@ -150,13 +140,14 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * Only GM can deactivate/activate other health points via UI
      * @private
      * @param event mouse click
+     * @param target event target
      */
-    static async _onCycleHealthState(event) {
+    static async _onCycleHealthState(event, target) {
         event.preventDefault();
-        const target = event.currentTarget;
-        const location = target.dataset.location;
-        const index = parseInt(target.dataset.index);
-        const currentState = parseInt(target.dataset.state);
+        const actionTarget = target || event.currentTarget || event.target.closest('[data-action="cycleTsubo"]');
+        const location = actionTarget.dataset.location;
+        const index = parseInt(actionTarget.dataset.index);
+        const currentState = parseInt(actionTarget.dataset.state);
 
         if(currentState > 1 && !game.user.isGM) {
             return;
@@ -275,7 +266,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
                     action: "save",
                     label: game.i18n.localize("KENSHIRO.Actions.Confirm"),
                     class: "ok",
-                    callback: async (event, button, target) => {
+                    callback: async (event, button) => {
                         const dialogHtml = button.form;
                         const rawLevel = dialogHtml.querySelector("#ma-edit-level").value;
 
