@@ -1,118 +1,119 @@
 <section class="sheet-body tab info {{tab.cssClass}}"
          data-group="primary" data-tab="stats">
-    <div class="stats-layout">
-        <div class="stats-grid row-1">
-            <div class="stat-box">
-                <h3>{{localize "KENSHIRO.Stats.TitleComponent"}}</h3>
-                <div class="fields-list">
-                    {{#each system.components as |val key|}}
-                        <div class="stat-row-input">
-                            <label class="stat-label-wrap">
-                                <i class="{{lookup ../statIcons key}} stat-icon"></i>
-                                <span class="stat-text text-capitalize">
-                                    {{localize (concat "KENSHIRO.Stats.Components." (capitalize key))}}
-                                </span>
-                                <input type="number" name="system.components.{{key}}" value="{{val}}"
-                                       data-dtype="Number"/>
-                            </label>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
-
-            <div class="stat-box">
-                <h3>{{localize "KENSHIRO.Stats.TitleAbility"}}</h3>
-                <div class="fields-list">
-                    {{#each system.abilities as |val key|}}
-                        <div class="stat-row-input">
-                            <label class="stat-label-wrap">
-                                <i class="{{lookup ../statIcons key}} stat-icon"></i>
-                                <span class="stat-text text-capitalize">
-                                    {{localize (concat "KENSHIRO.Stats.Abilities." (capitalize key))}}
-                                </span>
-                                <input type="number" name="system.abilities.{{key}}" value="{{val}}"
-                                       data-dtype="Number"/>
-                            </label>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
-        </div>
-
-        <div class="stats-grid row-2">
-            <div class="stat-box full-width">
-                <h3>{{localize "KENSHIRO.Stats.TitleReigns"}}</h3>
-                <div class="fields-grid-three">
-                    {{#each system.reigns as |val key|}}
-                        <div class="stat-row-input">
-                            <label class="stat-label-wrap">
-                                <i class="{{lookup ../statIcons key}} stat-icon"></i>
-                                <span class="stat-text text-capitalize">
-                                    {{localize (concat "KENSHIRO.Stats.Reigns." (capitalize key))}}
-                                </span>
-                                {{#if (eq key "void")}}
-                                    <input type="number" name="system.reigns.{{key}}" value="{{val}}"
-                                           disabled class="disabled-fixed"/>
-                                {{else}}
-                                    <input type="number" name="system.reigns.{{key}}" value="{{val}}"
+    <div class="kenshiro-stats-column">
+        <div class="kenshiro-stats-left-column stats-layout">
+            <div class="stats-grid row-1">
+                <div class="stat-box">
+                    <h3>{{localize "KENSHIRO.Stats.TitleComponent"}}</h3>
+                    <div class="fields-list">
+                        {{#each system.components as |val key|}}
+                            <div class="stat-row-input">
+                                <label class="stat-label-wrap">
+                                    <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                                    <span class="stat-text text-capitalize">
+                                        {{localize (concat "KENSHIRO.Stats.Components." (capitalize key))}}
+                                    </span>
+                                    <input type="number" name="system.components.{{key}}" value="{{val}}"
                                            data-dtype="Number"/>
-                                {{/if}}
-                            </label>
-                        </div>
-                    {{/each}}
+                                </label>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <h3>{{localize "KENSHIRO.Stats.TitleAbility"}}</h3>
+                    <div class="fields-list">
+                        {{#each system.abilities as |val key|}}
+                            <div class="stat-row-input">
+                                <label class="stat-label-wrap">
+                                    <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                                    <span class="stat-text text-capitalize">
+                                        {{localize (concat "KENSHIRO.Stats.Abilities." (capitalize key))}}
+                                    </span>
+                                    <input type="number" name="system.abilities.{{key}}" value="{{val}}"
+                                           data-dtype="Number"/>
+                                </label>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid row-2">
+                <div class="stat-box full-width">
+                    <h3>{{localize "KENSHIRO.Stats.TitleReigns"}}</h3>
+                    <div class="fields-grid-three">
+                        {{#each system.reigns as |val key|}}
+                            <div class="stat-row-input">
+                                <label class="stat-label-wrap">
+                                    <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                                    <span class="stat-text text-capitalize">
+                                        {{localize (concat "KENSHIRO.Stats.Reigns." (capitalize key))}}
+                                    </span>
+                                    {{#if (eq key "void")}}
+                                        <input type="number" name="system.reigns.{{key}}" value="{{val}}"
+                                               disabled class="disabled-fixed"/>
+                                    {{else}}
+                                        <input type="number" name="system.reigns.{{key}}" value="{{val}}"
+                                               data-dtype="Number"/>
+                                    {{/if}}
+                                </label>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid row-3">
+                <div class="stat-box">
+                    <h3>{{localize "KENSHIRO.Stats.TitleEnergies"}}</h3>
+                    <div class="fields-list">
+                        {{#each system.energies as |val key|}}
+                            <div class="stat-row-input">
+                                <label class="stat-label-wrap">
+                                    <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                                    <span class="stat-text text-capitalize">
+                                        {{localize (concat "KENSHIRO.Stats.Energies." (capitalize key))}}
+                                    </span>
+                                    <input type="number" name="system.energies.{{key}}" value="{{val}}"
+                                           data-dtype="Number"/>
+                                </label>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <h3>{{localize "KENSHIRO.Stats.TitleTechniques"}}</h3>
+                    <div class="fields-list">
+                        {{#each system.techniques as |val key|}}
+                            <div class="stat-row-input">
+                                <label class="stat-label-wrap">
+                                    <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                                    <span class="stat-text text-capitalize">
+                                        {{localize (concat "KENSHIRO.Stats.Techniques." (capitalize key))}}
+                                    </span>
+                                    <input type="number" name="system.techniques.{{key}}" value="{{val}}"
+                                           data-dtype="Number"/>
+                                </label>
+                            </div>
+                        {{/each}}
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="stats-grid row-3">
-            <div class="stat-box">
-                <h3>{{localize "KENSHIRO.Stats.TitleEnergies"}}</h3>
-                <div class="fields-list">
-                    {{#each system.energies as |val key|}}
-                        <div class="stat-row-input">
-                            <label class="stat-label-wrap">
-                                <i class="{{lookup ../statIcons key}} stat-icon"></i>
-                                <span class="stat-text text-capitalize">
-                                    {{localize (concat "KENSHIRO.Stats.Energies." (capitalize key))}}
-                                </span>
-                                <input type="number" name="system.energies.{{key}}" value="{{val}}"
-                                       data-dtype="Number"/>
-                            </label>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
+        <div class="kenshiro-body-map-section">
+            <h3>{{localize "KENSHIRO.Stats.Health"}} {{localize "Various.And"}} {{localize "KENSHIRO.Stats.Armor"}}</h3>
 
-            <div class="stat-box">
-                <h3>{{localize "KENSHIRO.Stats.TitleTechniques"}}</h3>
-                <div class="fields-list">
-                    {{#each system.techniques as |val key|}}
-                        <div class="stat-row-input">
-                            <label class="stat-label-wrap">
-                                <i class="{{lookup ../statIcons key}} stat-icon"></i>
-                                <span class="stat-text text-capitalize">
-                                    {{localize (concat "KENSHIRO.Stats.Techniques." (capitalize key))}}
-                                </span>
-                                <input type="number" name="system.techniques.{{key}}" value="{{val}}"
-                                       data-dtype="Number"/>
-                            </label>
-                        </div>
-                    {{/each}}
-                </div>
-            </div>
-        </div>
-    </div>
+            <div class="body-map-wrapper">
+                <div class="body-silhouette"></div>
 
-    <div class="kenshiro-body-map-section">
-        <h3>{{localize "KENSHIRO.Stats.Health"}} {{localize "Various.And"}} {{localize "KENSHIRO.Stats.Armor"}}</h3>
-
-        <div class="body-map-wrapper">
-            <div class="body-silhouette"></div>
-
-            <div class="location-group head">
-                <label class="armor-box-label">
-                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.Head"}}</span>
-                    <span class="armor-inputs-flex">
+                <div class="location-group head">
+                    <label class="armor-box-label">
+                        <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.Head"}}</span>
+                        <span class="armor-inputs-flex">
                                 <input type="number"
                                        name="system.hitLocations.head.armor"
                                        value="{{system.hitLocations.head.armor}}"
@@ -124,23 +125,24 @@
                                        class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                        data-dtype="Number"/>
                             </span>
-                </label>
-                <div class="circles-container head-circles">
-                    {{#each system.hitLocations.head.hitPoints}}
-                        <span class="circles-item"
-                              data-action="cycleHealth"
-                              data-location="head"
-                              data-index="{{@index}}"
-                              data-state="{{this}}"
-                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
-                        ></span>
-                    {{/each}}
+                    </label>
+                    <div class="circles-container head-circles">
+                        {{#each system.hitLocations.head.hitPoints}}
+                            <span class="circles-item"
+                                  data-action="cycleHealth"
+                                  data-location="head"
+                                  data-index="{{@index}}"
+                                  data-state="{{this}}"
+                                  title="{{localize (concat "Various.Health.Status" " " this)}} {{localize
+                                          "Various.Click"}}"
+                            ></span>
+                        {{/each}}
+                    </div>
                 </div>
-            </div>
-            <div class="location-group body">
-                <label class="armor-box-label">
-                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.Body"}}</span>
-                    <span class="armor-inputs-flex">
+                <div class="location-group body">
+                    <label class="armor-box-label">
+                        <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.Body"}}</span>
+                        <span class="armor-inputs-flex">
                         <input type="number"
                                name="system.hitLocations.body.armor"
                                value="{{system.hitLocations.body.armor}}"
@@ -152,24 +154,25 @@
                                    class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                    data-dtype="Number"/>
                         </span>
-                </label>
-                <div class="circles-container body-circles">
-                    {{#each system.hitLocations.body.hitPoints}}
-                        <span class="circles-item"
-                              data-action="cycleHealth"
-                              data-location="body"
-                              data-index="{{@index}}"
-                              data-state="{{this}}"
-                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
-                        ></span>
-                    {{/each}}
+                    </label>
+                    <div class="circles-container body-circles">
+                        {{#each system.hitLocations.body.hitPoints}}
+                            <span class="circles-item"
+                                  data-action="cycleHealth"
+                                  data-location="body"
+                                  data-index="{{@index}}"
+                                  data-state="{{this}}"
+                                  title="{{localize (concat "Various.Health.Status" " " this)}} {{localize
+                                          "Various.Click"}}"
+                            ></span>
+                        {{/each}}
+                    </div>
                 </div>
-            </div>
 
-            <div class="location-group arm-left">
-                <label class="armor-box-label">
-                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LArm"}}</span>
-                    <span class="armor-inputs-flex">
+                <div class="location-group arm-left">
+                    <label class="armor-box-label">
+                        <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LArm"}}</span>
+                        <span class="armor-inputs-flex">
                             <input type="number"
                                    name="system.hitLocations.lArm.armor"
                                    value="{{system.hitLocations.lArm.armor}}"
@@ -181,24 +184,25 @@
                                    class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                    data-dtype="Number"/>
                         </span>
-                </label>
-                <div class="circles-container arm-l-circles">
-                    {{#each system.hitLocations.lArm.hitPoints}}
-                        <span class="circles-item"
-                              data-action="cycleHealth"
-                              data-location="lArm"
-                              data-index="{{@index}}"
-                              data-state="{{this}}"
-                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
-                        ></span>
-                    {{/each}}
+                    </label>
+                    <div class="circles-container arm-l-circles">
+                        {{#each system.hitLocations.lArm.hitPoints}}
+                            <span class="circles-item"
+                                  data-action="cycleHealth"
+                                  data-location="lArm"
+                                  data-index="{{@index}}"
+                                  data-state="{{this}}"
+                                  title="{{localize (concat "Various.Health.Status" " " this)}} {{localize
+                                          "Various.Click"}}"
+                            ></span>
+                        {{/each}}
+                    </div>
                 </div>
-            </div>
 
-            <div class="location-group arm-right">
-                <label class="armor-box-label">
-                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.RArm"}}</span>
-                    <span class="armor-inputs-flex">
+                <div class="location-group arm-right">
+                    <label class="armor-box-label">
+                        <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.RArm"}}</span>
+                        <span class="armor-inputs-flex">
                             <input type="number"
                                    name="system.hitLocations.rArm.armor"
                                    value="{{system.hitLocations.rArm.armor}}"
@@ -210,24 +214,25 @@
                                    class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                    data-dtype="Number"/>
                         </span>
-                </label>
-                <div class="circles-container arm-r-circles">
-                    {{#each system.hitLocations.rArm.hitPoints}}
-                        <span class="circles-item"
-                              data-action="cycleHealth"
-                              data-location="rArm"
-                              data-index="{{@index}}"
-                              data-state="{{this}}"
-                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
-                        ></span>
-                    {{/each}}
+                    </label>
+                    <div class="circles-container arm-r-circles">
+                        {{#each system.hitLocations.rArm.hitPoints}}
+                            <span class="circles-item"
+                                  data-action="cycleHealth"
+                                  data-location="rArm"
+                                  data-index="{{@index}}"
+                                  data-state="{{this}}"
+                                  title="{{localize (concat "Various.Health.Status" " " this)}} {{localize
+                                          "Various.Click"}}"
+                            ></span>
+                        {{/each}}
+                    </div>
                 </div>
-            </div>
 
-            <div class="location-group leg-left">
-                <label class="armor-box-label">
-                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LLeg"}}</span>
-                    <span class="armor-inputs-flex">
+                <div class="location-group leg-left">
+                    <label class="armor-box-label">
+                        <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.LLeg"}}</span>
+                        <span class="armor-inputs-flex">
                             <input type="number"
                                    name="system.hitLocations.lLeg.armor"
                                    value="{{system.hitLocations.lLeg.armor}}"
@@ -239,24 +244,25 @@
                                    class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                    data-dtype="Number"/>
                         </span>
-                </label>
-                <div class="circles-container leg-l-circles">
-                    {{#each system.hitLocations.lLeg.hitPoints}}
-                        <span class="circles-item"
-                              data-action="cycleHealth"
-                              data-location="lLeg"
-                              data-index="{{@index}}"
-                              data-state="{{this}}"
-                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
-                        ></span>
-                    {{/each}}
+                    </label>
+                    <div class="circles-container leg-l-circles">
+                        {{#each system.hitLocations.lLeg.hitPoints}}
+                            <span class="circles-item"
+                                  data-action="cycleHealth"
+                                  data-location="lLeg"
+                                  data-index="{{@index}}"
+                                  data-state="{{this}}"
+                                  title="{{localize (concat "Various.Health.Status" " " this)}} {{localize
+                                          "Various.Click"}}"
+                            ></span>
+                        {{/each}}
+                    </div>
                 </div>
-            </div>
 
-            <div class="location-group leg-right">
-                <label class="armor-box-label">
-                    <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.RLeg"}}</span>
-                    <span class="armor-inputs-flex">
+                <div class="location-group leg-right">
+                    <label class="armor-box-label">
+                        <span class="location-tag">{{localize "KENSHIRO.Stats.Locations.Shortened.RLeg"}}</span>
+                        <span class="armor-inputs-flex">
                             <input type="number"
                                    name="system.hitLocations.rLeg.armor"
                                    value="{{system.hitLocations.rLeg.armor}}"
@@ -268,22 +274,24 @@
                                    class="input-arm-martial" title="{{localize "KENSHIRO.Stats.Marmor"}}"
                                    data-dtype="Number"/>
                         </span>
-                </label>
-                <div class="circles-container leg-r-circles">
-                    {{#each system.hitLocations.rLeg.hitPoints}}
-                        <span class="circles-item"
-                              data-action="cycleHealth"
-                              data-location="rLeg"
-                              data-index="{{@index}}"
-                              data-state="{{this}}"
-                              title="{{localize (concat "Various.Health.Status" " " this)}} {{localize "Various.Click"}}"
-                        ></span>
-                    {{/each}}
+                    </label>
+                    <div class="circles-container leg-r-circles">
+                        {{#each system.hitLocations.rLeg.hitPoints}}
+                            <span class="circles-item"
+                                  data-action="cycleHealth"
+                                  data-location="rLeg"
+                                  data-index="{{@index}}"
+                                  data-state="{{this}}"
+                                  title="{{localize (concat "Various.Health.Status" " " this)}} {{localize
+                                          "Various.Click"}}"
+                            ></span>
+                        {{/each}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
     <div class="derived-grid">
         <h3>{{localize "KENSHIRO.Stats.DerivedData"}}</h3>
         <div class="flexrow">

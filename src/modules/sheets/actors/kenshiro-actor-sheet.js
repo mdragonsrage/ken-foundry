@@ -16,8 +16,8 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             title: "KENSHIRO.SheetTitle"
         },
         position: {
-          width: 800,
-          height: 600,
+          width: 930,
+          height: 810,
         },
         form: {
             submitOnChange: true,

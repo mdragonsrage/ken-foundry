@@ -47,7 +47,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                     armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
                     hitPoints: new fields.ArrayField(
                         new fields.NumberField({integer: true, min: 0, max: 3}),
-                        {initial: [0, 0, 0, 0, 2, 3, 3]}),
+                        {initial: [0, 0, 0, 0, 2, 2, 2]}),
                 }),
                 body: new fields.SchemaField({
                     maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
