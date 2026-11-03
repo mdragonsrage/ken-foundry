@@ -297,45 +297,54 @@
 
         <div class="tracking-row">
             <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.DamagePoints")}}</span>
-            <div class="bar-boxes">
+            <div class="bar-boxes-wrapper">
                 {{#each damagePointsBoxes}}
-                    <span class="track-box {{#if this.isTextBox}}text-box{{/if}}"
-                          data-action="setTrack"
-                          data-root="resources"
-                          data-prop="damage"
-                          data-value="{{this.value}}"
-                          data-filled="{{this.isFilled}}"
-                          data-locked="{{this.isLocked}}">{{this.label}}</span>
+                    <div class="bar-cell">
+                        <span class="box-number">{{this.label}}</span>
+                        <span class="track-box text-box"
+                              data-action="setTrack"
+                              data-root="resources"
+                              data-prop="damage"
+                              data-value="{{this.value}}"
+                              data-filled="{{this.isFilled}}"
+                              data-locked="{{this.isLocked}}">{{this.malus}}</span>
+                    </div>
                 {{/each}}
             </div>
         </div>
 
         <div class="tracking-row">
             <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.ResistancePoints")}}</span>
-            <div class="bar-boxes">
+            <div class="bar-boxes-wrapper">
                 {{#each resistancePointsBoxes}}
-                    <span class="track-box {{#if this.isTextBox}}text-box{{/if}}"
-                          data-action="setTrack"
-                          data-root="resources"
-                          data-prop="resistance"
-                          data-value="{{this.value}}"
-                          data-filled="{{this.isFilled}}"
-                          data-locked="{{this.isLocked}}">{{this.label}}</span>
+                    <div class="bar-cell">
+                        <span class="box-number">{{this.label}}</span>
+                        <span class="track-box text-box"
+                              data-action="setTrack"
+                              data-root="resources"
+                              data-prop="resistance"
+                              data-value="{{this.value}}"
+                              data-filled="{{this.isFilled}}"
+                              data-locked="{{this.isLocked}}">{{this.malus}}</span>
+                    </div>
                 {{/each}}
             </div>
         </div>
 
         <div class="tracking-row">
             <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.EquilibriumPoints")}}</span>
-            <div class="bar-boxes">
+            <div class="bar-boxes-wrapper">
                 {{#each equilibriumPointsBoxes}}
-                    <span class="track-box {{#if this.isTextBox}}text-box{{/if}}"
-                          data-action="setTrack"
-                          data-root="resources"
-                          data-prop="equilibrium"
-                          data-value="{{this.value}}"
-                          data-filled="{{this.isFilled}}"
-                          data-locked="{{this.isLocked}}">{{this.label}}</span>
+                    <div class="bar-cell">
+                        <span class="box-number">{{this.label}}</span>
+                        <span class="track-box text-box"
+                              data-action="setTrack"
+                              data-root="resources"
+                              data-prop="equilibrium"
+                              data-value="{{this.value}}"
+                              data-filled="{{this.isFilled}}"
+                              data-locked="{{this.isLocked}}">{{this.malus}}</span>
+                    </div>
                 {{/each}}
             </div>
         </div>

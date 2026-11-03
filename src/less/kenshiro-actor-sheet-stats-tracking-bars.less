@@ -2,7 +2,7 @@
   margin-top: 5px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   background: rgba(10, 10, 10, 0.8);
   padding: 12px;
   border: 1px solid @color-border-grunge;
@@ -11,7 +11,7 @@
 
   .tracking-row {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 15px;
 
@@ -22,59 +22,75 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       min-width: 130px;
+      padding-bottom: 6px;
     }
 
-    .bar-boxes {
+    .bar-boxes-wrapper {
       display: flex;
       gap: 3px;
 
-      .track-box {
-        width: 26px;
-        height: 24px;
-        background: #151515;
-        border: 1px solid #3c3c3c;
-        color: #666;
-        font-size: 11px;
-        font-weight: bold;
+      .bar-cell {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        user-select: none;
-        transition: all 0.15s ease;
+        flex-direction: column;
+        gap: 4px;
+        width: 33px;
 
-        &[data-filled="true"] {
-          background: @color-hokuto-red;
-          color: #ffffff;
-          border-color: lighten(@color-hokuto-red, 15%);
-          box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+        .box-number {
+          align-items: center;
+          color: #aaa;
+          text-align: center;
+          white-space: nowrap;
+          min-height: 18px;
+          line-height: 18px;
+          font-size: 10px;
         }
 
-        &[data-locked="true"] {
-          background: #222222;
-          border-color: #111111;
-          color: #444444;
-          cursor: not-allowed;
+        .track-box {
+          width: 100%;
+          height: 20px;
+          background: #151515;
+          border: 1px solid #3c3c3c;
+          cursor: pointer;
+          user-select: none;
+          transition: all 0.15s ease;
 
-          html.is-gm & {
-            cursor: pointer;
-            &:hover {
-              border-color: @color-text-gold;
-              color: @color-text-gold;
+
+          &[data-filled="true"] {
+            background: @color-hokuto-red;
+            color: #ffffff;
+            border-color: lighten(@color-hokuto-red, 15%);
+            box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+          }
+
+          &[data-locked="true"] {
+            background: #222222;
+            border-color: #111111;
+            color: #444444;
+            cursor: not-allowed;
+
+            html.is-gm & {
+              cursor: pointer;
+
+              &:hover {
+                border-color: @color-text-gold;
+                color: @color-text-gold;
+              }
             }
           }
-        }
 
-        &.text-box {
-          width: auto;
-          padding: 0 8px;
-          font-size: 9px;
-          letter-spacing: 0.5px;
-        }
+          &.text-box {
+            color: @color-text-bone;
+            width: auto;
+            text-align: center;
+            font-size: 10px;
+            text-transform: uppercase;
+            padding-top: 3px;
+          }
 
-        &:hover &[data-locked="false"] {
-          border-color: #ffffff;
-          color: #ffffff;
+          &:hover &[data-locked="false"] {
+            border-color: #ffffff;
+            color: #ffffff;
+          }
         }
       }
     }

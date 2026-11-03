@@ -145,26 +145,30 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     async _prepareTrack(context) {
         const system = this.actor.system;
 
-        const damageLabels = { 0: "0", 1: "-1", 2: "-2", 3: "-3", 4: "-4", 5: game.i18n.localize("Various.Coma").toUpperCase() };
+        const damageMalus = { 0: "0", 1: "-1", 2: "-2", 3: "-3", 4: "-4", 5: game.i18n.localize("Various.Coma").toUpperCase() };
+        const damageLabels = { 0: "G", 1: "M", 2: "D", 3: "", 4: "", 5: "" };
         context.damagePointsBoxes = Array.from({ length: 6 }, (_, i) => ({
             value: i,
             label: damageLabels[i],
             isTextBox: i === 5,
+            malus: damageMalus[i],
             isFilled: i <= (system.resources.damage?.value ?? 0),
             isLocked: i < (system.resources.damage?.maxUnblocked ?? 0)
         }));
 
         context.resistancePointsBoxes = Array.from({ length: 11 }, (_, i) => ({
             value: i,
-            label: i === 10 ? "-1 " + game.i18n.localize("Various.Ko").toUpperCase() : `${10 - i}`,
+            label: i === 10 ? "" : `${10 - i}`,
             isTextBox: i === 10,
+            malus: i === 9 ? "-1 " : i === 10 ? game.i18n.localize("Various.Ko").toUpperCase() : "",
             isFilled: i <= (system.resources.resistance?.value ?? 0),
             isLocked: i < (system.resources.resistance?.maxUnblocked ?? 0)
         }));
 
         context.equilibriumPointsBoxes = Array.from({ length: 11 }, (_, i) => ({
             value: i,
-            label: i === 10 ? game.i18n.localize("Various.Crazy").toUpperCase() : `${10 - i}`,
+            label: i === 10 ? "" : `${10 - i}`,
+            malus: i === 10 ? game.i18n.localize("Various.Crazy").toUpperCase() : i === 9 ? "-1" : "",
             isTextBox: i === 10,
             isFilled: i <= (system.resources.equilibrium?.value ?? 0),
             isLocked: i < (system.resources.equilibrium?.maxUnblocked ?? 0)
