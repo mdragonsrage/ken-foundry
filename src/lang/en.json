@@ -162,6 +162,9 @@
     "Coma": "Coma",
     "Ko": "K.O.",
     "Crazy": "Crazy",
-    "Click": "Click here"
+    "Click": "Click here",
+    "HugeAbbr": "H",
+    "NormalAbbr": "N",
+    "DiminutiveAbbr": "D"
   }
 }

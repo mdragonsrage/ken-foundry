@@ -96,12 +96,12 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             power: "fas fa-bolt",
             speed: "fas fa-wind",
             precision: "fas fa-crosshairs",
-            atk: "fas fa-sword", // Nota: in FontAwesome 5/6 usa "fas fa-gavel" o "fas fa-fist-raised" se non hai FA Pro
+            atk: "fas fa-sword",
             def: "fas fa-shield-halved",
             aura: "fas fa-yin-yang"
         };
 
-        this._prepareTrack(context);
+        this._prepareResources(context);
         this._prepareItems(context);
 
         return context;
@@ -142,43 +142,14 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * @private
      * @param context
      */
-    _prepareTrack(context) {
+    _prepareResources(context) {
         const system = this.actor.system;
 
-        const damageMalus = { 0: "0", 1: "-1", 2: "-2", 3: "-3", 4: "-4", 5: game.i18n.localize("Various.Coma").toUpperCase() };
-        const damageLabels = { 0: "G", 1: "M", 2: "D", 3: "", 4: "", 5: "" };
-        context.damagePointsBoxes = Array.from({ length: 6 }, (_, i) => ({
-            value: i,
-            label: damageLabels[i],
-            isTextBox: i === 5,
-            malus: damageMalus[i],
-            isFilled: i <= (system.resources.damage?.value ?? 0),
-            isLocked: i < (system.resources.damage?.maxUnblocked ?? 0)
-        }));
-
-        context.resistancePointsBoxes = Array.from({ length: 11 }, (_, i) => ({
-            value: i,
-            label: i === 10 ? "" : `${10 - i}`,
-            isTextBox: i === 10,
-            malus: i === 9 ? "-1 " : i === 10 ? game.i18n.localize("Various.Ko").toUpperCase() : "",
-            isFilled: i <= (system.resources.resistance?.value ?? 0),
-            isLocked: i < (system.resources.resistance?.maxUnblocked ?? 0)
-        }));
-
-        context.equilibriumPointsBoxes = Array.from({ length: 11 }, (_, i) => ({
-            value: i,
-            label: i === 10 ? "" : `${10 - i}`,
-            malus: i === 10 ? game.i18n.localize("Various.Crazy").toUpperCase() : i === 9 ? "-1" : "",
-            isTextBox: i === 10,
-            isFilled: i <= (system.resources.equilibrium?.value ?? 0),
-            isLocked: i < (system.resources.equilibrium?.maxUnblocked ?? 0)
-        }));
-
-        const malusDamage = parseInt(damageMalus[system.resources.damage?.value ?? 0]);
+        const malusDamage = -5 - (system.resources.damage?.value ?? 0);
         const malusResistance = (system.resources.resistance?.value ?? 0) === 9 ? -1 : 0;
         const malusEquilibrium = (system.resources.equilibrium?.value ?? 0) === 9 ? -1 : 0;
 
-        context.resourcesMalus = (isNaN(malusDamage) ? 0 : malusDamage) + malusResistance + malusEquilibrium;
+        context.resourcesMalus = malusDamage + malusResistance + malusEquilibrium;
     }
 
     /**
