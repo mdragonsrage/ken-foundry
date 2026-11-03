@@ -1,0 +1,315 @@
+<div class="kenshiro-tracking-bars">
+    <div class="tracking-row">
+        <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.DamagePoints")}}</span>
+        <div class="bar-boxes-wrapper">
+            <div class="bar-cell">
+                <span class="box-number">{{localize (capitalize "Various.HugeAbbr")}}</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="damage"
+                      data-value="0"
+                      data-filled="{{#if (lte 0 system.resources.damage.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 0 system.resources.damage.maxUnblocked)}}true{{/if}}">
+                            0
+                    </span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">{{localize (capitalize "Various.NormalAbbr")}}</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="damage"
+                      data-value="1"
+                      data-filled="{{#if (lte 1 system.resources.damage.value ?? 0)}}true{{/if}}"
+                      data-locked="{{#if (lte 1 system.resources.damage?.maxUnblocked ?? 0)}}true{{/if}}">
+                            -1
+                    </span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">{{localize (capitalize "Various.DiminutiveAbbr")}}</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="damage"
+                      data-value="2"
+                      data-filled="{{#if (lte 2 system.resources.damage.value )}}true{{/if}}"
+                      data-locked="{{#if (lte 2 system.resources.damage.maxUnblocked )}}true{{/if}}">
+                            -2
+                    </span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number"></span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="damage"
+                      data-value="3"
+                      data-filled="{{#if (lte 3 system.resources.damage.value )}}true{{/if}}"
+                      data-locked="{{#if (lte 3 system.resources.damage.maxUnblocked )}}true{{/if}}">
+                            -3
+                    </span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number"></span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="damage"
+                      data-value="4"
+                      data-filled="{{#if (lte 4 system.resources.damage.value )}}true{{/if}}"
+                      data-locked="{{#if (lte 4 system.resources.damage.maxUnblocked )}}true{{/if}}">
+                            -4
+                    </span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number"></span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="damage"
+                      data-value="4"
+                      data-filled="{{#if (lte 4 system.resources.damage.value )}}true{{/if}}"
+                      data-locked="{{#if (lte 4 system.resources.damage?.maxUnblocked )}}true{{/if}}">
+                    {{localize (capitalize "Various.Coma")}}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tracking-row">
+        <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.ResistancePoints")}}</span>
+        <div class="bar-boxes-wrapper">
+            <div class="bar-cell">
+                <span class="box-number">10</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="0"
+                      data-filled="{{#if (lte 0 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 0 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">9</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="1"
+                      data-filled="{{#if (lte 1 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 1 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">8</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="2"
+                      data-filled="{{#if (lte 2 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 2 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">7</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="3"
+                      data-filled="{{#if (lte 3 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 3 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">6</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="4"
+                      data-filled="{{#if (lte 4 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 4 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">5</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="5"
+                      data-filled="{{#if (lte 5 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 5 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">4</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="6"
+                      data-filled="{{#if (lte 6 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 6 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">3</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="7"
+                      data-filled="{{#if (lte 7 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 7 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">2</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="8"
+                      data-filled="{{#if (lte 8 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 8 system.resources.resistance.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">1</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="9"
+                      data-filled="{{#if (lte 9 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 9 system.resources.resistance.maxUnblocked)}}true{{/if}}">-1</span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number"></span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="resistance"
+                      data-value="10"
+                      data-filled="{{#if (lte 10 system.resources.resistance.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 10 system.resources.resistance.maxUnblocked)}}true{{/if}}">
+                    {{localize (capitalize "Various.Ko")}}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tracking-row">
+        <span class="bar-label">{{localize (capitalize "KENSHIRO.Stats.Resources.EquilibriumPoints")}}</span>
+        <div class="bar-boxes-wrapper">
+            <div class="bar-cell">
+                <span class="box-number">10</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="0"
+                      data-filled="{{#if (lte 0 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 0 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">9</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="1"
+                      data-filled="{{#if (lte 1 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 1 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">8</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="2"
+                      data-filled="{{#if (lte 2 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 2 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">7</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="3"
+                      data-filled="{{#if (lte 3 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 3 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">6</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="4"
+                      data-filled="{{#if (lte 4 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 4 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">5</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="5"
+                      data-filled="{{#if (lte 5 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 5 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">4</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="6"
+                      data-filled="{{#if (lte 6 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 6 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">3</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="7"
+                      data-filled="{{#if (lte 7 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 7 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">2</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="8"
+                      data-filled="{{#if (lte 8 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 8 system.resources.equilibrium.maxUnblocked)}}true{{/if}}"></span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number">1</span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="9"
+                      data-filled="{{#if (lte 9 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 9 system.resources.equilibrium.maxUnblocked)}}true{{/if}}">-1</span>
+            </div>
+            <div class="bar-cell">
+                <span class="box-number"></span>
+                <span class="track-box text-box"
+                      data-action="setTrack"
+                      data-root="resources"
+                      data-prop="equilibrium"
+                      data-value="10"
+                      data-filled="{{#if (lte 10 system.resources.equilibrium.value)}}true{{/if}}"
+                      data-locked="{{#if (lte 10 system.resources.equilibrium.maxUnblocked)}}true{{/if}}">
+                    {{localize (capitalize "Various.Coma")}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

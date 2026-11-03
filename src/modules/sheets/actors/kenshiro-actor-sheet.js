@@ -48,12 +48,21 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats.hbs",
             scrollable: [''],
         },
+        statsVals: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-values.hbs",
+        },
         ma: {
             template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-martial-arts.hbs",
             scrollable: [''],
         },
         footer: {
             template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-footer.hbs"
+        },
+        health_armor: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-health-armor.hbs"
+        },
+        trackingBars: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-resources-partial.hbs"
         }
     }
 
