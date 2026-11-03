@@ -101,7 +101,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             aura: "fas fa-yin-yang"
         };
 
-        await this._prepareTrack(context);
+        this._prepareTrack(context);
         this._prepareItems(context);
 
         return context;
@@ -142,7 +142,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * @private
      * @param context
      */
-    async _prepareTrack(context) {
+    _prepareTrack(context) {
         const system = this.actor.system;
 
         const damageMalus = { 0: "0", 1: "-1", 2: "-2", 3: "-3", 4: "-4", 5: game.i18n.localize("Various.Coma").toUpperCase() };
@@ -174,7 +174,11 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             isLocked: i < (system.resources.equilibrium?.maxUnblocked ?? 0)
         }));
 
-        return context;
+        const malusDamage = parseInt(damageMalus[system.resources.damage?.value ?? 0]);
+        const malusResistance = (system.resources.resistance?.value ?? 0) === 9 ? -1 : 0;
+        const malusEquilibrium = (system.resources.equilibrium?.value ?? 0) === 9 ? -1 : 0;
+
+        context.resourcesMalus = (isNaN(malusDamage) ? 0 : malusDamage) + malusResistance + malusEquilibrium;
     }
 
     /**
