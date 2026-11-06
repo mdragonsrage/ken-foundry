@@ -17,7 +17,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         position: {
           width: 930,
-          height: 810,
+          height: 1080,
         },
         form: {
             submitOnChange: true,
@@ -86,6 +86,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         context.actor = this.actor;
         context.system = this.actor.system;
         context.actorName = this.actor.name;
+        context.isGm = game.user.isGM;
 
         context.statIcons = {
             body: "fas fa-fist-raised",
@@ -110,7 +111,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             aura: "fas fa-yin-yang"
         };
 
-        this._prepareResources(context);
+        this._prepareResourceMalus(context);
         this._prepareItems(context);
 
         return context;
@@ -151,10 +152,11 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      * @private
      * @param context
      */
-    _prepareResources(context) {
+    _prepareResourceMalus(context) {
         const system = this.actor.system;
 
-        const malusDamage = -5 - (system.resources.damage?.value ?? 0);
+        const damageVal = (system.resources.damage?.value ?? 0);
+        const malusDamage = damageVal === 5 ? 0 : - damageVal;
         const malusResistance = (system.resources.resistance?.value ?? 0) === 9 ? -1 : 0;
         const malusEquilibrium = (system.resources.equilibrium?.value ?? 0) === 9 ? -1 : 0;
 
@@ -208,17 +210,15 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         const actionTarget = target || event.currentTarget || event.target.closest('[data-action="setTrack"]');
         if (!actionTarget) return;
 
-        let actor = this.actor;
+        let _self = this;
         const isGM = game.user.isGM;
         const property = actionTarget.dataset.prop;
         const root = actionTarget.dataset.root;
         const clickedValue = parseInt(actionTarget.dataset.value);
         if (!property || isNaN(clickedValue)) return;
 
-        const trackData = actor.system[root][property];
-
         if (!event.shiftKey && !event.altKey) {
-            await KenshiroActorSheet.setTrackValue(clickedValue, property, root, actor, trackData);
+            await KenshiroActorSheet.setTrackValue(clickedValue, property, root, _self);
             return;
         }
 
@@ -227,37 +227,48 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         }
 
         if (event.altKey) {
-            await KenshiroActorSheet.unblockTrackValue(clickedValue, actor, property, root, trackData);
+            await KenshiroActorSheet.unblockTrackValue(clickedValue, _self, property, root);
             return;
         }
 
-        await KenshiroActorSheet.blockTrackValue(clickedValue, actor, property, root, trackData);
+        await KenshiroActorSheet.blockTrackValue(clickedValue, _self, property, root);
     }
 
-    static async unblockTrackValue(clickedValue, actor, property, root, trackData) {
+    static async unblockTrackValue(clickedValue, _self, property, root) {
+        const trackData = _self.actor.system[root][property];
         if(clickedValue > trackData.maxUnblocked) {
             return;
         }
-        await actor.update({
-                [`system.${root}.${property}.maxUnblocked`]: clickedValue,
-                [`system.${root}.${property}.value`]: clickedValue
+        await _self.actor.update({
+                [`system.${root}.${property}.maxUnblocked`]: clickedValue
         });
     }
 
-    static async blockTrackValue(clickedValue, actor, property, root, trackData) {
+    static async blockTrackValue(clickedValue, _self, property, root) {
+        const trackData = _self.actor.system[root][property];
         if(clickedValue < trackData.maxUnblocked) {
             return;
         }
-        await actor.update({
-            [`system.${root}.${property}.maxUnblocked`]: clickedValue + 1,
-            [`system.${root}.${property}.value`]: clickedValue + 1
+        const val = Math.max(trackData.value, clickedValue);
+        await _self.actor.update({
+            [`system.${root}.${property}.maxUnblocked`]: clickedValue,
+            [`system.${root}.${property}.value`]: val
         });
     }
 
-    static async setTrackValue(clickedValue, property, root, actor, trackData) {
-        if(clickedValue < trackData.maxUnblocked) {
+    static async setTrackValue(clickedValue, property, root, _self) {
+        const trackData = _self.actor.system[root][property];
+        const actor = _self.actor;
+        if (clickedValue < trackData.maxUnblocked) {
             return;
         }
+        if(clickedValue === trackData.value) {
+            await actor.update({
+                [`system.${root}.${property}.value`]: undefined
+            });
+            return;
+        }
+
         await actor.update({
             [`system.${root}.${property}.value`]: clickedValue
         });

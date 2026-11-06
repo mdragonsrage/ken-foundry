@@ -67,15 +67,7 @@
             border-color: #111111;
             color: #444444;
             cursor: not-allowed;
-
-            html.is-gm & {
-              cursor: pointer;
-
-              &:hover {
-                border-color: @color-text-gold;
-                color: @color-text-gold;
-              }
-            }
+            box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
           }
 
           &.text-box {
@@ -92,6 +84,17 @@
             color: #ffffff;
           }
         }
+      }
+    }
+  }
+
+  &.is-gm {
+    .tracking-row .bar-boxes-wrapper .bar-cell .track-box[data-locked="true"] {
+      cursor: pointer;
+
+      &:hover {
+       border-color: @color-text-gold;
+       box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
       }
     }
   }
