@@ -250,13 +250,39 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
     }
 })
 
-
 /**
  * @private
  */
 function registerHandlebars() {
+    const STAT_ICONS = {
+        body: "fas fa-fist-raised",
+        instinct: "fas fa-eye",
+        hearth: "fas fa-heart",
+        mind: "fas fa-brain",
+        perception: "fas fa-search",
+        action: "fas fa-running",
+        desire: "fas fa-fire",
+        resistance: "fas fa-shield-alt",
+        mineral: "fas fa-gem",
+        vegetable: "fas fa-leaf",
+        animal: "fas fa-paw",
+        human: "fas fa-user",
+        mechanical: "fas fa-cog",
+        void: "fas fa-circle-notch",
+        power: "fas fa-bolt",
+        speed: "fas fa-wind",
+        precision: "fas fa-crosshairs",
+        atk: "fas fa-sword",
+        def: "fas fa-shield-halved",
+        aura: "fas fa-yin-yang"
+    };
+
     //Handlebars.registerHelper("isNull", (value) => value === null);
     Handlebars.registerHelper("capitalize", function (value = "") {
         return value.charAt(0).toUpperCase() + value.slice(1);
     });
+    Handlebars.registerHelper("statIcon", function (key = "") {
+        return STAT_ICONS[key] || "fas fa-question";
+    })
 }
+

@@ -3,15 +3,18 @@
         <div class="stat-box">
             <h3>{{localize "KENSHIRO.Stats.TitleComponent"}}</h3>
             <div class="fields-list">
-                {{#each system.components as |val key|}}
+                {{#each system.schema.fields.components.fields as |field|}}
                     <div class="stat-row-input">
                         <label class="stat-label-wrap">
-                            <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                            <i class="{{statIcon @key}} stat-icon"></i>
                             <span class="stat-text text-capitalize">
-                                {{localize (concat "KENSHIRO.Stats.Components." (capitalize key))}}
+                                {{localize (concat "KENSHIRO.Stats.Components." (capitalize @key))}}
                             </span>
-                            <input type="number" name="system.components.{{key}}" value="{{val}}"
-                                   data-dtype="Number"/>
+                            <input type="number" name="system.components.{{@key}}"
+                                   value="{{lookup @root.system.components @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
                         </label>
                     </div>
                 {{/each}}
@@ -21,15 +24,18 @@
         <div class="stat-box">
             <h3>{{localize "KENSHIRO.Stats.TitleAbility"}}</h3>
             <div class="fields-list">
-                {{#each system.abilities as |val key|}}
+                {{#each system.schema.fields.abilities.fields as |field|}}
                     <div class="stat-row-input">
                         <label class="stat-label-wrap">
-                            <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                            <i class="{{statIcon @key}} {{lookup @root.options 'lol'}} stat-icon"></i>
                             <span class="stat-text text-capitalize">
-                                {{localize (concat "KENSHIRO.Stats.Abilities." (capitalize key))}}
+                                {{localize (concat "KENSHIRO.Stats.Abilities." (capitalize @key))}}
                             </span>
-                            <input type="number" name="system.abilities.{{key}}" value="{{val}}"
-                                   data-dtype="Number"/>
+                            <input type="number" name="system.abilities.{{@key}}"
+                                   value="{{lookup @root.system.abilities @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
                         </label>
                     </div>
                 {{/each}}
@@ -41,20 +47,19 @@
         <div class="stat-box full-width">
             <h3>{{localize "KENSHIRO.Stats.TitleReigns"}}</h3>
             <div class="fields-grid-three">
-                {{#each system.reigns as |val key|}}
+                {{#each system.schema.fields.reigns.fields as |field|}}
                     <div class="stat-row-input">
                         <label class="stat-label-wrap">
-                            <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                            <i class="{{statIcon @key}} stat-icon"></i>
                             <span class="stat-text text-capitalize">
-                                {{localize (concat "KENSHIRO.Stats.Reigns." (capitalize key))}}
+                                {{localize (concat "KENSHIRO.Stats.Reigns." (capitalize @key))}}
                             </span>
-                            {{#if (eq key "void")}}
-                                <input type="number" name="system.reigns.{{key}}" value="{{val}}"
-                                       disabled class="disabled-fixed"/>
-                            {{else}}
-                                <input type="number" name="system.reigns.{{key}}" value="{{val}}"
-                                       data-dtype="Number"/>
-                            {{/if}}
+                            <input type="number" name="system.reigns.{{@key}}"
+                                   value="{{lookup @root.system.reigns @key}}"
+                                   {{#if (eq @key "void")}}disabled class="disabled-fixed"{{/if}}
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
                         </label>
                     </div>
                 {{/each}}
@@ -66,15 +71,18 @@
         <div class="stat-box">
             <h3>{{localize "KENSHIRO.Stats.TitleEnergies"}}</h3>
             <div class="fields-list">
-                {{#each system.energies as |val key|}}
+                {{#each system.schema.fields.energies.fields as |field|}}
                     <div class="stat-row-input">
                         <label class="stat-label-wrap">
-                            <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                            <i class="{{statIcon @key}} stat-icon"></i>
                             <span class="stat-text text-capitalize">
-                                {{localize (concat "KENSHIRO.Stats.Energies." (capitalize key))}}
+                                {{localize (concat "KENSHIRO.Stats.Energies." (capitalize @key))}}
                             </span>
-                            <input type="number" name="system.energies.{{key}}" value="{{val}}"
-                                   data-dtype="Number"/>
+                            <input type="number" name="system.energies.{{@key}}"
+                                   value="{{lookup @root.system.energies @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
                         </label>
                     </div>
                 {{/each}}
@@ -84,15 +92,18 @@
         <div class="stat-box">
             <h3>{{localize "KENSHIRO.Stats.TitleTechniques"}}</h3>
             <div class="fields-list">
-                {{#each system.techniques as |val key|}}
+                {{#each system.schema.fields.techniques.fields as |val key|}}
                     <div class="stat-row-input">
                         <label class="stat-label-wrap">
-                            <i class="{{lookup ../statIcons key}} stat-icon"></i>
+                            <i class="{{statIcon @key}} stat-icon"></i>
                             <span class="stat-text text-capitalize">
-                                {{localize (concat "KENSHIRO.Stats.Techniques." (capitalize key))}}
+                                {{localize (concat "KENSHIRO.Stats.Techniques." (capitalize @key))}}
                             </span>
-                            <input type="number" name="system.techniques.{{key}}" value="{{val}}"
-                                   data-dtype="Number"/>
+                            <input type="number" name="system.techniques.{{@key}}"
+                                   value="{{lookup @root.system.techniques @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
                         </label>
                     </div>
                 {{/each}}
