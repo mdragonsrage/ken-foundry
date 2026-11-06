@@ -33,8 +33,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             roll: KenshiroActorSheet._onRoll,
             edit: KenshiroActorSheet._onEdit,
             delete: KenshiroActorSheet._onDelete,
-        },
-        lol: "asd"
+        }
     }
 
     /** @override */
