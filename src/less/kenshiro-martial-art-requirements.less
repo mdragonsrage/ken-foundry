@@ -1,0 +1,83 @@
+.schools-grid {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-md;
+
+  .school-field-group {
+    .flex-centered-row();
+    justify-content: space-between;
+    gap: @spacing-lg;
+    width: 100%;
+
+    .school-name {
+      font-size: @font-size-sm;
+      color: @color-text-bone;
+      font-weight: bold;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      text-align: left;
+    }
+
+    input[type="number"],
+    select {
+      background: @color-bg-darker;
+      color: @color-text-bone;
+      border: @border-solid-grunge;
+      padding: @spacing-xs @spacing-sm;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      cursor: pointer;
+
+      &:focus {
+        border-color: @color-hokuto-red;
+        box-shadow: 0 0 5px @color-hokuto-glow;
+      }
+    }
+
+    input[type="number"] {
+      width: 170px;
+      height: 28px;
+      text-align: center;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      -moz-appearance: textfield;
+    }
+
+    select {
+      width: 170px;
+    }
+
+    input[type="text"] {
+      background: @color-bg-darker;
+      color: @color-text-bone;
+      border: @border-solid-grunge;
+      padding: @spacing-xs @spacing-sm;
+      box-sizing: border-box;
+      width: 170px;
+      flex-shrink: 0;
+
+      &:focus {
+        border-color: @color-hokuto-red;
+        box-shadow: 0 0 5px @color-hokuto-glow;
+      }
+    }
+  }
+}
+
+.form-group-section.school-requirements-section {
+  border: @border-solid-grunge;
+  padding: @spacing-lg;
+  background: @color-bg-overlay-dark;
+  margin-top: 5px;
+
+  .section-label {
+    .form-label();
+    color: @color-hokuto-red;
+    display: block;
+    margin-bottom: @spacing-md;
+  }
+}

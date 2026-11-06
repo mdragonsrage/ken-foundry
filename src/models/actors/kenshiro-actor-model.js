@@ -6,15 +6,103 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         return {
             bio: new fields.HTMLField({required: true, blank: true, initial: "" }),
 
-            health: new fields.SchemaField({
-                value: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
-                max: new fields.NumberField({required: true, integer: true, initial: 9, min: 0}),
+            components: new fields.SchemaField({
+                body: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+                instinct: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+                hearth: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
+                mind: new fields.NumberField({required: true, integer: true, initial: 1, min: 1, max: 7}),
             }),
 
-            stats: new fields.SchemaField({
-                strength: new fields.NumberField({required: true, integer: true, initial: 1, min: 0, max: 20}),
-                dexterity: new fields.NumberField({required: true, integer: true, initial: 2, min: 0, max: 20}),
-                mind: new fields.NumberField({required: true, integer: true, initial: 3, min: 0, max: 20}),
+            abilities: new fields.SchemaField({
+                perception: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+                action: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+                desire: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+                resistance: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 5}),
+            }),
+
+            reigns: new fields.SchemaField({
+                mineral: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                vegetable: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                animal: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                human: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                mechanical: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                void: new fields.NumberField({required: true, integer: true, initial: -1, min: -1, max: -1}),
+            }),
+
+            energies: new fields.SchemaField({
+                power: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                speed: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                precision: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+            }),
+
+            techniques: new fields.SchemaField({
+                atk: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                def: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+                aura: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 3}),
+            }),
+
+            hitLocations: new fields.SchemaField({
+                head: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 2, 2, 2, 2, 2]}), // 0 = healthy, 1 = wounded, 2 = blocked, 3 = lost
+                }),
+                body: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 0, 2, 0, 0, 2, 2]}),
+                }),
+                lArm: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 2, 2, 2, 2, 2]}),
+                }),
+                rArm: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 2, 2, 2, 2, 2]}),
+                }),
+                lLeg: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 2, 2, 2, 2, 2]}),
+                }),
+                rLeg: new fields.SchemaField({
+                    maArmor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    armor: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    hitPoints: new fields.ArrayField(
+                        new fields.NumberField({integer: true, min: 0, max: 3}),
+                        {initial: [0, 0, 0, 2, 2, 2, 2, 2]}),
+                }),
+            }),
+
+            resources: new fields.SchemaField({
+                damage: new fields.SchemaField({
+                    value: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 6}),
+                    maxUnblocked: new fields.NumberField({required: true, integer: true, initial: 1, min: 0, max: 6})
+                }),
+                resistance: new fields.SchemaField({
+                    value: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    maxUnblocked: new fields.NumberField({required: true, integer: true, initial: 6, min: 0, max: 10}),
+                }),
+                equilibrium: new fields.SchemaField({
+                    value: new fields.NumberField({required: true, integer: true, initial: 0, min: 0, max: 10}),
+                    maxUnblocked: new fields.NumberField({required: true, integer: true, initial: 6, min: 0, max: 10}),
+                }),
+            }),
+
+            derivated: new fields.SchemaField({
+                defenseValue: new fields.NumberField({ initial: 0 })
             })
         };
     }
@@ -25,16 +113,6 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
 
         this.derivated = {};
 
-        this.derivated.statMod = {
-            strength: Math.floor((this.stats.strength - 10) / 2),
-            dexterity: Math.floor((this.stats.dexterity - 10) / 2),
-            mind: Math.floor((this.stats.mind - 10) / 2)
-        };
-
-        this.derivated.defense = 10 + this.derivated.statMod.dexterity;
-
-        this.derivated.ki = {
-            max: this.stats.mind * 2
-        };
+        this.reigns.void = -1;
     }
 }

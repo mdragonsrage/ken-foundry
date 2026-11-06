@@ -1,0 +1,125 @@
+@import "kenshiro-actor-sheet-stats-hit-locations.less";
+@import "kenshiro-actor-sheet-stats-tracking-bars.less";
+.kenshiro-sheet-wrapper {
+  .tab.info {
+    .kenshiro-stats-column {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      width: 100%;
+      align-items: flex-start;
+      box-sizing: border-box;
+      margin-top: 15px;
+
+      .kenshiro-stats-left-column {
+        flex: 1;
+        box-sizing: border-box;
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: @spacing-lg;
+        }
+
+        .stat-box {
+          border: 1px solid @color-border-grunge;
+          background: rgba(10, 10, 10, 0.3);
+          padding: 10px;
+
+          &.full-width {
+            grid-column: span 2;
+          }
+
+          h3 {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: @color-hokuto-red;
+            border-bottom: 1px solid @color-border-grunge;
+            padding-bottom: 4px;
+            letter-spacing: 0.5px;
+          }
+
+          .fields-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+          }
+
+          .fields-grid-three {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+          }
+
+          .stat-row-input {
+            background: rgba(0, 0, 0, 0.2);
+            height: 28px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+
+            .stat-label-wrap {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              padding: 0 8px;
+              cursor: pointer;
+              margin: 0;
+
+              .stat-text {
+                font-size: 12px;
+                color: @color-text-bone;
+              }
+
+              input {
+                width: 45px;
+                text-align: center;
+                background: #050505;
+                color: #fff;
+                border: 1px solid #2a2a2a;
+                height: 22px;
+              }
+
+              input.disabled-fixed {
+                background: #1f1414;
+                color: #8a5c5c;
+                cursor: not-allowed;
+                border-color: #442222;
+              }
+            }
+          }
+        }
+
+        .derived-grid {
+          margin-top: 5px;
+          border-top: @border-solid-grunge;
+          padding-top: @spacing-2xl;
+
+          h3 {
+            font-size: @font-size-lg;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 @spacing-lg 0;
+            color: @color-text-bone;
+          }
+
+          .flexrow {
+            .flex-centered-row(@spacing-lg);
+
+            .stat-box {
+              flex: 1;
+
+              label {
+                display: block;
+                margin-bottom: @spacing-xs;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

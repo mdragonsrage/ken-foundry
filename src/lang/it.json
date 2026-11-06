@@ -11,24 +11,160 @@
       "MartialArts": "Tecniche Segrete di Arti Marziali"
     },
     "Stats": {
+      "Locations": {
+        "Shortened": {
+          "Head": "TE",
+          "Body": "TO",
+          "LArm": "BS",
+          "RArm": "BD",
+          "LLeg": "GS",
+          "RLeg": "GD"
+        },
+        "Head": "Testa",
+        "Body": "Corpo",
+        "LArm": "Braccio Sinistro",
+        "RArm": "Braccio Destro",
+        "LLeg": "Gamba Sinistra",
+        "RLeg": "Gamba Destra"
+      },
       "Health": "Punti Ferita",
-      "Strength": "Forza (Ryoku)",
-      "Dexterity": "Destrezza (Shun)",
-      "Mind": "Mente (Shin)",
+      "Armor": "Armatura",
+      "MArmor": "Armatura Marziale",
+      "Resources": {
+        "DamagePoints": "Punti Danno",
+        "EquilibriumPoints": "Punti Equilibrio",
+        "ResistancePoints": "Punti Resistenza"
+      },
       "DerivedData": "Parametri Derivati",
       "DefenseValue": "Soglia di Difesa",
-      "PuntiKi": "Energia Spirituale (Ki)"
+      "TitleComponent": "Componenti",
+      "TitleAbility": "Abilita",
+      "TitleReigns": "Regni",
+      "TitleEnergies": "Energie",
+      "TitleTechniques": "Tecniche",
+      "Components": {
+        "Body": "Corpo",
+        "Instinct": "Istinto",
+        "Hearth": "Cuore",
+        "Mind": "Mente"
+      },
+      "Abilities": {
+        "Perception": "Percezione",
+        "Action": "Azione",
+        "Desire": "Desiderio",
+        "Resistance": "Resistenza"
+      },
+      "Reigns": {
+        "Mineral": "Minerale",
+        "Vegetable": "Vegetale",
+        "Animal": "Animale",
+        "Human": "Umano",
+        "Mechanical": "Meccanico",
+        "Void": "Nulla"
+      },
+      "Energies": {
+        "Power": "Potenza",
+        "Speed": "Velocità",
+        "Precision": "Precisione"
+      },
+      "Techniques": {
+        "Atk": "Attacco",
+        "Def": "Difesa",
+        "Aura": "Aura"
+      }
     },
     "MartialArts": {
-      "Name": "Nome",
-      "School": "Scuola",
-      "Cost": "Costo Ki",
+      "Name": "Colpo",
+      "Level": "Livello",
+      "Requirements": "Limitazioni",
+      "Type": "T",
+      "Cost": "C",
       "Dmg": "Danno",
-      "Actions": "Tiro",
+      "Special": "Speciale",
+      "Notes": "Note",
+      "Actions": "Azioni",
       "Empty": "Nessuna Tecnica Segreta appresa. Trova un maestro o medita per sbloccarle.",
       "RollDamage": "Tira Danno",
-      "Edit": "Apri (Edita)",
-      "Delete": "Cancella"
+      "Edit": "Modifica",
+      "Delete": "Elimina",
+      "EditText": "Seleziona il nuovo livello per"
+    },
+    "Actions": {
+      "Delete": "Elimina",
+      "DeleteText": "Sei sicuro di voler eliminare",
+      "Confirm": "Applica",
+      "Cancel": "Annulla"
     }
+  },
+  "MARTIALARTS": {
+    "Info": "Informazioni",
+    "Names": {
+      "Charge": "Carica",
+      "MartialKick": "Calcio Marziale",
+      "Immobilize": "Immobilizzare",
+      "MartialPunch": "Pugno Marziale",
+      "Push": "Spinta",
+      "Crushing": "Stritolamento",
+      "MartialHeadbutt": "Testata Marziale",
+      "FlyingKick": "Calcio con Salto",
+      "Endure": "Res. Al Dolore",
+      "WeaponTech": "Tec. Spade",
+      "MissileTech": "Tec. Proiettili",
+      "WeaponWall": "Tec. Muro Spade",
+      "ReflexTech": "Tec. Rifl. Incrociata"
+    },
+    "Dmg": {
+      "Weapon": "Arma +1 Categoria"
+    },
+    "Requirements": {
+      "Misc": "Altro",
+      "Charge": "Rincorsa",
+      "Crushing": "Solo Avversari Immobili",
+      "Atk": "Attacco",
+      "Def": "Difesa",
+      "Aura": "Aura"
+    },
+    "Schools": {
+      "School": "Vie di",
+      "Philosophy": "Strade di",
+      "Hokuto": "Hokuto",
+      "Nanto": "Nanto",
+      "Gento": "Gento",
+      "Koryu": "Hokuto Koryu",
+      "Jen": "Hokuto Jen",
+      "Shura": "Shura",
+      "Taishen": "Taishen"
+    },
+    "Special": {
+
+    },
+    "Notes": {
+      "Immobilize": "Immobilizza 2 arti",
+      "Crushing": "Scegliere Locazione",
+      "FlyingKick": "Localizzare come Pugno",
+      "Endure": "Test: Mente + Des + Umano",
+      "Weapon": "Solo con Armi"
+    }
+  },
+  "ITEMS": {
+    "MartialArts": {
+      "Title": "Colpi Segreti"
+    }
+  },
+  "Various": {
+    "And": "E",
+    "Health": {
+      "Status 0": "Sano",
+      "Status 1": "Ferito",
+      "Status 2": "Bloccato",
+      "Status 3": "Perso"
+    },
+    "Coma": "Coma",
+    "Ko": "K.O.",
+    "Crazy": "Pazzo",
+    "Click": "Clicca",
+    "HugeAbbr": "H",
+    "NormalAbbr": "N",
+    "DiminutiveAbbr": "D"
   }
 }

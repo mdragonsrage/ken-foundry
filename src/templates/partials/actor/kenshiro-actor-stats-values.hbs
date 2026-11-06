@@ -1,0 +1,113 @@
+<div class="kenshiro-stats-left-column stats-layout">
+    <div class="stats-grid row-1">
+        <div class="stat-box">
+            <h3>{{localize "KENSHIRO.Stats.TitleComponent"}}</h3>
+            <div class="fields-list">
+                {{#each system.schema.fields.components.fields as |field|}}
+                    <div class="stat-row-input">
+                        <label class="stat-label-wrap">
+                            <i class="{{statIcon @key}} stat-icon"></i>
+                            <span class="stat-text text-capitalize">
+                                {{localize (concat "KENSHIRO.Stats.Components." (capitalize @key))}}
+                            </span>
+                            <input type="number" name="system.components.{{@key}}"
+                                   value="{{lookup @root.system.components @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
+                        </label>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="stat-box">
+            <h3>{{localize "KENSHIRO.Stats.TitleAbility"}}</h3>
+            <div class="fields-list">
+                {{#each system.schema.fields.abilities.fields as |field|}}
+                    <div class="stat-row-input">
+                        <label class="stat-label-wrap">
+                            <i class="{{statIcon @key}} {{lookup @root.options 'lol'}} stat-icon"></i>
+                            <span class="stat-text text-capitalize">
+                                {{localize (concat "KENSHIRO.Stats.Abilities." (capitalize @key))}}
+                            </span>
+                            <input type="number" name="system.abilities.{{@key}}"
+                                   value="{{lookup @root.system.abilities @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
+                        </label>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-grid row-2">
+        <div class="stat-box full-width">
+            <h3>{{localize "KENSHIRO.Stats.TitleReigns"}}</h3>
+            <div class="fields-grid-three">
+                {{#each system.schema.fields.reigns.fields as |field|}}
+                    <div class="stat-row-input">
+                        <label class="stat-label-wrap">
+                            <i class="{{statIcon @key}} stat-icon"></i>
+                            <span class="stat-text text-capitalize">
+                                {{localize (concat "KENSHIRO.Stats.Reigns." (capitalize @key))}}
+                            </span>
+                            <input type="number" name="system.reigns.{{@key}}"
+                                   value="{{lookup @root.system.reigns @key}}"
+                                   {{#if (eq @key "void")}}disabled class="disabled-fixed"{{/if}}
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
+                        </label>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-grid row-3">
+        <div class="stat-box">
+            <h3>{{localize "KENSHIRO.Stats.TitleEnergies"}}</h3>
+            <div class="fields-list">
+                {{#each system.schema.fields.energies.fields as |field|}}
+                    <div class="stat-row-input">
+                        <label class="stat-label-wrap">
+                            <i class="{{statIcon @key}} stat-icon"></i>
+                            <span class="stat-text text-capitalize">
+                                {{localize (concat "KENSHIRO.Stats.Energies." (capitalize @key))}}
+                            </span>
+                            <input type="number" name="system.energies.{{@key}}"
+                                   value="{{lookup @root.system.energies @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
+                        </label>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="stat-box">
+            <h3>{{localize "KENSHIRO.Stats.TitleTechniques"}}</h3>
+            <div class="fields-list">
+                {{#each system.schema.fields.techniques.fields as |val key|}}
+                    <div class="stat-row-input">
+                        <label class="stat-label-wrap">
+                            <i class="{{statIcon @key}} stat-icon"></i>
+                            <span class="stat-text text-capitalize">
+                                {{localize (concat "KENSHIRO.Stats.Techniques." (capitalize @key))}}
+                            </span>
+                            <input type="number" name="system.techniques.{{@key}}"
+                                   value="{{lookup @root.system.techniques @key}}"
+                                   data-dtype="Number"
+                                   min="{{field.options.min}}"
+                                   max="{{field.options.max}}" />
+                        </label>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

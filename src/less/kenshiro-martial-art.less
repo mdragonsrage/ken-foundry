@@ -1,0 +1,91 @@
+@import "kenshiro-martial-art-requirements.less";
+
+.kenshiro-item-wrapper.kenshiro-martial-art-sheet {
+  padding: @spacing-2xl;
+
+  .sheet-header {
+    .sheet-header-base();
+
+    .profile-img {
+      border: @border-light;
+      cursor: pointer;
+      background: @color-bg-black;
+    }
+
+    .header-fields {
+      flex: 1;
+    }
+
+    h1.charName {
+      margin: 0;
+    }
+
+    .charName input {
+      font-size: @font-size-4xl;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: transparent;
+      border: none;
+      color: @color-text-bright-white;
+      text-shadow: 2px 2px 4px @color-bg-black;
+      padding: 0;
+
+      &:focus {
+        box-shadow: none;
+        border-bottom: @border-solid-red;
+      }
+    }
+  }
+
+  .sheet-body {
+    padding: @spacing-lg;
+    
+    &.active {
+      .flex-column(@spacing-xl);
+      display: flex;
+    }
+
+    .form-group {
+      .flex-centered-row();
+      justify-content: space-between;
+      width: 100%;
+
+      label {
+        .form-label();
+        flex: 1;
+      }
+
+      input[type="text"],
+      select {
+        background: @color-bg-darker;
+        color: @color-text-bone;
+        border: @border-solid-grunge;
+        padding: @spacing-xs;
+        width: 60%;
+        box-sizing: border-box;
+        height: 28px;
+
+        &.font-monospace {
+          font-family: 'Courier New', monospace;
+        }
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .tab {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+
+    &.active {
+      display: flex;
+      overflow-y: auto;
+    }
+  }
+}

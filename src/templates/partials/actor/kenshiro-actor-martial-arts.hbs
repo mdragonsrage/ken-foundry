@@ -1,5 +1,4 @@
-<section data-group="primary" data-tab="ma"
-     class="sheet-body tab martial-arts {{tab.cssClass}}">
+<section data-group="primary" data-tab="ma" class="sheet-body tab martial-arts {{tab.cssClass}}">
     <header class="section-header flexrow">
         <h3 class="section-title">
             <span>{{localize "KENSHIRO.Sections.MartialArts"}}</span>
@@ -7,63 +6,100 @@
     </header>
 
     <ol class="martial-arts-list">
-        <li class="martial-art flexrow martial-art-header">
-            <div class="martial-art-name flexrow">
+        <li class="martial-art martial-art-header">
+            <div class="martial-art-name">
                 <span>{{localize "KENSHIRO.MartialArts.Name"}}</span>
             </div>
-            <div class="martial-art-prop">
-                <span>{{localize "KENSHIRO.MartialArts.School"}}</span>
+            <div class="martial-art-prop center">
+                <span>{{localize "KENSHIRO.MartialArts.Level"}}</span>
             </div>
-            <div class="martial-art-prop">
+            <div class="martial-art-prop-2 center">
+                <span>{{localize "KENSHIRO.MartialArts.Requirements"}}</span>
+            </div>
+            <div class="martial-art-prop center">
+                <span>{{localize "KENSHIRO.MartialArts.Type"}}</span>
+            </div>
+            <div class="martial-art-prop center">
                 <span>{{localize "KENSHIRO.MartialArts.Cost"}}</span>
             </div>
-            <div class="martial-art-prop">
+            <div class="martial-art-prop-2 center">
                 <span>{{localize "KENSHIRO.MartialArts.Dmg"}}</span>
             </div>
-            <div class="martial-art-controls">
+            <div class="martial-art-prop-2 center">
+                <span>{{localize "KENSHIRO.MartialArts.Special"}}</span>
+            </div>
+            <div class="martial-art-prop-2 center">
+                <span>{{localize "KENSHIRO.MartialArts.Notes"}}</span>
+            </div>
+            <div class="martial-art-controls center">
                 <span>{{localize "KENSHIRO.MartialArts.Actions"}}</span>
             </div>
         </li>
 
         <!-- List all martial-arts -->
         {{#each martialArts as |ma|}}
-            <li class="martial-art flexrow" data-item-id="{{ma.id}}">
-                <div class="martial-art-name flexrow">
-                    <div class="martial-art-image"
-                         style="background-image: url('{{tech.img}}')"></div>
-                    <h4>{{ma.name}}</h4>
+            <li class="martial-art" data-item-id="{{ma.id}}">
+                <div class="martial-art-name">
+                    <h4>
+                        <span title="{{ma.system.id}} {{ma.name}}">
+                            {{ma.system.id}} {{ma.name}}
+                        </span>
+                        <label>
+                            <input type="checkbox"
+                                   data-action="toggleUsed"
+                                   data-item-id="{{ma.id}}"
+                                   {{#if ma.system.used}}checked{{/if}} />
+                        </label>
+                    </h4>
                 </div>
 
-                <div class="martial-art-prop text-capitalize">
-                    <span>{{ma.system.school}}</span>
+                <div class="martial-art-prop text-capitalize center">
+                    <span>
+                        {{#if (eq ma.system.level null)}}
+                            X
+                        {{else}}
+                            {{ma.system.level}}
+                        {{/if}}
+                    </span>
                 </div>
-                <div class="martial-art-prop ki-badge">
-                    <span>{{ma.system.kiCost}} Ki</span>
+                <div class="martial-art-prop-2 center">
+                    <span class="overflow" title="{{ma.system.requirementsString}}">
+                        {{ma.system.requirementsString}}
+                    </span>
                 </div>
-                <div class="martial-art-prop font-monospace damage-formula">
-                    <span>{{ma.system.dmg}}</span>
+                <div class="martial-art-prop font-monospace center">
+                    <span>{{ma.system.type}}</span>
+                </div>
+                <div class="martial-art-prop font-monospace center">
+                    <span>{{ma.system.cost}}</span>
+                </div>
+                <div class="martial-art-prop-2 font-monospace center">
+                    <span class="overflow" title="{{ma.system.dmg}}">{{ma.system.dmg}}</span>
+                </div>
+                <div class="martial-art-prop-2 center">
+                    <span class="overflow" title="{{ma.system.special}}">{{ma.system.special}}</span>
+                </div>
+                <div class="martial-art-prop-2 font-monospace center">
+                    <span class="overflow" title="{{ma.system.notes}}">{{ma.system.notes}}</span>
                 </div>
 
-                <div class="martial-art-controls flexrow">
-                    <a class="martial-art-control"
-                       data-action="rollMartialArt"
+                <div class="martial-art-controls center">
+                    <a class="martial-art-control" data-action="roll"
                        title='{{localize "KENSHIRO.MartialArts.RollDamage"}}'>
                         <i class="fas fa-dice-d20"></i>
                     </a>
-                    <a class="martial-art-control"
-                       data-action="editMartialArt"
+                    <a class="martial-art-control" data-action="edit"
                        title='{{localize "KENSHIRO.MartialArts.Edit"}}'>
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="martial-art-control"
-                       data-action="deleteMartialArt"
+                    <a class="martial-art-control" data-action="delete"
                        title='{{localize "KENSHIRO.MartialArts.Delete"}}'>
                         <i class="fas fa-trash"></i>
                     </a>
                 </div>
             </li>
         {{else}}
-            <li class="martial-art flexrow no-martial-arts">
+            <li class="martial-art no-martial-arts">
                 <div class="text-muted">
                     <span>{{localize "KENSHIRO.MartialArts.Empty"}}</span>
                 </div>

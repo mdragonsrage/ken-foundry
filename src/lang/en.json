@@ -9,26 +9,162 @@
       "MartialArts": "Martial Arts"
     },
     "Stats": {
+      "Locations": {
+        "Shortened": {
+          "Head": "HE",
+          "Body": "BO",
+          "LArm": "LA",
+          "RArm": "RA",
+          "LLeg": "LL",
+          "RLeg": "RL"
+        },
+        "Head": "Head",
+        "Body": "Body",
+        "LArm": "Left Arm",
+        "RArm": "Right Arm",
+        "LLeg": "Left Leg",
+        "RLeg": "Right Leg"
+      },
       "Health": "Health",
-      "Strength": "Strength (Ryoku)",
-      "Dexterity": "Dexterity (Shun)",
-      "Mind": "Mind (Shin)",
+      "Armor": "Armor",
+      "MArmor": "Martial Armor",
+      "Resources": {
+        "DamagePoints": "Damage Points",
+        "EquilibriumPoints": "Equilibrium Points",
+        "ResistancePoints": "Resistance Points"
+      },
       "DerivedData": "Derived Parameters",
       "DefenseValue": "Defense",
-      "PuntiKi": "Spiritual Energy (Ki)"
+      "TitleComponent": "Components",
+      "TitleAbility": "Ability",
+      "TitleReigns": "Reigns",
+      "TitleEnergies": "Energies",
+      "TitleTechniques": "Techniques",
+      "Components": {
+        "Body": "Body",
+        "Instinct": "Instinct",
+        "Hearth": "Hearth",
+        "Mind": "Mind"
+      },
+      "Abilities": {
+        "Perception": "Perception",
+        "Action": "Action",
+        "Desire": "Desire",
+        "Resistance": "Resistance"
+      },
+      "Reigns": {
+        "Mineral": "Mineral",
+        "Vegetable": "Vegetable",
+        "Animal": "Animal",
+        "Human": "Human",
+        "Mechanical": "Mechanical",
+        "Void": "Void"
+      },
+      "Energies": {
+        "Power": "Power",
+        "Speed": "Speed",
+        "Precision": "Precision"
+      },
+      "Techniques": {
+        "Atk": "Attack",
+        "Def": "Defense",
+        "Aura": "Aura"
+      }
     },
     "RollOn": "Test on",
     "Mod": "Modifier",
     "MartialArts": {
       "Name": "Name",
-      "School": "School",
-      "Cost": "Cost",
-      "Dmg": "Dmg",
-      "Actions": "Roll",
+      "Level": "Level",
+      "Requirements": "Requirements",
+      "Type": "T",
+      "Cost": "C",
+      "Dmg": "Damage",
+      "Special": "Special",
+      "Notes": "Notes",
+      "Actions": "Actions",
       "Empty": "You don't know any Martial Arts Technique. Meditate or find a Master to learn them.",
       "RollDamage": "Roll Damage",
       "Edit": "Open (Edit)",
-      "Delete": "Delete"
+      "Delete": "Delete",
+      "EditText": "Select level for"
+    },
+    "Actions": {
+      "Delete": "Delete",
+      "DeleteText": "Are you sure you want to delete",
+      "Confirm": "Confirm",
+      "Cancel": "Cancel"
     }
+  },
+  "MARTIALARTS": {
+    "Info": "Info",
+    "Names": {
+      "Charge": "Charge",
+      "MartialKick": "Martial Kick",
+      "Immobilize": "Immobilize",
+      "MartialPunch": "Martial Punch",
+      "Push": "Push",
+      "Crushing": "Crushing",
+      "MartialHeadbutt": "Martial Headbutt",
+      "FlyingKick": "Flying Kick",
+      "Endure": "Endure",
+      "WeaponTech": "Sword Tech.",
+      "MissileTech": "Missiles Tech.",
+      "WeaponWall": "Wall of Swords",
+      "ReflexTech": "Crossed Mirror Tech."
+    },
+    "Requirements": {
+      "Misc": "Misc",
+      "Charge": "Run up",
+      "Crushing": "Only Immobile Adversaries",
+      "Atk": "Attack",
+      "Def": "Defense",
+      "Aura": "Aura"
+    },
+    "Schools": {
+      "School": "Vie di",
+      "Philosophy": "Strade di",
+      "Hokuto": "Hokuto",
+      "Nanto": "Nanto",
+      "Gento": "Gento",
+      "Koryu": "Hokuto Koryu",
+      "Jen": "Hokuto Jen",
+      "Shura": "Shura",
+      "Taishen": "Taishen"
+    },
+    "Dmg": {
+      "Weapon": "Weapon +1 Cat"
+    },
+    "Special": {
+
+    },
+    "Notes": {
+      "Immobilize": "Blocks 2 limbs",
+      "Crushing": "Choose Location",
+      "FlyingKick": "Localize as Punch",
+      "Endure": "Test: Mind + Des + Human",
+      "Weapon": "Weapons Only"
+    }
+  },
+  "ITEMS": {
+    "MartialArts": {
+      "Title": "Secret Technique"
+    }
+  },
+  "Various": {
+    "And": "And",
+    "Health": {
+      "Status 0": "Healthy",
+      "Status 1": "Wounded",
+      "Status 2": "Blocked",
+      "Status 3": "Lost"
+    },
+    "Coma": "Coma",
+    "Ko": "K.O.",
+    "Crazy": "Crazy",
+    "Click": "Click here",
+    "HugeAbbr": "H",
+    "NormalAbbr": "N",
+    "DiminutiveAbbr": "D"
   }
 }

@@ -1,0 +1,296 @@
+.kenshiro-body-map-section {
+
+  flex: 0 0 430px;
+  margin-top: 0;
+  border: 1px solid @color-border-grunge;
+  background: rgba(10, 10, 10, 0.6);
+  padding: 15px;
+  box-sizing: border-box;
+
+  h3 {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: @color-hokuto-red;
+    border-bottom: 1px solid @color-border-grunge;
+    padding-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .body-map-wrapper {
+    position: relative;
+    width: 400px;
+    height: 365px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #222;
+    box-sizing: border-box;
+
+    .body-silhouette {
+      position: absolute;
+      top: 40px;
+      left: 100px;
+      width: 200px;
+      height: 318px;
+      background: white;
+      border: 1px solid #444;
+      z-index: 1;
+
+      clip-path: polygon(
+              50% 0%,   55% 1%,   59% 3%,   62% 6%,   63% 10%,  // <- Cupola della testa arrotondata
+              61% 13%,  58% 15%,                                // <- Linea del collo/massa trapezio
+              82% 18%,  80% 34%,  90% 54%,  77% 57%,            // Spalla e braccio destro
+              72% 70%,  75% 100%, 56% 100%,                     // Fianco e gamba destra
+              50% 84%,                                          // Cavallo / Separazione gambe
+              44% 100%, 25% 100%, 28% 70%,                      // Gamba e fianco sinistro
+              23% 57%,  10% 54%,  20% 34%,  18% 18%,            // Braccio e spalla sinistra
+              42% 15%,  39% 13%,                                // <- Ritorno sul collo sinistro
+              37% 10%,  38% 6%,   41% 3%,   45% 1%,   50% 0%    // <- Chiusura cupola cranica sinistra
+      );
+
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+
+    }
+
+    .armor-box-label {
+      position: absolute;
+      background: #000000;
+      border: 1px solid #555555;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 58px;
+      box-sizing: border-box;
+      z-index: 20;
+      margin: 0;
+
+      &:hover {
+        border-color: @color-hokuto-red;
+      }
+
+      .location-tag {
+        font-size: 10px;
+        font-weight: bold;
+        color: @color-text-bone;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+        letter-spacing: 0.5px;
+        display: block;
+        line-height: 1;
+      }
+
+      .armor-inputs-flex {
+        display: flex !important;
+        gap: 4px;
+        width: 100%;
+        justify-content: center;
+
+        input[type="number"] {
+          width: 22px;
+          height: 20px;
+          font-size: 11px;
+          text-align: center;
+          border: none;
+          font-weight: bold;
+          margin: 0;
+          padding: 0;
+          -moz-appearance: textfield;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+
+        .input-arm-phys {
+          background: #ffffff;
+          color: #000000;
+        }
+
+        .input-arm-martial {
+          background: #1c1111;
+          color: @color-text-gold;
+          border: 1px solid #522222;
+        }
+      }
+    }
+
+    .circles-container {
+      position: absolute;
+      display: grid;
+      gap: 4px;
+      z-index: 20;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #333;
+
+      .circles-item {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: block;
+        transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+
+        &[data-state="0"] {
+          background-color: #ffffff;
+          border-color: #000000;
+          box-shadow: none;
+        }
+
+        &[data-state="1"] {
+          background-color: @color-text-orange;
+          border-color: #ffffff;
+          box-shadow: 0 0 6px @color-text-orange;
+        }
+
+        &[data-state="2"] {
+          background-color: #444444;
+          border-color: #222222;
+          box-shadow: none;
+          opacity: 0.6;
+        }
+
+        &[data-state="3"] {
+          background-color: @color-hokuto-red;
+          border-color: #222222;
+          box-shadow: 0 0 6px @color-hokuto-red;
+          opacity: 0.6;
+        }
+
+        &:hover {
+          transform: scale(1.15);
+
+          &[data-state="2"] {
+            opacity: 1;
+          }
+        }
+      }
+
+      input[type="checkbox"] {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+
+        border: none;
+        outline: none;
+        box-shadow: none;
+
+        width: 10px;
+        height: 10px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        display: block;
+        transition: background 0.15s ease, box-shadow 0.15s ease;
+
+        &::before, &::after {
+          content: none !important;
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+        }
+
+        &:checked {
+          background-color: @color-hokuto-red;
+          box-shadow: 0 0 6px @color-hokuto-red;
+          &::before, &::after {
+            content: none !important;
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+          }
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.8);
+          &:checked {
+            background-color: lighten(@color-hokuto-red, 10%);
+          }
+        }
+      }
+    }
+
+    .head {
+      .armor-box-label {
+        top: 41px;
+        left: 100px;
+      }
+    }
+
+    .head-circles {
+      top: 41px;
+      left: 176px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .body {
+      .armor-box-label {
+        top: 100px;
+        left: 275px;
+      }
+    }
+
+    .body-circles {
+      top: 100px;
+      left: 176px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .arm-right {
+      .armor-box-label {
+        top: 155px;
+        left: 50px;
+      }
+    }
+    .arm-r-circles {
+      top: 155px;
+      left: 135px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .arm-left {
+      .armor-box-label {
+        top: 155px;
+        right: 50px;
+      }
+    }
+    .arm-l-circles {
+      top: 155px;
+      right: 135px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leg-right {
+      .armor-box-label {
+        bottom: 30px;
+        left: 85px;
+      }
+    }
+    .leg-r-circles {
+      bottom: 10px;
+      left: 154px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leg-left {
+      .armor-box-label {
+        bottom: 30px;
+        right: 85px;
+      }
+    }
+    .leg-l-circles {
+      bottom: 10px;
+      right: 153px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
