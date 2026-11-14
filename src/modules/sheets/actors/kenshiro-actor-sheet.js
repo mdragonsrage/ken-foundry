@@ -1,3 +1,5 @@
+import {bindSearchFilters} from "../../utils.js";
+
 /**
  * Character sheet for Kenshiro GDR from Nexus
  * Extends foundry.application.api.ActorSheetV2
@@ -110,36 +112,8 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     /** @override */
     _onRender(context, options) {
         super._onRender(context, options);
-        const searchInputs = this.element.querySelectorAll(".search-input");
-        if (!searchInputs || searchInputs.length === 0) {
-            return;
-        }
-        for (let searchInput of searchInputs) {
-            const filterfn = () => KenshiroActorSheet._executeFilter(searchInput);
-            const debouncedFilter = foundry.utils.debounce(filterfn, 250);
-            searchInput.addEventListener("input", debouncedFilter);
-            searchInput.addEventListener("blur", filterfn);
-        }
-    }
 
-    /**
-     *
-     */
-
-    static _executeFilter(input)  {
-        const query = input.value.toLowerCase().trim();
-        const container = input.closest(".search-container");
-        const rows = container.querySelectorAll(".searchable-item");
-
-        rows.forEach(row => {
-            if (query === null || query.trim() === "") {
-                row.style.display = "flex";
-                return;
-            }
-            let info = row.dataset.itemSearch || "";
-            const isMatch = info.toLowerCase().includes(query);
-            row.style.display = isMatch ? "flex" : "none";
-        });
+        bindSearchFilters(this.element);
     }
 
     /**
