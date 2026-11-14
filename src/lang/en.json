@@ -33,7 +33,11 @@
         "EquilibriumPoints": "Equilibrium Points",
         "ResistancePoints": "Resistance Points"
       },
-      "DerivedData": "Derived Parameters",
+      "DerivedDataLabels": {
+        "DerivedMoves": "Movement",
+        "DerivedAtk": "Attack Values",
+        "DerivedDefense": "Defense Values"
+      },
       "DefenseValue": "Defense",
       "TitleComponent": "Components",
       "TitleAbility": "Ability",
@@ -88,6 +92,24 @@
       "Edit": "Open (Edit)",
       "Delete": "Delete",
       "EditText": "Select level for"
+    },
+    "Derived": {
+      "Initiative": "Initiative",
+      "Movement": "Movement",
+      "Run": "Run",
+      "Attack": "Attack",
+      "Atk": {
+        "HandToHand": "Hand to Hand",
+        "Ranged": "Ranged",
+        "Physical": "Physical",
+        "Mechanical": "Mechanical"
+      },
+      "Defense": {
+        "Dodge": "Dodge",
+        "Parry": "Parry",
+        "Physical": "Physical",
+        "Mechanical": "Mechanical"
+      }
     },
     "Actions": {
       "Delete": "Delete",
