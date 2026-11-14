@@ -1,10 +1,18 @@
-<section data-group="primary" data-tab="ma" class="sheet-body tab martial-arts {{tab.cssClass}}">
+<section data-group="primary" data-tab="ma" class="sheet-body tab martial-arts {{tab.cssClass}} search-container">
     <header class="section-header flexrow">
         <h3 class="section-title">
             <span>{{localize "KENSHIRO.Sections.MartialArts"}}</span>
         </h3>
     </header>
-
+    <div class="martial-arts-search-wrapper">
+        <label class="martial-arts-search-label">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search"
+                   class="martial-arts-search search-input"
+                   placeholder="{{localize "Various.SearchMartialArts"}}"
+                   autocomplete="off" />
+        </label>
+    </div>
     <ol class="martial-arts-list">
         <li class="martial-art martial-art-header">
             <div class="martial-art-name">
@@ -38,7 +46,7 @@
 
         <!-- List all martial-arts -->
         {{#each martialArts as |ma|}}
-            <li class="martial-art" data-item-id="{{ma.id}}">
+            <li class="martial-art searchable-item" data-item-id="{{ma.id}}" data-item-search="{{ma.system.id}} {{ma.name}}">
                 <div class="martial-art-name">
                     <h4>
                         <span title="{{ma.system.id}} {{ma.name}}">
