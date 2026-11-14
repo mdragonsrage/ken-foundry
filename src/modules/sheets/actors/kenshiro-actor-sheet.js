@@ -1,3 +1,5 @@
+import {bindSearchFilters} from "../../utils.js";
+
 /**
  * Character sheet for Kenshiro GDR from Nexus
  * Extends foundry.application.api.ActorSheetV2
@@ -63,6 +65,9 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         },
         trackingBars: {
             template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-resources-partial.hbs"
+        },
+        derivedData: {
+            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-derived.hbs"
         }
     }
 
@@ -88,7 +93,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         context.actorName = this.actor.name;
         context.isGm = game.user.isGM;
 
-        this._prepareResourceMalus(context);
         this._prepareItems(context);
 
         return context;
@@ -107,6 +111,13 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         return context;
     }
 
+    /** @override */
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        bindSearchFilters(this.element);
+    }
+
     /**
      * Function use to set actor item (e.g. martial arts, equip...)
      * @private
@@ -122,22 +133,6 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         }
 
         context.martialArts = martialArts;
-    }
-
-    /**
-     * Function use to set track bar for resources (i.e. damage, resistance, equilibrium)
-     * @private
-     * @param context
-     */
-    _prepareResourceMalus(context) {
-        const system = this.actor.system;
-
-        const damageVal = (system.resources.damage?.value ?? 0);
-        const malusDamage = damageVal === 5 ? 0 : - damageVal;
-        const malusResistance = (system.resources.resistance?.value ?? 0) === 9 ? -1 : 0;
-        const malusEquilibrium = (system.resources.equilibrium?.value ?? 0) === 9 ? -1 : 0;
-
-        context.resourcesMalus = malusDamage + malusResistance + malusEquilibrium;
     }
 
     /**
@@ -287,7 +282,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             return;
         }
 
-        const mod = actor.system.derivated.statMod[statKey] || 0;
+        const mod = 0;
         const formula = `2d6 + ${mod}`;
         const roll = await new Roll(formula).evaluate();
         const statLabel = game.i18n.localize(`KENSHIRO.Stats.${statKey.charAt(0).toUpperCase() + statKey.slice(1)}`);
