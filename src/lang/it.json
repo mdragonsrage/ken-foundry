@@ -35,8 +35,11 @@
         "EquilibriumPoints": "Punti Equilibrio",
         "ResistancePoints": "Punti Resistenza"
       },
-      "DerivedData": "Parametri Derivati",
-      "DefenseValue": "Soglia di Difesa",
+      "DerivedDataLabels": {
+        "DerivedMoves": "Movimento",
+        "DerivedAtk": "Valori di Attacco",
+        "DerivedDefense": "Soglia di Difesa"
+      },
       "TitleComponent": "Componenti",
       "TitleAbility": "Abilita",
       "TitleReigns": "Regni",
@@ -88,6 +91,24 @@
       "Edit": "Modifica",
       "Delete": "Elimina",
       "EditText": "Seleziona il nuovo livello per"
+    },
+    "Derived": {
+      "Initiative": "Iniziativa",
+      "Movement": "Movimento",
+      "Run": "Corsa",
+      "Attack": "Attacco",
+      "Atk": {
+        "HandToHand": "Corpo a Corpo",
+        "Ranged": "A Distanza",
+        "Physical": "Fisico",
+        "Mechanical": "Meccanico"
+      },
+      "Defense": {
+        "Dodge": "Schivata",
+        "Parry": "Parata",
+        "Physical": "Fisico",
+        "Mechanical": "Meccanico"
+      }
     },
     "Actions": {
       "Delete": "Elimina",

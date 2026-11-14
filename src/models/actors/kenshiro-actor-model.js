@@ -101,8 +101,21 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                 }),
             }),
 
-            derivated: new fields.SchemaField({
-                defenseValue: new fields.NumberField({ initial: 0 })
+            derived: new fields.SchemaField({
+                initiative: new fields.NumberField({ initial: 0 }),
+                movement: new fields.NumberField({ initial: 0 }),
+                run: new fields.NumberField({ initial: 0 }),
+                atk: new fields.SchemaField({
+                    physicalHandToHand: new fields.NumberField({initial: 0}),
+                    physicalRanged: new fields.NumberField({ initial: 0 }),
+                    mechanicalHandToHand: new fields.NumberField({ initial: 0 }),
+                    mechanicalRanged: new fields.NumberField({ initial: 0 }),
+                }),
+                defense: new fields.SchemaField({
+                    dodge: new fields.NumberField({initial: 0}),
+                    physicalParry: new fields.NumberField({initial: 0}),
+                    mechanicalParry: new fields.NumberField({initial: 0}),
+                })
             })
         };
     }
@@ -111,8 +124,63 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     prepareDerivedData() {
         super.prepareDerivedData();
 
-        this.derivated = {};
-
         this.reigns.void = -1;
+
+        this.totalMalus = this.calcMalus();
+
+        this.derived.initiative =
+            (this.components.instinct ?? 0) +
+            (this.abilities.action ?? 0) +
+            (this.reigns.human ?? 0) +
+            (this.techniques.aura ?? 0) - this.totalMalus;
+
+        this.derived.movement = 8 + (this.techniques.def ?? 0) - this.totalMalus;
+        this.derived.run = this.derived.movement; //TODO: + run feat;
+
+        const baseHth = (this.components.body ?? 0) + (this.abilities.action ?? 0) + (this.techniques.atk ?? 0) - this.totalMalus;
+        const baseRanged = (this.components.body ?? 0) + (this.abilities.perception ?? 0) + (this.techniques.atk ?? 0) - this.totalMalus;
+        const baseDef = (this.components.body ?? 0) + (this.abilities.action ?? 0) + (this.techniques.defense ?? 0) - this.totalMalus;
+        this.derived.atk.physicalHandToHand = baseHth + (this.reigns.human ?? 0);
+        this.derived.atk.mechanicalHandToHand = baseHth + (this.reigns.mechanical ?? 0);
+        this.derived.atk.physicalRanged = baseRanged + (this.reigns.human ?? 0);
+        this.derived.atk.mechanicalRanged = baseRanged + (this.reigns.mechanical ?? 0);
+        this.derived.defense.physicalParry = baseDef + (this.reigns.human ?? 0);
+        this.derived.defense.mechanicalParry = baseDef + (this.reigns.mechanical ?? 0);
+        this.derived.defense.dodge = (this.components.instinct ?? 0) + (this.abilities.perception ?? 0) + (this.techniques.defense ?? 0) - this.totalMalus;
+    }
+
+    /**
+     * Calculates malus due to various sources: resources, armor ...
+     * @return number
+     */
+    calcMalus() {
+      return this.calcResourceMalus() + this.calcArmorMalus();
+    }
+
+    /**
+     * Calculate Resource malus
+     * @return number
+     */
+    calcResourceMalus() {
+        const damageVal = (this.resources.damage?.value ?? 0);
+        const malusDamage = damageVal === 5 ? 0 : - damageVal;
+        const malusResistance = (this.resources.resistance?.value ?? 0) === 9 ? -1 : 0;
+        const malusEquilibrium = (this.resources.equilibrium?.value ?? 0) === 9 ? -1 : 0;
+        this.resourceMalus = malusDamage + malusResistance + malusEquilibrium;
+        return this.resourceMalus;
+    }
+
+    /**
+     * Calculate Armor malus
+     * @return number
+     */
+    calcArmorMalus() {
+        let totArmorVal = 0;
+        for (let location in this.hitLocations) {
+            totArmorVal += this.hitLocations[location]?.armor ?? 0;
+        }
+
+        this.armorMalus  = Math.floor(totArmorVal / 6);
+        return this.armorMalus;
     }
 }
