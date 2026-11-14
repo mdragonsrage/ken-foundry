@@ -1,3 +1,5 @@
+import {bindSearchFilters} from "../../utils.js";
+
 /**
  * Character sheet for Kenshiro GDR from Nexus
  * Extends foundry.application.api.ActorSheetV2
@@ -105,6 +107,13 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         }
 
         return context;
+    }
+
+    /** @override */
+    _onRender(context, options) {
+        super._onRender(context, options);
+
+        bindSearchFilters(this.element);
     }
 
     /**
