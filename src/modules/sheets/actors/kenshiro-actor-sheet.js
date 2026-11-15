@@ -41,33 +41,33 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     /** @override */
     static PARTS = {
         header: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-header.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-header.hbs"
         },
         tabs: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-tab-navigation.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-tab-navigation.hbs"
         },
         stats: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats.hbs",
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats.hbs",
             scrollable: [''],
         },
         statsVals: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-values.hbs",
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-values.hbs",
         },
         ma: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-martial-arts.hbs",
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-martial-arts.hbs",
             scrollable: [''],
         },
         footer: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-footer.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-footer.hbs"
         },
         health_armor: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-health-armor.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-health-armor.hbs"
         },
         trackingBars: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-resources-partial.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-resources-partial.hbs"
         },
         derivedData: {
-            template: "systems/kenshiro/templates/partials/actor/kenshiro-actor-stats-derived.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-derived.hbs"
         }
     }
 
