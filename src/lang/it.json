@@ -77,6 +77,25 @@
         "Aura": "Aura"
       }
     },
+    "Feats": {
+      "Title": "Talenti",
+      "Name": "Nome",
+      "Level": "Livello",
+      "Actions": "Azioni",
+      "Empty": "Nessun talento appreso, cerca di migliorare!",
+      "RollDamage": "Tira",
+      "Edit": "Modifica",
+      "Delete": "Elimina",
+      "EditText": "Seleziona il nuovo livello per"
+    },
+    "Equipment": {
+      "Title": "Equipaggiamento",
+      "Name": "Nome",
+      "Actions": "Azioni",
+      "Empty": "Nessun oggetto, compra o trova qualcosa",
+      "Edit": "Modifica",
+      "Delete": "Elimina"
+    },
     "MartialArts": {
       "Name": "Colpo",
       "Level": "Livello",
@@ -188,6 +207,8 @@
     "HugeAbbr": "H",
     "NormalAbbr": "N",
     "DiminutiveAbbr": "D",
-    "SearchMartialArts": "Cerca per codice o nome"
+    "SearchMartialArts": "Cerca arte marziale per codice o nome",
+    "SearchFeats": "Cerca talento",
+    "SearchEquipment": "Cerca oggetto"
   }
 }

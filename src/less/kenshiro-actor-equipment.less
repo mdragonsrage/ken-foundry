@@ -1,0 +1,195 @@
+.kenshiro-equipment-wrapper {
+  flex: 1;
+  .section-header {
+    .section-header-base();
+
+    .section-title {
+      font-size: @font-size-lg;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      color: #8b0000;
+      border-bottom: 1px solid #3a3a3a;
+      padding-bottom: 4px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .equipment-search-wrapper {
+    position: relative;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+
+    .search-icon {
+      position: absolute;
+      left: 8px;
+      top: 6px;
+      color: @color-text-bone;
+      font-size: 11px;
+      pointer-events: none;
+    }
+
+    .equipment-search {
+      width: 100%;
+      height: 24px;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 11px;
+      padding: 0 8px 0 24px;
+      box-sizing: border-box;
+      transition: all 0.15s ease;
+
+      &:focus {
+        border-color: @color-text-gold;
+        box-shadow: 0 0 4px rgba(255, 215, 0, 0.2);
+        outline: none;
+      }
+    }
+  }
+
+  .items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: @border-solid-grunge;
+    .flex-column();
+
+    .feat {
+      .list-item-base();
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .item-name {
+        flex: 2.5;
+        .flex-centered-row(@spacing-md);
+        min-width: 0;
+
+        h4 {
+          margin: 0;
+          font-size: @font-size-md;
+          font-weight: 600;
+          color: @color-text-bright-white;
+          .flex-centered-row(@spacing-sm);
+          justify-content: space-between;
+          width: 100%;
+
+          span {
+            display: inline-block;
+            .text-overflow();
+            flex: 1;
+          }
+
+          label {
+            .flex-center();
+            cursor: pointer;
+            margin: 0;
+
+            input[type="checkbox"] {
+              margin: 0;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .item-prop {
+        flex: 1;
+        font-size: @font-size-sm;
+        min-width: 0;
+        .flex-center();
+        text-align: center;
+
+        span {
+          .text-overflow();
+        }
+
+        &.center {
+          text-align: center;
+        }
+      }
+
+      .item-prop-2 {
+        flex: 2;
+        font-size: @font-size-sm;
+        min-width: 0;
+        .flex-center();
+        box-sizing: border-box;
+
+        span.overflow {
+          display: inline-block;
+          width: 100%;
+          .text-overflow();
+          text-align: center;
+        }
+
+        &.center {
+          text-align: center;
+        }
+      }
+
+      .item-controls {
+        flex: 0 0 85px;
+        .flex-centered-row(@spacing-lg);
+        justify-content: flex-end;
+
+        &.center {
+          justify-content: center;
+        }
+
+        .item-control {
+          color: @color-text-dark;
+          cursor: pointer;
+          transition: @transition-fast;
+          display: inline-block;
+
+          &:hover {
+            transform: scale(1.15);
+          }
+
+          &[data-action="editItem"]:hover {
+            color: @color-text-gold;
+          }
+
+          &[data-action="deleteItem"]:hover {
+            color: @color-hokuto-glow;
+          }
+        }
+      }
+    }
+
+    .item-header {
+      background-color: @color-bg-card;
+      border-bottom: 2px solid @color-border-grunge;
+      font-weight: bold;
+      font-size: @font-size-xs;
+      text-transform: uppercase;
+      color: @color-text-dark;
+
+      .item-prop,
+      .item-prop-2,
+      .item-name,
+      .item-controls {
+        color: @color-text-dark;
+      }
+    }
+
+    .item:not(.item-header):hover {
+      .list-item-hover();
+    }
+
+    .no-items {
+      padding: @spacing-2xl;
+      justify-content: center;
+      background-color: @color-bg-overlay-dark;
+      font-style: italic;
+      color: @color-text-dark;
+      font-size: @font-size-sm;
+      display: flex;
+      width: 100%;
+    }
+  }
+}

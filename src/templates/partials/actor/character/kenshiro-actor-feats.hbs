@@ -1,3 +1,79 @@
-<div>
-    feats
+<div class="kenshiro-feats-wrapper">
+    <header class="section-header flexrow">
+        <h3 class="section-title">
+            <span>{{localize "KENSHIRO.Feats.Title"}}</span>
+        </h3>
+    </header>
+    <div class="feats-search-wrapper">
+        <label class="feats-search-label">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search"
+                   class="feats-search search-input"
+                   placeholder="{{localize "Various.SearchFeats"}}"
+                   autocomplete="off" />
+        </label>
+    </div>
+    <ol class="feats-list">
+        <li class="feat feat-header">
+            <div class="feat-name">
+                <span>{{localize "KENSHIRO.Feats.Name"}}</span>
+            </div>
+            <div class="feat-prop center">
+                <span>{{localize "KENSHIRO.Feats.Level"}}</span>
+            </div>
+            <div class="feat-controls center">
+                <span>{{localize "KENSHIRO.Feats.Actions"}}</span>
+            </div>
+        </li>
+
+        <!-- List all feats -->
+        {{#each feats as |f|}}
+            <li class="feat searchable-item" data-item-id="{{f.id}}" data-item-search="{{f.name}}">
+                <div class="feat-name">
+                    <h4>
+                        <span title="{{f.name}}">
+                            {{f.name}}
+                        </span>
+                        <label>
+                            <input type="checkbox"
+                                   data-action="toggleUsed"
+                                   data-item-id="{{f.id}}"
+                                   {{#if f.system.used}}checked{{/if}} />
+                        </label>
+                    </h4>
+                </div>
+
+                <div class="feat-prop text-capitalize center">
+                    <span>
+                        {{#if (eq f.system.level null)}}
+                            X
+                        {{else}}
+                            {{f.system.level}}
+                        {{/if}}
+                    </span>
+                </div>
+
+                <div class="feat-controls center">
+                    <a class="feat-control" data-action="roll"
+                       title='{{localize "KENSHIRO.Feats.Roll"}}'>
+                        <i class="fas fa-dice-d20"></i>
+                    </a>
+                    <a class="feat-control" data-action="edit"
+                       title='{{localize "KENSHIRO.Feats.Edit"}}'>
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="feat-control" data-action="delete"
+                       title='{{localize "KENSHIRO.Feats.Delete"}}'>
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+            </li>
+        {{else}}
+            <li class="feat no-feats">
+                <div class="text-muted">
+                    <span>{{localize "KENSHIRO.Feats.Empty"}}</span>
+                </div>
+            </li>
+        {{/each}}
+    </ol>
 </div>

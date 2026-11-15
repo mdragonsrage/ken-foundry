@@ -76,6 +76,25 @@
         "Aura": "Aura"
       }
     },
+    "Feats": {
+      "Title": "Feats",
+      "Name": "Name",
+      "Level": "Level",
+      "Actions": "Actions",
+      "Empty": "You don't know any feat. Get better!",
+      "RollDamage": "Roll",
+      "Edit": "Open (Edit)",
+      "Delete": "Delete",
+      "EditText": "Select level for"
+    },
+    "Equipment": {
+      "Title": "Equipment",
+      "Name": "Name",
+      "Actions": "Actions",
+      "Empty": "No items, find or buy something!",
+      "Edit": "Edit",
+      "Delete": "Delete"
+    },
     "RollOn": "Test on",
     "Mod": "Modifier",
     "MartialArts": {
@@ -189,6 +208,8 @@
     "HugeAbbr": "H",
     "NormalAbbr": "N",
     "DiminutiveAbbr": "D",
-    "SearchMartialArts": "Search by code or name"
+    "SearchMartialArts": "Search martial art by code or name",
+    "SearchFeats": "Search feat",
+    "SearchEquipment": "Search item"
   }
 }
