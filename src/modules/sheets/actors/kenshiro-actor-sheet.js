@@ -139,14 +139,20 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
      */
     _prepareItems(context) {
         const martialArts = [];
+        const feats = []
         const items = this.actor.items.contents;
 
-        for (let i of items) {
-            if(i.type === "martialArt")
-                martialArts.push(this._prepareMartialArts(i));
+        const maItems = items.filter(l => l.type === "martialArt");
+        const featItems = items.filter(l => l.type === "feat");
+        for (let i of maItems) {
+            martialArts.push(this._prepareMartialArts(i));
+        }
+        for (let i of featItems) {
+            feats.push(this._prepareFeats(i));
         }
 
         context.martialArts = martialArts;
+        context.feats = feats;
     }
 
     /**
@@ -271,6 +277,19 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             id: martialArt.id,
             name: martialArt.name,
             system: martialArt.system
+        }
+    }
+
+    /**
+     * Converts item in Feat and add to actor list
+     * @private
+     * @param {Feat} feat
+     * @return {Feat}
+     */
+    _prepareFeats(feat) {
+        return {
+            name: feat.name,
+            system: feat.system
         }
     }
 

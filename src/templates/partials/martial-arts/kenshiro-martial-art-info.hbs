@@ -2,52 +2,68 @@
     data-group="primary" data-tab="info">
 
     <div class="form-group">
-        <label>Id</label>
-        <input type="text" name="system.id" value="{{system.id}}" />
+        <label>
+            <span>Id</span>
+            <input type="text" name="system.id" value="{{system.id}}" />
+        </label>
     </div>
 
     <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="name" value="{{itemName}}" />
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Name"}}</span>
+            <input type="text" name="name" value="{{itemName}}" />
+        </label>
     </div>
 
     <div class="form-group">
-        <label>{{localize "KENSHIRO.MartialArts.Level"}}</label>
-        <select name="system.level">
-            {{#each levelChoices}}
-                <option value="{{this}}" {{#if (eq this ../system.level)}}selected{{/if}}>
-                    {{#if (eq this null)}}
-                        X
-                    {{else}}
-                        {{this}}
-                    {{/if}}
-                </option>
-            {{/each}}
-        </select>
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Level"}}</span>
+            <select name="system.level">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.level)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </label>
     </div>
 
     <div class="form-group">
-        <label>{{localize "KENSHIRO.MartialArts.Type"}}</label>
-        <input type="text" name="system.type" value="{{system.type}}" />
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Type"}}</span>
+            <input type="text" name="system.type" value="{{system.type}}" />
+        </label>
     </div>
 
     <div class="form-group">
-        <label>{{localize "KENSHIRO.MartialArts.Cost"}}</label>
-        <input type="text" name="system.cost" value="{{system.cost}}" class="font-monospace" />
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Cost"}}</span>
+            <input type="text" name="system.cost" value="{{system.cost}}" class="font-monospace" />
+        </label>
     </div>
 
     <div class="form-group">
-        <label>{{localize "KENSHIRO.MartialArts.Dmg"}}</label>
-        <input type="text" name="system.dmg" value="{{system.dmg}}" class="font-monospace" />
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Dmg"}}</span>
+            <input type="text" name="system.dmg" value="{{system.dmg}}" class="font-monospace" />
+        </label>
     </div>
 
     <div class="form-group">
-        <label>{{localize "KENSHIRO.MartialArts.Special"}}</label>
-        <input type="text" name="system.special" value="{{system.special}}" class="font-monospace" />
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Special"}}</span>
+            <input type="text" name="system.special" value="{{system.special}}" class="font-monospace" />
+        </label>
     </div>
 
     <div class="form-group">
-        <label>{{localize "KENSHIRO.MartialArts.Notes"}}</label>
-        <input type="text" name="system.notes" value="{{system.notes}}" class="font-monospace" />
+        <label>
+            <span>{{localize "KENSHIRO.MartialArts.Notes"}}</span>
+            <input type="text" name="system.notes" value="{{system.notes}}" class="font-monospace" />
+        </label>
     </div>
 </section>

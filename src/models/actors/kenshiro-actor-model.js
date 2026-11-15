@@ -135,7 +135,9 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             (this.techniques.aura ?? 0) - this.totalMalus;
 
         this.derived.movement = 8 + (this.techniques.def ?? 0) - this.totalMalus;
-        this.derived.run = this.derived.movement; //TODO: + run feat;
+        const feats = this.parent.items.filter(item =>  item.type === "feat");
+        const run = feats.find(item => item.name === game.i18n.localize("FEATS.Names.Run"));
+        this.derived.run = (this.derived.movement + (run?.system.level ?? -4 )) * 3; //TODO: + run feat;
 
         const baseHth = (this.components.body ?? 0) + (this.abilities.action ?? 0) + (this.techniques.atk ?? 0) - this.totalMalus;
         const baseRanged = (this.components.body ?? 0) + (this.abilities.perception ?? 0) + (this.techniques.atk ?? 0) - this.totalMalus;

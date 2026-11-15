@@ -16,11 +16,11 @@
       flex: 1;
     }
 
-    h1.charName {
+    h1.martialArtName {
       margin: 0;
     }
 
-    .charName input {
+    .martialArtName input {
       font-size: @font-size-4xl;
       font-weight: 900;
       letter-spacing: 1px;
@@ -52,9 +52,18 @@
       width: 100%;
 
       label {
-        .form-label();
-        flex: 1;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        span {
+          flex: 1;
+          .form-label();
+        }
       }
+
 
       input[type="text"],
       select {

@@ -1,5 +1,6 @@
 /**
  * @typedef {Object} MartialArt
+ * @typedef {Object} Feat
  * @property {string|undefined|null} id
  * @property {string} name
  * @property {string} type

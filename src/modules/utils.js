@@ -22,6 +22,7 @@ export function bindSearchFilters(rootElement, delay = 250) {
     if (!searchInputs || searchInputs.length === 0) {
         return;
     }
+
     for (let searchInput of searchInputs) {
         const filterFn = () => executeFilter(searchInput);
         const debouncedFilter = foundry.utils.debounce(filterFn, 250);

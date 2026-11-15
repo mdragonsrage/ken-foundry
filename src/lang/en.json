@@ -188,6 +188,32 @@
       "Weapon": "Weapons Only"
     }
   },
+  "FEATS": {
+    "Names": {
+      "Melee": "Melee Weapons",
+      "Ranged": "Ranged Weapons",
+      "Thrown": "Thrown Weapons",
+      "Athletics": "Athletics",
+      "Ride": "Ride",
+      "Search": "Search",
+      "Commerce": "Commerce",
+      "Concentration": "Concentration",
+      "Run": "Run",
+      "Geography": "Geography",
+      "Drive": "Drive",
+      "Teach": "Teach",
+      "Leadership": "Leadership",
+      "Read": "Read",
+      "Medicine": "Medicine",
+      "Oratory": "Oratory",
+      "FirstAid": "First Aid",
+      "Deceive": "Deceive",
+      "Brawl": "Brawl",
+      "Survival": "Survival",
+      "Spy": "Spy",
+      "Camouflage": "Camouflage"
+    }
+  },
   "ITEMS": {
     "MartialArts": {
       "Title": "Secret Technique"

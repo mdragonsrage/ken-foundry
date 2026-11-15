@@ -187,6 +187,32 @@
       "Weapon": "Solo con Armi"
     }
   },
+  "FEATS": {
+    "Names": {
+      "Melee": "Armi da Corpo a Corpo",
+      "Ranged": "Armi da Fuoco",
+      "Thrown": "Armi da Lancio",
+      "Athletics": "Atletica",
+      "Ride": "Cavalcare",
+      "Search": "Cercare",
+      "Commerce": "Commerciare",
+      "Concentration": "Concentrazione",
+      "Run": "Correre",
+      "Geography": "Geografia",
+      "Drive": "Guidare Veicoli",
+      "Teach": "Insegnare",
+      "Leadership": "Leadership",
+      "Read": "Leggere",
+      "Medicine": "Medicina",
+      "Oratory": "Oratoria",
+      "FirstAid": "Pronto Soccorso",
+      "Deceive": "Raggirare",
+      "Brawl": "Rissare",
+      "Survival": "Sopravvivenza",
+      "Spy": "Spiare",
+      "Camouflage": "Travestimento"
+    }
+  },
   "ITEMS": {
     "MartialArts": {
       "Title": "Colpi Segreti"

@@ -1,7 +1,9 @@
 import {KenshiroActorSheet} from "./modules/sheets/actors/kenshiro-actor-sheet.js";
 import {CharacterData} from './models/actors/kenshiro-actor-model.js';
 import {MartialArtData} from "./models/items/kenshiro-martial-art-model.js";
+import {FeatData} from "./models/items/kenshiro-feat-model.js";
 import {KenshiroMartialArtSheet} from "./modules/sheets/items/kenshiro-martial-art-sheet.js";
+import {KenshiroFeatSheet} from "./modules/sheets/items/kenshiro-feat-sheet.js";
 
 Hooks.once("init", async () => {
     console.log("KENSHIRO | System start");
@@ -9,6 +11,7 @@ Hooks.once("init", async () => {
     registerHandlebars();
     CONFIG.Actor.dataModels.character = CharacterData;
     CONFIG.Item.dataModels.martialArt = MartialArtData;
+    CONFIG.Item.dataModels.feat = FeatData;
 
     foundry.applications.apps.DocumentSheetConfig.unregisterSheet(Actor, "core", foundry.applications.sheets.ActorSheetV2);
     foundry.applications.apps.DocumentSheetConfig.unregisterSheet(Item, "core", foundry.applications.sheets.ItemSheetV2);
@@ -23,6 +26,11 @@ Hooks.once("init", async () => {
         types: ["martialArt"],
         makeDefault: true,
         label: game.i18n.localize("ITEMS.MartialArts.Title")
+    });
+
+    foundry.applications.apps.DocumentSheetConfig.registerSheet(Item, "core", KenshiroFeatSheet, {
+        types: ["feat"],
+        label: game.i18n.localize("ITEMS.Feats.Title")
     });
 
     console.log("Kenshiro | System initialized")
@@ -246,7 +254,187 @@ Hooks.on("preCreateActor", (actor, data, options, userId) => {
                 }
             }
         ];
-        actor.updateSource({items: _baseMartialArts});
+        /** @type {Feat[]} */
+        const _baseFeats = [
+            {
+                name: game.i18n.localize("FEATS.Names.Melee"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Ranged"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Thrown"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Athletics"),
+                type: "feat",
+                system: {
+                    level: 0,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Ride"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Search"),
+                type: "feat",
+                system: {
+                    level: -2,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Commerce"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Concentration"),
+                type: "feat",
+                system: {
+                    level: 0,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Run"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Geography"),
+                type: "feat",
+                system: {
+                    level: -2,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Drive"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Teach"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Leadership"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Read"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Medicine"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Oratory"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.FirstAid"),
+                type: "feat",
+                system: {
+                    level: -2,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Deceive"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Brawl"),
+                type: "feat",
+                system: {
+                    level: 0,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Survival"),
+                type: "feat",
+                system: {
+                    level: -2,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Spy"),
+                type: "feat",
+                system: {
+                    level: -4,
+                    used: false
+                }
+            },
+            {
+                name: game.i18n.localize("FEATS.Names.Camouflage"),
+                type: "feat",
+                system: {
+                    level: -2,
+                    used: false
+                }
+            },
+        ];
+
+        actor.updateSource({items: _baseMartialArts.concat(_baseFeats)});
     }
 })
 

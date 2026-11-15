@@ -1,0 +1,82 @@
+.kenshiro-item-wrapper.kenshiro-feat-sheet {
+  padding: @spacing-2xl;
+
+  .sheet-header {
+    .sheet-header-base();
+
+    .profile-img {
+      border: @border-light;
+      cursor: pointer;
+      background: @color-bg-black;
+    }
+
+    .header-fields {
+      flex: 1;
+    }
+
+    h1.featName {
+      margin: 0;
+    }
+
+    .featName input {
+      font-size: @font-size-4xl;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: transparent;
+      border: none;
+      color: @color-text-bright-white;
+      text-shadow: 2px 2px 4px @color-bg-black;
+      padding: 0;
+
+      &:focus {
+        box-shadow: none;
+        border-bottom: @border-solid-red;
+      }
+    }
+  }
+
+  .sheet-body {
+    padding: @spacing-lg;
+    .flex-column(@spacing-xl);
+    display: flex;
+
+    .form-group {
+      .flex-centered-row();
+      justify-content: space-between;
+      width: 100%;
+
+      label {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        span {
+          flex: 1;
+          .form-label();
+        }
+      }
+
+      input[type="text"],
+      select {
+        background: @color-bg-darker;
+        color: @color-text-bone;
+        border: @border-solid-grunge;
+        padding: @spacing-xs;
+        width: 60%;
+        box-sizing: border-box;
+        height: 28px;
+
+        &.font-monospace {
+          font-family: 'Courier New', monospace;
+        }
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+}

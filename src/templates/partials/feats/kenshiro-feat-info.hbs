@@ -1,0 +1,25 @@
+<section class="sheet-body tab info">
+    <div class="form-group">
+        <label>
+            <span>{{localize "KENSHIRO.Feats.Name"}}</span>
+            <input type="text" name="name" value="{{itemName}}" />
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <span>{{localize "KENSHIRO.Feats.Level"}}</span>
+            <select name="system.level">
+                {{#each levelChoices}}
+                    <option value="{{this}}" {{#if (eq this ../system.level)}}selected{{/if}}>
+                        {{#if (eq this null)}}
+                            X
+                        {{else}}
+                            {{this}}
+                        {{/if}}
+                    </option>
+                {{/each}}
+            </select>
+        </label>
+    </div>
+</section>
