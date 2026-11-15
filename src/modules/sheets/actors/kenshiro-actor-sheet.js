@@ -47,27 +47,39 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
             template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-tab-navigation.hbs"
         },
         stats: {
-            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats.hbs",
+            template: "systems/kenshiro/templates/partials/actor/character/stats/kenshiro-actor-stats.hbs",
             scrollable: [''],
         },
         statsVals: {
-            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-values.hbs",
+            template: "systems/kenshiro/templates/partials/actor/character/stats/kenshiro-actor-stats-values.hbs",
         },
         ma: {
             template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-martial-arts.hbs",
             scrollable: [''],
         },
-        footer: {
-            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-footer.hbs"
+        feq: {
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-feats-equipment.hbs",
+            scrollable: [''],
         },
         health_armor: {
-            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-health-armor.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/stats/kenshiro-actor-stats-health-armor.hbs"
         },
         trackingBars: {
-            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-resources-partial.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/stats/kenshiro-actor-stats-resources-partial.hbs"
         },
         derivedData: {
-            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-stats-derived.hbs"
+            template: "systems/kenshiro/templates/partials/actor/character/stats/kenshiro-actor-stats-derived.hbs"
+        },
+        feats: {
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-feats.hbs"
+        },
+        equipment: {
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-equipment.hbs"
+        },
+
+
+        footer: {
+            template: "systems/kenshiro/templates/partials/actor/character/kenshiro-actor-footer.hbs"
         }
     }
 
@@ -78,6 +90,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
         primary: {
             tabs: [
                 {id: "stats"},
+                {id: "feq"},
                 {id: "ma"}
             ],
             initial: "stats"
