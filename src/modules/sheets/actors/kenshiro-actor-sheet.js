@@ -115,6 +115,7 @@ export class KenshiroActorSheet extends foundry.applications.api.HandlebarsAppli
     async _preparePartContext(partId, context) {
         switch (partId) {
             case "stats":
+            case "feq":
             case "ma":
                 context.tab = context.tabs[partId];
                 break;
